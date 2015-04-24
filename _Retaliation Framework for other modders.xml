@@ -1,0 +1,688 @@
+<?xml version="1.0"?>
+<!DOCTYPE TranscendenceExtension
+	[
+	<!ENTITY DynamicSystemsDerivative					"YOURUNID">
+	<!ENTITY stRetaliationControllerSpawner			"YOURUNID">
+	<!ENTITY stRetaliationController				"YOURUNID">
+	<!ENTITY evRetaliationEventHandler				"YOURUNID">
+	<!ENTITY evRespawnerEventHandler				"YOURUNID">
+]>
+<TranscendenceExtension UNID="&DynamicSystemsDerivative;" version="0.95" name="Dynamic Systems Framework" credit="RPC">
+;Follow the # signs! there are only a few things to do!
+;if this frameworks is lacking, please PM me!
+Steps:
+1. Create a sovereign and attatch them to your stations.
+2. set retaliate level [I set mine to zero, but you can always choose any number]
+3. I also have a decrement timer to cool things down, so be sure to remember not to let your personal decrement timer get negative retaliate numbers!
+4. Create the retaliation event. Remember to vary the event by the retaliation level.
+;REMEMBMER: 
+;Retaliation is the basis of this mod. By making a sovereign's retaliation level go up after a station is destroyed, 
+;a modder can create a powerful response to the destruction of a station.
+<!--- This station takes care of placing one of the controller stations into each system    --->
+
+<!-- thanks Prophet!-->
+
+<StationType UNID="&stRetaliationControllerSpawner;"
+    name=               "RetaliationPoint"
+    virtual=            "True"
+    >
+    <Events>
+        <OnGlobalSystemCreated>
+            (sysCreateStation &stRetaliationController; nil)
+        </OnGlobalSystemCreated>
+    </Events>
+</StationType>
+
+<!--- This station will take care of all the work   --->
+        
+<StationType UNID="&stRetaliationController;"
+    name=               "Retaliation Station"
+    scale=              "world"
+    backgroundObject=   "true"
+    sovereign=          "&svIndependent;"
+    unique=             "inSystem"
+	attributes=			"DySys"
+    >
+    <ImageVariants>
+        <Image          imageID="&rsWorlds2;" imageX="0" imageY="0" imageWidth="1" imageHeight="1" />
+    </ImageVariants>
+    <Events>
+        <OnCreate>			
+			(block Nil
+				;;START				
+				(if
+					(or
+						;#0: since this framework has station respawn, we need a list of systems that disable this station so that
+						;we don't mess up anything, like:
+						(eq (sysGetName) "Point Juno")
+						(eq (sysGetName) "Huaramarca")
+						(eq (sysGetName) "Heretic")
+						)
+					(block Nil
+						;start the deregistration timer
+						(sysAddObjRecurringTimerEvent 90 gSource "Deregistration")
+						)
+					;if the conditional was false, then do the normal timer:
+					(block Nil
+						;; start the timer
+						(sysAddObjRecurringTimerEvent 90 gSource "Registration")						
+						)
+					)
+				
+				; #1: set your soverign's retaliation level when the star system is generated
+				;example:
+				;CW 
+					;set RPCCWRetaliate
+					(objSetData gSource "RPCCWRetaliate" 0)
+					
+				
+				; #2: set the deescalate timer so that yoor sovereign doesn't keep sending capital ships when the retaliationlevel is high [unless you want them to!]
+				;set the Deescalate Timer
+					(sysAddObjRecurringTimerEvent 3000 gSource "Decrement")
+				)
+        </OnCreate>
+		; #3:Don't touch the registration event unless you want you retaliation to trigger at some other spaceobject's death.
+		;if you change the list of registration, change the list of deregistration too!
+        <Registration>
+            (block nil
+                ;; loop over every active station in the system
+                (enum (sysFindObject nil "tMA") station 
+                    (if (not (objGetData station "registered"))
+                        (block nil
+                            ;; if the station isn't registered yet, do so now
+                            (objRegisterForEvents gSource station)
+                            ;; mark that we've registered this station
+                            (objSetData station "Registered" True)
+							)
+						)
+					)
+				)
+        </Registration>
+		<Deregistration>
+			(block nil
+					;; loop over every active station in the system
+					(enum (sysFindObject nil "tMA") station 
+						(if (not (objGetData station "registered"))
+							(block nil
+								;; if the station is registered, unregister
+								(objUnregisterForEvents gSource station)
+								;; mark that we've unregistered this station
+								(objSetData station "Registered" Nil)
+								;(plyMessage gplayer "Deregistering now.")
+								)
+							)
+						)
+					)
+		</Deregistration>
+		<Decrement>			
+			(block (something)
+			;sovRetaliationlevels
+			; #4:
+				;here is an example of a sovereign's decrement timer. It decreases the level by 2 and prevents it from going to negative numbers.
+				;if you want to add multiple sovereigns, add multiple switches
+				
+				;example:
+				(switch
+					;CW
+					(not (ls (subtract (objGetData gSource "RPCCWRetaliate") 2) 1))
+						(block Nil
+							(objSetData gSource "RPCCWRetaliate" (subtract (objGetData gSource "RPCCWRetaliate") 2))
+							(setq something (objGetData gSource "RPCCWRetaliate"))
+							(plyMessage gPlayer "The Commonwealth retaliation level decreased to "something"!")
+							)
+						)
+				(switch
+					;sovereign 1
+					(not (ls (subtract (objGetData gSource "sovereign 1retaliationlevel") 2) 1))
+						(block Nil
+							(objSetData gSource "sovereign 1retaliationlevel" (subtract (objGetData gSource "sovereign 1retaliationlevel") 2))
+							(setq something (objGetData gSource "sovereign 1retaliationlevel"))
+							(plyMessage gPlayer "Sovereign 1's retaliation level decreased to "something"!")
+							)
+						)
+				(switch
+					;sovereign 2
+					(not (ls (subtract (objGetData gSource "sovereign 2retaliationlevel") 2) 1))
+						(block Nil
+							(objSetData gSource "sovereign 2retaliationlevel" (subtract (objGetData gSource "sovereign 2retaliationlevel") 2))
+							(setq something (objGetData gSource "sovereign 2retaliationlevel"))
+							(plyMessage gPlayer "Sovereign 2's retaliation level decreased to "something"!")
+							)
+						)
+				
+				)
+		</Decrement>
+        
+        <!--- This event will run whenever a station is destroyed
+            You may want to add some code to change what happens
+            depending on what kind of station was destroyed
+            like spawning different ships if a Urak station is destroyed
+            or ignoring stations that are destroyed by the player.
+        --->
+        <OnObjDestroyed>
+			;in this new system, I have decided on a "Generic Retaliate" event.
+			;that means that it will be one huge block filled with switches- but it's also means that I have to look through shorter amount of lines.
+			;not only that, but with added complexity means that I an add retaliationevents easier-- instead of one NEW event, I just append
+			;the existing code and viola!
+			;The retaliationevent will be split into two parts:
+				;the definition part, where I will define local variables such as ships
+				;and
+				;the action part, where the ships are made,etc. 
+				
+				
+			; all right, here goes....
+			(block (Retaliationshiptype escorttype pos sov theLeader cnt name level sovTest test ship Retaliationname metacnt)
+				(setq sovTest(objGetSovereign aObjDestroyed))
+				
+				;this is for respawning stations [I added a timer so that stations don't get respawned too quickly]
+				(sysAddObjTimerEvent (rollDice 42 128 1000) gSource "RespawnStation")
+				
+				;this is the start of the defining part....
+				(switch
+					; #5:
+					
+					<!--
+					;add your Sovereign here!
+					
+					(eq &yoursovereign; SovTest)
+						(block Nil
+							;increment your retaliationlevel!							
+							(switch
+								(and
+									;so that your sov doesn't retaliate against itself!	
+									(not (eq (objGetSovereign aDestroyer) &yoursovereign;))
+									;add more sovereigns that your sov is friednly with
+									(not (eq (objGetSovereign aDestroyer) &SovereignThatIsFriendlyWithYourSovereign;))
+									)
+									(block Nil
+										(setq Retaliationshiptype &;)
+										;retaliationshiptype is the type of ship you want to attack the destroyer!
+										(setq cnt &;)
+										;cnt is the amount of ships you want to appear!
+										
+										;OPTIONAL:
+										(setq metacnt [number])
+										;[setq metacnt if you want teams of fleets working together [the two fleets will work together in attacking the ship, but independently (I don't know
+										;how to make two groups work together yet])]
+										(setq escorttype &;)
+										;use escorttype only if you want a different ship to escort the retaliationshiptype! [AKA: retaliationshiptype= Aquila and escorttype=britannia]
+										)
+								)
+							(setq escorttype Retaliationshiptype)
+							)
+			
+					-->
+					
+					;example:
+					
+					; For CW
+					(eq &svcommonwealth; sovTest)
+						;in the next block, we will define the local vars for ships and fleetcounts
+						(block Nil
+							;make destructible before switch
+							(staSetStructuralHP aWreckObj 100)
+							(switch
+								(and
+								;no CW vs Nil [dead ship's explosion]
+									(not (eq (objGetSovereign aDestroyer) Nil))
+								;no CW vs CW
+									(not (eq (objGetSovereign aDestroyer) &svcommonwealth;))
+								;no CW vs CWfleet
+									(not (eq (objGetSovereign aDestroyer) &svCommonwealthFleet;))
+								;no CW vs CWfleet assasins
+									(not (eq (objGetSovereign aDestroyer) &svFleetAssassins;))
+								;no CW vs Corp- although it would be cool!
+									(not (eq (objGetSovereign aDestroyer) &svCorporate;))
+								;It would be weird if the CW attack your auton but not you
+									(not (eq (objGetSovereign aDestroyer) &svFriendlyAuton;))
+								;no CW vs Ringers
+									(not (eq (objGetSovereign aDestroyer) &svRingers;))
+								;no CW vs Ferians either- I'm not letting the player off that easily!--- make a special retaliation for angry ferians that also targets player!
+									(not (eq (objGetSovereign aDestroyer) &svFerianMiners;))
+									(not (eq (objGetSovereign aDestroyer) &svFerianMinersAngry;))
+									)
+									(block Nil
+										;I set the local variables to Nil because local variables carry over to blocks within blocks
+										(objIncData gSource "RPCCWRetaliate" 5)
+											(setq level (objGetData gSource "RPCCWRetaliate"))
+											(switch
+												;syslevel first
+												(leq (sysGetLevel) 4)
+													;retaliationlevel
+													(switch
+														(leq level 9)
+															(block Nil
+																(setq Retaliationshiptype &scRoninC;)
+																(setq cnt 5)
+																)
+														(and (geq level 10) (leq level 13))
+															(block Nil
+																(setq Retaliationshiptype &scIAVMedium;)
+																(setq cnt 5)
+																)
+														(and (geq level 14) (leq level 20))
+															(block Nil
+																(setq Retaliationshiptype &scIAVHeavy;)
+																(setq cnt 5)
+																)
+														(and (geq level 21) (leq level 25))
+															(block Nil
+																(setq Retaliationshiptype &scManticore;)
+																(setq cnt 5)
+																)
+														;If none of the above apply,
+															(block Nil
+																(setq Retaliationshiptype &scBritannia;)
+																(setq cnt 5)
+																)
+														)
+												(geq (sysGetLevel) 5)
+													(switch
+														(leq level 5)
+															(block Nil
+																(setq Retaliationshiptype &scCenturion;)
+																(setq cnt 5)
+																)
+														(and (geq level 6) (leq level 9))
+															(block Nil
+																(setq Retaliationshiptype &scCenturionX;)
+																(setq cnt 5)
+																)
+														(and (geq level 10) (leq level 17))
+															(block Nil
+																(setq Retaliationshiptype &scBritannia;)
+																(setq cnt 5)
+																)
+														(and (geq level 18) (leq level 24))
+															(block Nil
+																(setq Retaliationshiptype &scDSAquilaCruiser;)
+																(setq cnt 2)
+																)
+															(block Nil
+																(setq Retaliationshiptype &scDSAquilaCruiser;)
+																(setq cnt (divide level 5))
+																)
+														)
+												)
+										)
+								)
+							;this is an ad-hoc solution for how to deal with escorttype
+							(setq escorttype Retaliationshiptype)
+							)
+					
+					
+					)
+					
+					
+				;and this is the start of the action part...
+				
+					
+				;set an if function to find out if Retaliationshiptype is defined [so that sovs that aren't in this don't invoke this code without a Retaliationshiptype and warn the player of an error]. 
+				(if Retaliationshiptype
+					;if so, then sort by:
+					;[in the previous if, I'm assuming that if Retaliationshiptype is defined, then so is metacnt or cnt, etc]
+					(block Nil
+						(if metacnt
+							;teams [if they use metacnt]
+							(block Nil
+								;; decide where the reinforcements are coming from here we use the nearest gate
+								(setq pos (sysFindObject nil "GN"))
+							
+								;; determine what soverign the ships will have, (here we use the sov of the destroyed station)
+								(setq sov (objGetSovereign aObjDestroyed))
+									(if metacnt
+										(for i 1 metacnt
+											(block Nil
+												(setq theLeader (sysCreateShip Retaliationshiptype pos sov))
+												
+												;here is the inserted code to get fleets
+													;give retaliation ship this event
+													(objSetEventHandler theLeader &evRetaliationEventHandler;)
+													(sysAddObjRecurringTimerEvent 450 theLeader "SquadronTactics")
+														;set the teamLeader status
+														(objSetData theLeader "teamLeader" true)
+														;get ShipOrders from previous leader
+															;ObjSetData- what?
+																;order
+																(objsetdata theLeader "shipOrder" 'attack)
+																;target
+																(objSetData theLeader "orderTarget" (setq test (objGetID adestroyer)))
+																
+													;order the leader to wait so the squad forms up-- taken from evStdConvoyEncounterBehavior
+													(shpOrder theLeader 'wait 10)
+												
+												;; order the leader to attack the destroyer then gate out
+												(shpOrder theLeader 'attack aDestroyer)
+												(shpOrder theLeader 'gate)
+												
+												;; spawn to get the squad
+												;If leader dies, then choose another leader- HOW DO I DO THAT?
+												(if cnt
+													(for i 1 cnt
+														(block (ship)
+															(setq ship (sysCreateShip escorttype pos sov))
+																;here is the inserted code to get fleets
+																	(objSetEventHandler ship &evRetaliationEventHandler;)
+																(shpOrder ship 'escort theLeader)
+																(shpOrder ship 'wander)
+															
+															)
+														)
+													)
+												)
+											)
+										)
+								)
+							;non-teams [no metacnt]
+							(block Nil
+								;; decide where the reinforcements are coming from- here we use the nearest gate
+								(setq pos (sysFindObject nil "GN"))
+							
+								;; determine what soverign the ships will have, (here we use the sov of the destroyed station)
+								(setq sov (objGetSovereign aObjDestroyed))
+							
+								(setq theLeader (sysCreateShip Retaliationshiptype pos sov))
+								;XXXXX-fleets
+								;here is the inserted code to get fleets
+									;give retaliation ship this event
+									(objSetEventHandler theLeader &evRetaliationEventHandler;)
+										(sysAddObjRecurringTimerEvent 450 theLeader "SquadronTactics")
+										;set the teamLeader status
+										(objSetData theLeader "teamLeader" true)
+										;get ShipOrders from previous leader
+											;ObjSetData- what?
+												;order
+												(objsetdata theLeader "shipOrder" 'attack)
+												;target
+												(objSetData theLeader "orderTarget" (setq test (objGetID adestroyer)))
+									
+									;order the leader to wait so the squad forms up-- taken from evStdConvoyEncounterBehavior
+									(shpOrder theLeader 'wait 10)
+											
+											;; order the leader to attack the destroyer then gate out
+											(shpOrder theLeader 'attack aDestroyer)
+											(shpOrder theLeader 'gate)
+								;XXXXX-squadron
+											;; in case the single ship is not enough, spawn more ships
+											(if cnt
+												(for i 1 cnt
+													(block (ship)
+														(setq ship (sysCreateShip escorttype pos sov))
+															;here is the inserted code to get fleets
+																(objSetEventHandler ship &evRetaliationEventHandler;)
+															(shpOrder ship 'escort theLeader)
+															(shpOrder ship 'gate)
+														)
+													)
+												)
+								)
+							)
+						)
+					)
+				;this is to tell the player X retaliated against Y!
+				(if theLeader
+					(block Nil
+						(setq name (typGetDataField (objGetSovereign aDestroyer) 'name))
+						(setq Retaliationname (typGetDataField (objGetSovereign aObjDestroyed) 'name))
+						(plyMessage gPlayer "The "Retaliationname" retaliate against the "name"!")	
+						)
+					)
+				)
+        </OnObjDestroyed>
+		<RespawnStation>			
+			
+			(block (prevStation theScarab Freightertype Escorttype pos sov cnt ship newStation location test sovTesting)				
+				;set sovTesting
+				(setq sovTesting (objGetSovereign aObjDestroyed))
+				;define stationcriteria location [in this case, it is the station]
+				(setq prevStation aObjDestroyed)
+				;define new station's location as a few ls from the old one:
+				(setq newStation (sysCreateMarker "rally" (sysVectorPolarOffset (objGetpos aObjDestroyed) (random 0 359) (random 16 20)) &svCommonwealth;))
+				;define old station location with a marker
+				(setq oldStationLocation (sysCreateMarker "Artemis" (ObjGetPos aObjDestroyed) &svCommonwealth;))
+				
+				;(setq location (sysCreateMarker "rally" (sysVectorPolarOffset aBaseObj (random 0 359) (random 16 20)) &svCommonwealth;))
+				
+				;do a switch to make an approriate freighter
+					(switch
+						
+					;END. Yay, you're almost done!
+					; #6: this is if you want your soverign to respawn a destroyed station
+						;add your faction here!
+						<!--
+						(eq (&YourSovereignUNIDHere; sovTesting))
+							(block Nil
+								(setq Freightertype &;)
+								;freighter is the ship that is supposed to "carry" the station
+								(setq Escorttype &;)
+								;esctortype are the ships that are supposed to escort the freighter
+								(setq cnt [number])
+								;cnt is how many escorts there are
+								)
+						-->
+						;examples below:
+						;centauri warlords
+						(eq &svCentauriWarlords; sovTesting)
+							(block Nil
+								(setq Freightertype &scCentauriBaseShip;)
+								(setq Escorttype &scCentauriHeavyRaider;)
+								(setq cnt 5)
+								)
+						;charon pirates
+						(eq &svPirates; sovTesting)
+							(block Nil
+								(setq Freightertype &scDrake;)
+								(setq Escorttype &scViking-II;)
+								(setq cnt 5)
+								)
+						)
+				
+				(setq pos (sysFindObject nil "GN"))
+				(setq sov (objGetSovereign aObjDestroyed))
+				;#7 continued:
+					;this is a list of stations to NOT create-- they are unique and should only appear in the game once in Universe or in System
+					;add your unique stations here!
+				(if 
+					(or
+						(eq (objGetType aObjDestroyed) &stArcoVaughnHabitat; )
+						(eq (objGetType aObjDestroyed) &stMakayevFactory; )
+						(eq (objGetType aObjDestroyed) &stRasiermesserFactory; )
+						(eq (objGetType aObjDestroyed) &stHereticStation; )
+						(eq (objGetType aObjDestroyed) &stCommonwealthResearchHeretic; )
+						(eq (objGetType aObjDestroyed) &stRingersResearchHeretic; )
+						(eq (objGetType aObjDestroyed) &stSistersResearchHeretic; )
+						(eq (objGetType aObjDestroyed) &stTVX1Outpost; )
+						(eq (objGetType aObjDestroyed) &stAresResearchHeretic; )
+						(eq (objGetType aObjDestroyed) &stMaryamsArchive; )
+						(eq (objGetType aObjDestroyed) &stMRADSensor; )
+						(eq (objGetType aObjDestroyed) &stLogBuoy; )
+						(eq (objGetType aObjDestroyed) &stHereticControlCenter; )
+						(eq (objGetType aObjDestroyed) &stStKatsArcology; )
+						
+						
+						
+						<!--
+						(eq (ObjGetType aObjDestroyed) &; )
+						-->
+						)
+					;if the conditional is true:
+						Nil
+						;(plymessage gplayer "ha! take that unique station!")
+					;false [we're okay to make the station]
+						;whatever I did to make it happen
+						(block Nil
+							;warn me
+							(plymessage gPlayer "station should be respawning now")
+							(if Freightertype
+								;if freightertype is defined lets me prevent calling this event for factions that don't have a sov or don't have one defined, like the Xenophobes.
+								(block Nil
+									;gate in [beefed up!] Scarab w/ Britannia escort
+									(setq theScarab (sysCreateShip Freightertype pos sov))
+										;add an event handler to spawn the station when the freighter gets close
+										(objSetEventHandler theScarab &evRespawnerEventHandler;)
+										(sysAddObjRecurringTimerEvent 200 theScarab "Reconstruction")
+										
+										;set the data the freighter needs for respawning the station
+											;where it was-- "oldstationlocation"
+											(objSetData theScarab "oldstationlocation" oldStationLocation)
+											;what station is it-- "oldstationUNID"
+											(objSetData theScarab "oldstationUNID" (ObjGetType aObjDestroyed))
+											;the sovereign of the station-- "oldstationSov"
+											(objSetData theScarab "oldstationSov" (objGetSov aObjDestroyed))
+											;store data that tells the freighter where the newStation is!
+											(setq test (objSetData theScarab "newstationlocation" newStation))
+										
+										(shpOrder theScarab 'wait 10)
+							
+										(if cnt
+											(for i 1 cnt
+												(block (ship)
+													(setq ship (sysCreateShip Escorttype pos sov))
+													(shpOrder ship 'escort Freightertype)
+													(shpOrder ship 'gate)
+													)
+												)
+											)
+										(shpOrder theScarab "goto" newStation)
+										(shpOrder theScarab 'wait 10)
+										(shpOrder theScarab 'gate)
+										
+										
+									)
+								)
+							)
+					)
+				)
+		</RespawnStation>
+    </Events>
+</StationType>
+
+<!--Retaliation Event Handler-->
+
+	<ShipClass UNID="&evRetaliationEventHandler;"
+			class=				"(Retaliation Event Handler)"
+			virtual=			"true"
+			
+			attributes=			"behaviorClass"
+			>
+			
+		<Events>
+			;give retaliation ship this event
+			;set the teamLeader status
+			;get ShipOrders from previous leader
+				;ObjSetData- what?
+					;order
+					;target
+			
+			;give them the OnBehavior Check!
+			<SquadronTactics>
+				(if (objGetData gSource "teamLeader") 
+					(block Nil
+						(enum (sysFindObject gSource "sO:escort;") gunship
+							(if 
+								;distance between the two is gr than 50 ls,
+								(gr (sysVectorDistance gunship gSource) 50)
+								(block Nil
+									;cancel orders
+									(shpCancelOrders gunship)
+									;tell the gunship to escort the leader
+									(shpOrder gunship 'escort gSource)
+									)
+								)
+							)
+						)
+					)
+			</SquadronTactics>
+			
+			<OnDestroy>
+				;; check if this ship is the leader
+				(if (objGetData gSource "teamLeader") 
+					(block (escorts prevOrder prevTarget)
+						;; get the ships currently escorting destroyed ship
+						(setq escorts (sysFindObject gSource "sO:escort"))
+						
+						;prev orders + target
+						(setq prevOrder (objGetData gSource "shipOrder"))
+						(setq prevTarget (objGetObjById (objGetData gSource "orderTarget")))
+
+						;; only proceed if we have any escorts left
+						(if escorts 
+							(block (newleader test)
+								;; the first becomes the new leader
+								(setq newleader (item escorts 0))
+								;; designate the ship as teamLeader
+								(objSetData newleader "teamLeader" true)
+								;; give the new leader some useful order
+								;; (cancel any previous ones first)
+								(shpCancelOrders newleader)
+								(shpOrder newleader 'attack prevTarget)
+								<!--
+								(plyMessage gPlayer "PrevTarget is "prevTarget"!")
+								-->
+								;set Target again for the next leader
+								(objSetData newLeader "orderTarget" (objGetData gSource "orderTarget"))
+								<!--
+								(plyMessage gPlayer "Next leader's targ is "prevTarget"!")
+								-->
+								;; if there are any more ships, tell them to escort newleader
+								(enum (subset escorts 1) s 
+									(block nil
+										(shpCancelOrders s)
+										(shpOrder s 'escort newleader)
+										)
+									)
+								)
+							)
+						)
+					)
+			</OnDestroy>
+		</Events>
+	</ShipClass>
+	
+	<!--Freighter Respawner Event Handler-->
+
+	<ShipClass UNID="&evRespawnerEventHandler;"
+			class=				"(Respawner Event Handler)"
+			virtual=			"true"
+			
+			attributes=			"behaviorClass"
+			>
+			
+		<Events>
+			;newStationlocation is the new station location	
+			<Reconstruction>
+				(block (prevstationlocation namek wessidestory sigh great )
+					;get the pos
+					(setq prevstationlocation (objGetObjRefData gSource "oldstationlocation"))
+					;get the UNID
+					(setq wessidestory (objGetData gSource "oldstationUNID"))
+					;get the sov
+					(setq namek (objGetData gSource "oldstationSov"))
+					;(plyMessage gPlayer "test")
+					(if
+						(and
+							;the freighter is close to the new stationlocation
+							(leq (objGetDistance gSource prevstationlocation) 20)
+							;it hasn't been called yet
+							(ls (objGetData gSource "call") 1)
+							)
+							(block Nil
+								;create the station
+								(setq sigh (sysCreateStation wessidestory (objGetPos (objGetData gSource "newStationlocation"))))
+								;set the sov
+								(objSetSovereign sigh namek)
+								<!-- defunct
+								;tell the station what it's supposed to replace
+								(setq great (objSetData sigh "OldStationDataOnNewStation" prevstationlocation))
+								
+								;(plyMessage gPlayer "OldStationDataOnNewStation is "great" when passed to station? ")
+								-->
+								(objSetData gSource "call" 1)
+								)
+						)
+					)
+			</Reconstruction>			
+		</Events>
+	</ShipClass>
+
+</TranscendenceExtension>

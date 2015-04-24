@@ -1,0 +1,3367 @@
+<?xml version="1.0"?>
+<!DOCTYPE TranscendenceExtension
+	[
+	<!-- E128 UNID RANGE Legend -->
+	
+	;technically, I have 3 mods [4 if you count the Ranx Escourt]
+		;Mayfly Sundance 
+			;Mayfly ship
+			;Mayfly Sundance storyline
+			;Mayfly industries
+		;Nerefir Carrier POC
+			;Nerefir
+			;Kalan gunship
+			;need a few more gunships
+		;Dynamic Systems
+			;just have factions shoot at each other
+		;Ranx Escourt
+			;Ranx Escourt Summoner
+			;Ranx escourt ship
+	;0000-Mayfly Sundance
+		;clean that up!
+	;1000-MSVanillaOverride
+		;2000-Cinematics
+	;2CA0 and 2CA1- Gravity
+	;2DA0 Planet Parralax and Digdug planets
+	;3000-Ranx Escourt Mod
+	;3A00-Umwelt mod
+	;3100-Shivan Hunter and Civilian Crafts
+	;3500-Upgraded Ranx
+	;3501-both Upgraded Ranx in one XML
+	;3550-Destroy/Jettison damaged devices
+	;3600-Upgraded Ranx V2 [w/PD weapons]
+	;3700-Visible Damage
+	;3750-Utility Items pack- autolooter and real autopilot
+	;3900-Wrap Around to Awesome
+	;39A0-Refill Charges mod
+	;4000-Ice-nine Zombies
+	;{4100-4G00}:CSC Luna	
+	;4200-clock mod
+	;4250-5 minutes save mod
+	;4300-moving planets
+	;4350-OLD Resurrect mod (removes new resurrection code and goes back to old code)
+	;5000-Luminous Luminous
+	;6000-TSP
+	;6050-Speedometer mod
+	;6100-Station Anger Timeout mod
+	;6150-Invisible Damage
+	;6200-Lethal transmission; Virulent transmission
+	;6250-ADVLRS remake
+	;6300-Souped up Auton Bay
+	;63A0-Mothership mod code request
+	;6900-Uncharted
+	;7000-Sandbox Example
+	;7050-ADVLRS release
+	;7100-Styrtan Mockup OR Star Network: Genesis
+	;7200-Alarm mod
+	;7250-Test Drive
+	;0xE1282D20- Music Player
+	;8000-DynamicSystems
+	;8100-DynamicSovereigns
+	;8500-gundam collab with TVR
+		;2000-Dynamic Systems stuff
+	;RENAME ALL FACTIONS!
+	;8600-Slipstream: (racing mod)
+	;Dynamic Ares, etc.
+		;9000-Nerefir
+		;9A00-Ships
+		;9B00-Weapons
+		;9C00-items
+		;9D00-"AI"
+		;9E00-resources
+		;9F00-Dockscreens
+		;9G00-Mayfly
+			;Incorporate Mayfly Sundance to Nerefir
+		;9H00-Mayfly Sundance Vanilla Override
+	<!ENTITY unidNerefir				"0xE1289000">
+	<!ENTITY scNerefirCarrier			"0xE1289A00">
+		<!ENTITY scNerefirRanxGunship		"0xE1289A01">
+		<!ENTITY scKalanEscort		"0xE1289A02">		
+		<!ENTITY scShieldBit				"0xE1289A03">
+			<!ENTITY itShieldBit				"0xE1289A04">
+		<!ENTITY scMayfly			"0xE1289A05">
+		
+	<!ENTITY itQuadBeamRifle			"0xE1289B00">
+	<!ENTITY itCarrierOmskDeflectorII	"0xE1289B01">
+	<!ENTITY itParticleRifle			"0xE1289B02">
+	<!ENTITY itStealth					"0xE1289B03">	
+	<!ENTITY itvtLRS					"0xE1289B04">	
+	
+	<!ENTITY itRanxGunshipSummon		"0xE1289C00">
+	<!ENTITY itNerefirSolarReactor		"0xE1289C01">
+	<!ENTITY itSolarParticleField		"0xE1289C02">
+		<!ENTITY itExhaust					"0xE1289C05">
+	<!ENTITY itParticles				"0xE1289C03">
+	<!ENTITY itSolarReactorFlywheel		"0xE1289C04">
+	
+	<!ENTITY baBasicBase				"0xE1289D00">
+	<!ENTITY baFighterBase				"0xE1289D01">
+	
+	<!ENTITY rsTrail					"0xE1289E00">
+	<!ENTITY rsParticles				"0xE1289E01">
+	<!ENTITY rsFlywheel					"0xE1289E02">
+	<!ENTITY rsNerefir					"0xE1289E03">
+	<!ENTITY rsEmptyTrail				"0xE1289E04">
+	<!ENTITY rsExiamapNerf				"0xE1289E05">
+	
+	<!ENTITY dsNerefirInterior			"0xE1289F00">
+	<!ENTITY dsNerefirShipConfig		"0xE1289F01">
+	<!ENTITY dsNerefirCargoHold			"0xE1289F02">
+	<!ENTITY dsNerefirManualRefuel		"0xE1289F03">
+	
+	<!ENTITY svRanxEmpire				"0xE1281B00">	
+	<!--other mods-->
+		<!ENTITY scMayflyLvl1			"0xE1280003">
+	
+]>
+<TranscendenceExtension UNID="&unidNerefir;" version="1.0" name="Nerefir Carrier" credits="RPC">
+<!--
+Credits:
+FourFire: Nerefir LRS description
+-->
+<image UNID="&rsTrail;"			bitmap="DySys Resources\Trail.jpg"				bitmask="DySys Resources\Trailmask.bmp"						loadOnUse="true"/>
+<image UNID="&rsParticles;"		bitmap="DySys Resources\Particles.jpg"			bitmask="DySys Resources\Particlemask.bmp"					loadOnUse="true"/>
+<image UNID="&rsFlywheel;"		bitmap="DySys Resources\solar reactor try.jpg"																loadOnUse="true"/>
+<Image UNID="&rsNerefir;" 		bitmap="DySys Resources\RanxCruiserCut.jpg" 																				/>
+<image UNID="&rsEmptyTrail;"	bitmap="DySys Resources\ParticlesReverse.jpg"	bitmask="DySys Resources\ParticleEmptyTrail Mask.jpg"		loadOnUse="true"/>
+<Image UNID="&rsExiamapNerf;" 	bitmap="DySys Resources\Exiamask.jpg" 																		backColor="0x00000000"/>
+<!-- TODO -->
+<!--
+;from DSMK2 on IRC, author unknown
+<globals>
+		;the guard target message code
+		(setq intGuardTarget (lambda Nil
+                              (if (not (objGetTarget gSender))
+                              (objSendMessage gPlayerShip gSource "NEGATIVE: NO TARGET")
+
+                     
+     						
+					(if (eq gSource (objGetTarget gSender))
+					(objSendMessage gPlayerShip gSource "NEGATIVE: CANNOT COMPLY")
+								
+                        (block Nil 
+                              (shpCancelOrders gSource) 
+                              (shpOrderGuard gSource (objGetTarget gSender))
+                              (shpOrderEscort gSource gPlayerShip (random 1 20)) 
+                              (objSendMessage gPlayerShip gSource "Acknowledged, guarding target") 
+							(if (eq (objGetTarget gSender) (objGetNearestStargate gPlayerShip))
+							  (intStartReturnCheck 0)
+							  (intStartReturnCheck 1)
+                            )
+                            )
+								)
+                                            )
+                                        )
+                                    )
+                                )
+		                )
+                        )
+</globals>
+-->
+<!-- General stuff -->
+
+;JAWS phobos: One Day Mods: Phobos encounter+ Jaws theme music.- legal issues?
+	;sysCreateEffect: play Jaws music for 15 sec
+	
+	<!--Jaws Phobos-->
+	;events
+	;	OnUpdate
+	;		switch
+	;			;sysfind player OR use the distance vector function
+	;				if player is close, then sysCreateEffect [which will be the JAWS music]
+	;			
+	;	/OnUpdate
+	;/Events
+	;
+	;then, get the JAWS phobos armor to have stealth= "10"
+	;also, create the JAWS effect
+;One Day mods: time-travel easteregg
+	
+;look at PKodon's graphics thing!
+;know how to use modules!
+;do a mall: [Raisermesser+Makayev+Taikon+Bushido in one station] mod?
+;skylighter wep.[sounds too close to lamplighter]
+;2- make gunships and tokenators!-????
+;3- Sov relation changer!
+<!-- Nerefir -->
+; make it so that it eats up 5 particles using an OnFire Event!
+; figure out how to manage ships!
+; look at ferians to see how to implement limit on ships!
+; have fighter ships and other ships charge Particles!
+
+
+;shipbases!
+	;fighter-done
+	;4- "salvage" team!- Looting for you!
+	;bomber
+	;MAKE A NEREFIR BASE!-- or event handler
+
+; 4b- you can repair your own ships?- YES!- use a recurringevent!
+;objisunderattack for patrolbase
+;objmove to for Area of operations
+;have an 'area of operations' where gunships won't leave unless fire at will is invoked
+
+;8
+;9
+;and wander doesn't work for Kalan
+
+
+
+;separate DS to manage fleet ^ personal ship -the Mayfly-!
+
+1-particle field
+2-flywheel
+3-manage fleet
+4-ship management
+5-mayfly
+
+;change pilot script [the shipchange one] - I don't know where I got it from!
+
+<!-- DS -->
+;have Ranx Dread drop barricade turrets!
+
+;add randomencounters - like missions!
+;shocked freighter one
+;Topology should have dockable planets!
+	;BIG TWIST?- destroy a planet at the END!- as well as the star!
+;6- CWHQ and heavy ships have 'escape pods'
+	;(have a command- ABANDON SHIP!)
+;7- give worldships more lancers!
+;Have a CSC 'system'!
+
+;MAKE PHOBOS LOOK FOR CSC AND KILL IT ONCE THERE EXIST 3 PHOBOS!
+	;oncreate incdata-
+	;once it is geq 3,
+		;find a CSC and attack it
+; events- register for events 'spam CW' etc.
+;recreate mines to be a 'station'- like the Ranx Dread barricade!
+;aurochs be omni minelayer!- how to check?
+;expand the Heliotropes!
+
+<!--Mayfly-->
+<!--Mayfly-related stuff [just kinks to work out]-->
+
+;Transhelp:
+;objSuspend^ objResume
+		
+;make particle shield use ammo- which is the particles!- since it's repeating, how do I make it take ammo?
+;how do I get the flywheel to add fuel?- 
+		;OnInstall- sysaddrecurringtimerevent
+		;OnUninstall- sysremoverecurringtimerevent
+	;make Mayfly unreliable-ish!
+;import Mayfly!
+;Mayfly change escape pod! [use an OnUpdate tag] and use getVisibledamage
+
+<!-- MSU -->
+;have Ranx Dread drop barricade turrets!
+
+;do DS - have all sovs work on an expand way!
+	;OnCreate- recurringtimer expand
+	;then etc.
+<!-- Ranx Escourt -->
+;One Day mod 
+;Ranx escourt Mod
+	;shpGetClass ship
+	
+
+;two events in Ranx Escourt Mod
+
+-----
+
+---------------------------------------------------------------------------------------------------
+;Credits/ inspiration
+;'ecco's mining scanner (old one)
+;r/c scout auton
+;Hell's Trinity
+;Singularity -p.s. Gotta love that huge sun!
+;guardian-class wingman
+;playerdrones- I think I got some of the code for shipchange from there... I don't know if I changed it or not...
+;Shen Long - saves SOOO much time on mining
+;all playerships mod- that's how I got the Ranx Dread
+;UGW v3- although I have to admit that after a certain point, wingmen STILL don't matter.
+
+;A tribute to Modders.
+;Viva la Vida- of Modding! to the tune of Viva la Vida by Coldplay (2008)
+
+;I used to rule the gates,
+;Ships would burn when I gave the word.
+;Now in the morning I sleep alone.
+;Sleep alone in my cargo hold.
+
+;I used to roll the dice,
+;Feel the fear in my enemies' eyes,
+;Listen as the crowd would sing-
+;"Now the Slicer is dead", the chant would ring.
+
+;One minute I held that rod,
+;No part II made me start to mod.
+;in the forums I saw that Part II stands
+;just right outside the Commomwealth's hands
+
+;I hear Xelerus pages a-clicking
+;functions documentation singing
+;error parsing line 42
+;I didn't know what I had to do
+
+;for some reason I can't explain
+;once you start there is never, never a chance you'll stop
+;modding is the last thing you'll drop
+
+;It was a wicked and wild change
+;I desired a UNID range
+;sleepless modding turned me into a bum
+;people couldn't believe what I've become
+
+;I don't want to wait
+	;for my grades to dissipate
+;I just needed to start scripting
+;ah-couldn't get the neuros player to ring
+
+;I hear Xelerus pages a-clicking
+;functions documentation singing
+;sorry [theArmor] is not bound
+;not another annoying error to be found!
+
+;for some reason I can't explain
+;anybody else feel this modding pain?
+;always a broken mod
+;but that was when I aimed too broad
+
+;Can't finish this Adventure Extension
+;guess I'll have to make another correction
+;copyright worries are on my mind
+;don't want to get in a legal bind
+
+;modding nonstop is too insane
+;yet outside I still mod in my brain
+;never an awesome mod
+;always something that had to be flawed.
+
+;oooooooooooooh
+;ooooooooooooooooooooooooooh
+;oooooooooooooh
+;ooooooooooooooooooooooooooh
+
+;AND:
+;to George Moromisato, for CREATING Transcendence.
+;It humbles me to think that the guy coding Transcendence is pretty much a one man band.
+
+
+;A Tribute to the Katana Starcannon to the Tune of Frank Sinatra's My Way [Let's just say I know who Quils3 is]
+;and now, the Core is near,
+;and so I face Transcendence Part III
+;my friend I'll say it clear,
+;I'll state my case 
+;of which I'm certain
+;my shield is always full
+;I've traveled each and every stargate
+;and more 
+;much more than this 
+;I blew them up my way
+;Regrets, I've had a few
+;attributed to omni TeV9's	
+;I did what I had to do
+;and saw it through without exemption
+;I've planned each charted course
+;and which station should be demolished
+;more
+;much more than this 
+;my Starcannon came through
+;Yes there were times- I'm sure you knew
+;when I shot at more than I could chew
+;but through it all when there was doubt
+;I shot it through using passthrough
+;I faced it all and I stood tall
+;and did it my way!
+;I don't like
+;how level tiers
+;make it so that
+;you can't fight Iocrym
+;and now, as tears subside
+;I find it all so amusing
+;to think I tried that
+;and may I say, not in a shy way
+;oh no, oh no not me 
+;I did it my way.					
+
+
+;I don't like 	
+;how level progression	
+;makes it so that you aren't useful to the Iocrym transgression
+
+;COMMS LIST:
+;attack, atk nearest enemy (fire at will), attack hold; dock; escourt; follow (allow for me to recon!); gate???; goto; guard; hold;
+;hold Course; loot [give it to a shenlong look alike]; orbit [how can I make it orbit a planet though?]; 
+;patrol area?; wander; 
+
+COMMS:
+;aim                       Aim at target
+;attack                    Attack target
+;attackNearestEnemy        Name says it all
+;attackHold                Attack target but hold position (no chasing)
+;bombard                   Bombard target
+;dock                      Dock with target
+;escort                    Escort target
+;follow                    Follow target
+;gate                      Go to nearest gate (or specified gate) and use it
+;goto                      Go to target
+;guard                     Guard target
+;hold                      Hold position (optionally for a certain period)
+;holdCourse                Hold a certain course for a certain time (in ticks)
+;loot                      Loot target (must be a wreck)
+;orbit                     Orbit around a target at a set distance (in ls)
+;patrol                    Patrol a target at a set distance (in ls)
+;turnTo                    Turn the ship in direction (angular)
+;wander                    Wander around the system
+
+;approach                  Unsure. Approach a marker until a certain distance?
+;wait                      Unsure. Wait at position for a time (or for a target?)
+;waitForTarget             Unsure
+;waitForEnemy              Unsure
+;gateOnThreat              Unsure
+
+;ships/material
+;manage (ships and all that)
+;Adventure EX
+<!-- shpChange to gunship: -->
+;look at R/C scout!
+	<!-- material: -->
+	--------------------------------
+	;LVL 8
+	;PLAYERSHIP: Nerefir Carrier
+		;Shields:
+		;Armor:
+		;Weapons:
+		;Utilities:
+;TOKENATOR Level:
+; IMPLEMENT SLOW BUT MANEUVERABLE SHIPS! 
+		--------------------------------
+		;LVL 1
+		;Ranx gunship:
+			;Shields:monopole
+			;Armor:depleted uranium
+			;Weapons: moskva 33
+			;Utilities:n/a
+		--------------------------------
+		;LVL 2
+		;Hornet:
+			;Shields: nepren P25
+			;Armor: heavy blast/ blast
+			;Weapons: omni Tev9/ disruptor/ laser cannon 
+			;Utilities:	n/a
+		--------------------------------
+		;LVL 3
+		;Sotho:
+			;Shields: yoroi M/X
+			;Armor: ???
+			;Weapons:???
+			;Utilities:n/a
+		
+	--------------------------------
+	;LVL __
+	;-insert role-SHIP:
+		;Shields:
+		;Armor:
+		;Weapons:
+		;Utilities:
+
+;?:What ships do I want?
+;Ranx gun
+;hornet
+;hammerhead
+;borer
+;Sotho
+;Ormo
+
+;Mayfly
+; How to upgrade??
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+<!-- virtual LRS-->
+<!--description by FourFire-->
+	<ItemType UNID="&itvtLRS;"
+			name=				"virtual Long Range Scanner"
+			level=				"17"
+			value=				"40000"
+			mass=				"5000"
+			frequency=			"rare"
+			unknownType=		"&itUnknownAlienDevice;"
+			attributes=			"Alien; MajorItem; notforsale"
+
+			description=		"This highly advanced scanner, manufactured by [REDACTED] measures gravity ripples caused by massive objects in the same system. A semiquantum CPU calculates the probability of the massive object being a planet or satelite an excludes these from the display."
+			>
+
+		<Image imageID="&rsItems1;" imageX="0" imageY="192" imageWidth="96" imageHeight="96"/>
+
+		<MiscellaneousDevice
+				powerUse=			"20"
+				/>		
+		<Invoke key="8">
+		;TODO
+			;get a dockscreen:
+				;be able to set:
+					;range
+						;objSetData gSource "range" 100
+					;on and off
+						;objSetData gSource "Use" on/off
+							;1= on
+							;2= off
+			(switch
+				(eq (objGetData gSource "Use") 1)
+					(block Nil
+						(objSetData gSource "Use" 2)
+						(plymessage gPlayer "LRS enhancement OFF")
+						(enum (sysFindObject gSource "sN:150;") somethinginspace 
+						(block Nil
+							(objClearShowAsDestination somethinginspace)
+							)
+						)
+						)
+				;else
+				(block Nil
+					(objSetData gSource "Use" 1)
+					(plymessage gPlayer "LRS enhancement ON")
+					)
+				)
+		</Invoke>
+		<Events>
+			<OnUpdate>
+				(block Nil
+					;if it is used- proceed:
+					(switch 
+						(eq (objGetData gSource "Use") 1)
+							(block Nil
+								;enumerate all ships/stations within 100LS
+								
+								(enum (sysFindObject gSource "sN:100;") somethinginspace 
+									(block Nil
+										(objSetKnown somethinginspace)
+										(objSetShowAsDestination somethinginspace)
+										)
+									)
+								
+								(enum (sysFindObject gSource "sR:100;") somethinginspace 
+									(block Nil
+										(objClearShowAsDestination somethinginspace)
+										)
+									)
+								)
+						(eq (objGetData gSource "Use") 2)
+							(block Nil
+								(enum (sysFindObject gSource "sR:100;") somethinginspace 
+									(block Nil
+										(objClearShowAsDestination somethinginspace)
+										)
+									)
+								)
+						)
+					)
+			</OnUpdate>
+		</Events>
+	</ItemType>
+	<!-- Ranx gunship changer -->
+
+	<ItemType UNID="&itShieldBit;"
+			name=				"Shield Bit"
+			level=				"8"
+			value=				"0"
+			mass=				"5000"
+			frequency=			"notrandom"
+			modifiers=			"Fleet; MinorItem"
+
+			description=		"This UNID has been repurposed to summon the Mayfly instead."
+			>
+
+		<Image imageID="&rsItems1;" imageX="96" imageY="288" imageWidth="96" imageHeight="96"/>
+
+		<Invoke key="">
+			(block (auton)
+				; Create the auton
+				(setq auton
+					(sysCreateShip 
+						&scMayflyLvl1;
+						(objGetPos gSource)
+						&svPlayer;
+						"fleet"
+						)
+					)
+				; Escort ship
+				(shpOrderEscort auton gSource)
+				; Identify the item
+				(itmSetKnown gItem)	
+				)
+		</Invoke>
+
+	</ItemType>
+	
+	<!-- Shield Bit -->
+
+	<ShipClass UNID="&scShieldBit;"
+			manufacturer=		""
+			class=				"Shield Bit"
+			type=				""
+			score=				"390"
+
+			mass=				"10"
+			cargoSpace=			"0"
+			thrust=				"30"
+			maneuver=			"2"
+			maxSpeed=			"25"
+
+			leavesWreck=		"0"
+
+			attributes=			"auton,genericClass"
+			
+			inherit=			"&baFighterBase;"
+			>
+
+		<Armor>
+			<ArmorSection start="0" span="360" armorID="&itDarkMatterPlate;" areaSet="0,2,3,7" />
+		</Armor>
+
+		<Devices>			
+		</Devices>
+
+		<Image imageID="&rsSmallShips1;" imageX="288" imageY="0" imageWidth="32" imageHeight="32" imageFrameCount="0" imageTicksPerFrame="0"/>
+
+		<AISettings
+			fireRateAdj=		"20"
+			fireAccuracy=		"80"
+			perception=			"4"
+			/>
+
+	</ShipClass>	
+	;COMMS LIST:
+
+; dock- KINDA buggy.
+; escourt
+; follow (allow for me to recon!)
+; gate???
+; goto [how will you specify targ?]
+; guard
+; hold
+;hold Course
+; loot [give it to a shenlong look alike]
+; orbit [how can I make it orbit a planet though?]; 
+;patrol area?
+; wander;
+ 
+;shpOrder ship order [target] [count])
+
+;Fighter base
+
+<ShipClass UNID="&baFighterBase;"
+			class=				"(wingman base class)"
+			virtual=			"true"
+			
+			attributes=			"baseClass"
+			>
+
+		<Communications>
+			<Message name="Attack target" key="1">
+				<Invoke>
+					(switch
+						(eq (objGetTarget gSender) gSource)
+							(plyMessage gPlayer "I can't attack myself, captain.")
+							
+						(not (objGetTarget gSender) Nil)
+							(plyMessage gPlayer "There is no target, captain.")
+							
+						(block (Target)
+							(setq Target (objGetTarget gPlayer))
+							(shpCancelOrders gSource)
+							(shpOrder gSource 'attack (objGetTarget gSender))
+							)
+						)
+				</Invoke>
+			</Message>
+			<Message name="Break &amp; attack" key="2">				
+				<Invoke>
+					(block (theTarget)
+						(switch
+							(or (not (setq theTarget (sysFindObject gPlayerShip "sTEAN")))
+									(gr (objGetDistance gPlayerShip theTarget) 100)
+									)
+								;nothing in range message
+								(plyMessage gPlayer "There are no hostiles within range, captain.")
+							
+							(block Nil
+								(shpCancelOrders gSource)
+								(shpOrder gSource 'attack theTarget)
+								
+								;engaging target!
+								(plyMessage gPlayer "Engaging hostiles!")
+								)
+							)
+						)
+				</Invoke>
+			</Message>			
+			<Message name="Form up" key="4">
+				<Invoke>
+					(block Nil
+						(shpCancelOrders gSource)
+						(shpOrder gSource 'escort gPlayerShip)
+						(plyMessage gPlayer "Returning to formation.")
+						)
+				</Invoke>
+			</Message>
+				;why would you want do dock with nerefir?
+			<Message name="dock with nerefir?" key="5">
+				<Invoke>
+					(block (Target)
+						(setq Target gPlayerShip)
+						(shpCancelOrders gSource)
+						(shpOrder gSource 'dock Target)
+						)
+				</Invoke>
+			</Message>
+			<Message name="dock with station" key="6">
+				<Invoke>
+				; search for friendly stations!
+					(switch
+						(eq (objGetTarget gSender) gSource)
+							(plyMessage gPlayer "I don't want to do that right now.")
+							
+						(not (objGetTarget gSender) Nil)
+							(plyMessage gPlayer "There is no target, captain.")
+						
+						(not (not (objIsShip (objGetTarget gSender)) true))
+							(plyMessage gPlayer "Can't dock with ships.")
+							
+						(block (Target)
+							;just check for a station to dock with!
+							(setq Target (objGetTarget gPlayer))
+							(shpCancelOrders gSource)
+							(shpOrder gSource 'dock (objGetTarget gSender))
+							)
+						)
+				</Invoke>
+			</Message>	
+			<Message name="Hold" key="7">
+				<Invoke>
+					(block Nil
+						(shpCancelOrders gSource)
+						(shpOrder gSource 'hold)
+						(plyMessage gPlayer "Standing ground.")
+						(objSetData gSource "behavior" 'waiting)
+						)
+				</Invoke>
+			</Message>
+			<Message name="Guard" key="8">
+				<Invoke>
+					(switch
+						(eq (objGetTarget gSender) gSource)
+							(plyMessage gPlayer "I'm on guard.")
+							
+						(not (objGetTarget gSender) Nil)
+							(plyMessage gPlayer "There is no target, captain.")
+							
+						(block (Target)
+							(setq Target (objGetTarget gPlayer))
+							(shpCancelOrders gSource)
+							(shpOrder gSource 'guard (objGetTarget gSender))
+							)
+						)
+				</Invoke>
+			</Message>
+			<!--
+			<Message name="Orbit Target" key="9">
+				<Invoke>
+					(switch
+						(eq (objGetTarget gSender) gSource)
+							(plyMessage gPlayer "I can't orbit myself, captain.")
+							
+						(not (objGetTarget gSender) Nil)
+							(plyMessage gPlayer "There is no target, captain.")
+							
+						(block (Target)
+							(setq Target (objGetTarget gPlayer))
+							(shpCancelOrders gSource)
+							(shpOrder gSource 'orbit (objGetTarget gSender) 20)
+							)
+						)
+				</Invoke>
+			</Message>
+			
+			<Message name="Patrol Area" key="P">
+				<Invoke>
+					(block Nil
+						(shpCancelOrders gSource)
+						(shpOrder gSource 'patrol gPlayerShip 50)
+						)
+				</Invoke>
+			</Message>
+			<Message name="Wander" key="W">
+				<Invoke>
+					(block Nil
+						(shpCancelOrders gSource)
+						(shpOrder gSource 'wander)
+						)
+				</Invoke>
+			</Message>
+			<! --this order makes the shield bit [it inherits this wingmanbase] to circle and absorb damage-- >
+			<Message name="For Shield Bit" key="S">
+				<Invoke>
+					(block (Target)
+						(setq Target gPlayerShip)
+						(shpCancelOrders gSource)
+						(shpOrder gSource 'guard Target)
+						)
+				</Invoke>
+			</Message>
+			-->
+		</Communications>
+		
+		<Events>
+			<OnCreate>
+				(block Nil
+					;run on behavior and
+					;areaofoperations
+					(sysAddObjRecurringTimerEvent 60 gSource "AI")
+					)				
+			</OnCreate>
+			<AI>
+				(block Nil
+					(switch
+						;area of operations first
+							;~Exempt- Break and Attack 120 ls
+							;waiting
+							
+							;get distance of ship from Nerefir
+							;if too far, then get back,
+							;then resume prev order
+						(and
+							(gr (objGetDistance gSource gPlayerShip) 60)
+							(not (eq "hold" (shpGetOrder gSource)))
+							;add in all the orders that are exempt
+							)
+							;not to go back- if it is waiting, attack Target?
+							(block nil
+								(shpCancelOrders gSource)
+								(shpOrder gSource 'escort gPlayerShip)
+								(plyMessage gPlayer "Returning to formation.")
+								)
+						; repairing next
+						;
+						)
+					)
+			</AI>
+			<!--
+				(switch
+					;area of operations
+					;don't be away from Nerefir for more than 70 ls
+					;geq 70
+						;check for shipOrder- hold
+							;escourt
+							;etc
+					(setq Source gPlayerShip)
+				
+					;if it is too damaged, go back to Nerefir for repairs
+						)
+					-->
+		</Events>
+	</ShipClass>
+			
+	<DockScreen UNID="&dsNerefirInterior;"
+			name=				"Nerefir Interior"
+			backgroundID=		"&rsShipInterior;"
+			>
+
+		<Panes>
+			<Default
+					desc=	"FILL IN! If found, please report on Xelerus!">
+
+				<Actions>
+					<Action name= "1. Owner's Manual" key="1">
+						<ShowPane pane="Manual"/>
+					</Action>					
+						
+					<Action name="2. Manage Fleet" key="2">
+						; need to think how to manage fleet!
+							; deploy X
+							; get new ships
+							; recall fleet
+							; ???
+							; etc, etc
+					</Action>
+					<!--
+					;plyChangeShip player newShip
+						;I HAVE TO FIND OUT HOW TO SAVE STATE OF MAYFLY!
+						;get the mayfly!
+					-->
+					<Action name="3. Pilot the Mayfly" key="3">
+						
+						(block (Mayfly)
+							;create the mayfly
+							;(setq Mayfly (sysCreateShip &scMayflyLvl1;(objGetPos gSource) &svplayer; "fleet"))
+							(setq Mayfly (sysCreateShip &scMayfly;(objGetPos gSource) &svplayer; "fleet"))
+							(setq oldShip (objGetID gPlayerShip))
+							(plyChangeShip gPlayer Mayfly)
+							(shpOrder (objGetObjByID oldShip) 'hold)
+							)
+					</Action>
+					
+					<Action name="4. Ship Management" key="4">
+						(block Nil
+						(if 
+							; check for particle field
+							(eq (objGetData gPlayership "particlefield") 1)
+								;TRUE= don't do anything
+								(block Nil
+									(plyMessage gPlayer "Particle Field is Installed.")
+									)
+								;FALSE= create a particle field and install
+								(block Nil
+									(objAddItem gSource (itmCreate &itSolarParticleField; 1))
+									(shpInstallDevice gSource (itmCreate &itSolarParticleField; 1))
+									(plyMessage gPlayer "Particle Field not found. Installing now.")
+									)
+							)
+						(if 
+							;check for flywheel
+							(eq (objGetData gPlayership "flywheel") 1)
+								;TRUE= don't do anything
+								(block Nil
+									(plyMessage gPlayer "Solar Reactor Flywheel is Installed.")
+									)
+								;FALSE= create a flywheel and install
+								(block Nil
+									(objAddItem gSource (itmCreate &itSolarReactorFlywheel; 1))
+									(shpInstallDevice gSource (itmCreate &itSolarReactorFlywheel; 1))
+									(plyMessage gPlayer "Flywheel not found. Installing now.")
+									)
+							)
+						)
+						; run diagnostic test (repairs devices)
+						; install ship ....
+					</Action>
+					
+					<Action name="5. Ship configuration" key="S">
+						(scrShowScreen gScreen "&dsNerefirShipConfig;")
+					</Action>
+
+					<Action name="6. View cargo hold" key="V" >
+						(block Nil
+							(setq gDest Nil)
+							(scrShowScreen gScreen "&dsNerefirCargoHold;")
+							)
+					</Action>
+
+					<Action name="7. Refuel engines" key="R" >
+						<Navigate screen="&dsNerefirManualRefuel;"/>
+					</Action>
+
+					<Action name="8. Back to cockpit" cancel="1" key="C">
+						<Exit/>
+					</Action>
+
+				</Actions>
+
+			</Default>
+			<Manual>
+						; show info on how to use:
+						; talk about Manage fleet
+						; talk about ship management 
+							; [run diagnostic]
+							; [install ... Mayfly stuff?]
+						; personal ship- the mayfly						
+				<OnPaneInit>
+					(scrSetDesc gScreen
+						"This is the owner's manual for the Nerefir Experimental Carrier. "
+						"Created by Mayfly Industries, this ship comes with new and untested "
+						"technology.\n\n"
+						"Below is the Table of Contents of this manual."
+						)
+				</OnPaneInit>
+					
+				<Actions>
+					<Action name="1. What is the Particle Field?" key="1">
+						<ShowPane pane="Info1"/>
+					</Action>
+						
+					<Action name="2. What is the Flywheel?" key="2">
+						<ShowPane pane="Info2"/>
+					</Action>
+							
+					<Action name="3. How do I manage my fleet?" key="3">
+						<ShowPane pane="Info3"/>
+					</Action>
+							
+					<Action name="4. How do I use Ship Management?" key="4">
+						<ShowPane pane="Info4"/>
+					</Action>
+					<Action name="5. What is the Mayfly?" cancel="1" key="5">
+						<ShowPane pane="Info5"/>
+					</Action>
+					<Action name="6. Stop reading the Manual" cancel="1" key="6">
+						<ShowPane pane="Default"/>
+					</Action>
+				</Actions>
+			</Manual>
+			<Info1>
+				<OnPaneInit>
+					(scrSetDesc gScreen
+						"The Particle Field is technically the first defense of the ship, before the "
+						"shield. It disperses a wave of particles to absorb energy damage, however "
+						"some matter damage can still get through it. This was one of the first breakthroughs "
+						"at Mayfly Industries. Due to its experimental nature, it does not fire "
+						"continuously and must be fired again from time to time. It uses the yet unnamed "
+						"Particles to generate the field.\n\n"
+						)				
+				</OnPaneInit>
+				<Actions>
+					<Action name="Return to Table of Contents" default="1" cancel="1" key="C">
+						<ShowPane pane="Manual"/>
+					</Action>
+				</Actions>
+			</Info1>
+			<Info2>
+				<OnPaneInit>
+					(scrSetDesc gScreen
+						"The Solar Reactor Flywheel uses a secret form of particle decay that was discovered "
+						"at Heretic. It is in essence a perpetual motion device that creates Particles "
+						"over time. To use, simply [U]se and invoke using the arrows or the [H] hotkey. "
+						"It is the most important device on the ship, as it provides an unending source "
+						"of fuel and many devices on this ship depend on this source of energy to work. "
+						)
+				</OnPaneInit>
+				<Actions>
+					<Action name="Return to Table of Contents" default="1" cancel="1" key="C">
+						<ShowPane pane="Manual"/>
+					</Action>
+				</Actions>
+			</Info2>
+			<Info3>
+				<OnPaneInit>
+					(scrSetDesc gScreen
+						"LET's JUST SAY THAT I HAVE NO CLUE HOW TO IMPLEMENT THAT IN CODE RIGHT NOW."						
+						)
+				</OnPaneInit>
+				<Actions>
+					<Action name="Return to Table of Contents" default="1" cancel="1" key="C">
+						<ShowPane pane="Manual"/>
+					</Action>
+				</Actions>
+			</Info3>
+			<Info4>
+				<OnPaneInit>
+					(scrSetDesc gScreen
+						"Press this to install the Nerefir's other equipment[namely, the Solar Reactor and the Flywheels]."
+						)
+				</OnPaneInit>
+				<Invoke>								
+					(block Nil
+						(if 
+							; check for particle field
+							(eq (objGetData gPlayership "particlefield") 1)
+								;TRUE= don't do anything
+								(block Nil
+									(plyMessage gPlayer "Particle Field is Installed.")
+									)
+								;FALSE= create a particle field and install
+								(block Nil
+									(objAddItem gSource (itmCreate &itSolarParticleField; 1))
+									(shpInstallDevice gSource (itmCreate &itSolarParticleField; 1))
+									(plyRedirectMessage gplayer True)
+									(plyMessage gplayer "Particle Field not found. Installing now.")
+									(plyGetRedirectMessage gplayer)
+									)
+							)
+						(if 
+							;check for flywheel
+							(eq (objGetData gPlayership "flywheel") 1)
+								;TRUE= don't do anything
+								(block Nil
+									(plyMessage gPlayer "Solar Reactor Flywheel is Installed.")
+									)
+								;FALSE= create a flywheel and install
+								(block Nil
+									(objAddItem gSource (itmCreate &itSolarReactorFlywheel; 1))
+									(shpInstallDevice gSource (itmCreate &itSolarReactorFlywheel; 1))
+									(plyRedirectMessage gplayer True)
+									(plyMessage gplayer "Flywheel not found. Installing now.")
+									(plyGetRedirectMessage gplayer)										
+									)
+							)			
+						)
+				</invoke>
+				<Actions>
+					<Action name="Return to Table of Contents" default="1" cancel="1" key="C">
+						<ShowPane pane="Manual"/>
+					</Action>
+				</Actions>
+			</Info4>
+			<Info5>
+				<OnPaneInit>
+					(scrSetDesc gScreen
+						"The Mayfly is the code name for Mayfly Industry's experimental fighter. "
+						"As of right now, it is the source of the Nerefir's technology. "
+						"One Mayfly has been provided to you as a complement to the Nerefir in hopes "
+						"that it may be field tested in the heat of battle as well as determine its "
+						"reliability. \n\n "
+						)
+				</OnPaneInit>
+				<Actions>
+					<Action name="Return to Table of Contents" default="1" cancel="1" key="C">
+						<ShowPane pane="Manual"/>
+					</Action>
+				</Actions>
+			</Info5>
+		</Panes>
+	</DockScreen>
+	<!-- Nerefir ship configuration -->
+
+	<DockScreen UNID="&dsNerefirShipConfig;"
+			name=				"Ship's Configuration"
+			desc=				"Ship Configuration"
+			type=				"itemPicker"
+			backgroundID=		"&rsItemListScreen;"
+			>
+
+		<ListOptions
+			dataFrom=	"player"
+			list=		"*I"
+			/>
+
+		<Panes>
+			<Default
+					desc=	"You are viewing the ship's configuration.">
+
+				<OnPaneInit>
+					(block (thisItem desc)
+						(setq thisItem (scrGetItem gScreen))
+
+						(if thisItem
+							(block (theCategory)
+								(setq desc (cat "Unit mass: " (intMassString (itmGetMass thisItem)) "\n\n"))
+
+								; Describe the item installation
+								(setq desc (cat desc (objGetInstalledItemDesc gPlayerShip thisItem) "."))
+								
+								; Display
+								(scrSetDesc gScreen desc)
+								)
+							)
+						)
+				</OnPaneInit>
+
+				<Actions>
+					<Action name="Done" cancel="1" key="D">
+						<Navigate screen="&dsNerefirInterior;"/>
+					</Action>
+
+				</Actions>
+
+			</Default>
+		</Panes>
+
+	</DockScreen>
+
+	<!-- Nerefir cargo hold -->
+
+	<DockScreen UNID="&dsNerefirCargoHold;"
+			name=				"Ship's Cargo Hold"
+			desc=				"Interior of Ship"
+			type=				"itemPicker"
+			backgroundID=		"&rsItemListScreen;"
+			>
+
+		<ListOptions
+			dataFrom=	"player"
+			list=		"*U"
+			/>
+
+		<Panes>
+			<Default
+					desc=	"You are in your ship's cargo hold.">
+
+				<OnPaneInit>
+					(block (thisItem desc)
+						(setq thisItem (scrGetItem gScreen))
+						(switch
+							(not thisItem)
+								(setq gMaxCount 0)
+
+							(itmIsInstalled thisItem)
+								(setq gMaxCount 0)
+
+							(setq gMaxCount (itmGetCount thisItem))
+							)
+
+						(if thisItem
+							(block Nil
+								(setq desc (cat "Unit mass: " (intMassString (itmGetMass thisItem))))
+								(if (gr gMaxCount 1)
+									(setq desc (cat desc " (" gMaxCount " at " (intMassString (multiply (itmGetMass thisItem) gMaxCount)) ")"))
+									)
+								(scrSetDesc gScreen desc)
+								)
+							)
+
+						; Enable/disable actions
+						(scrEnableAction gScreen 0 (gr gMaxCount 0))
+						)
+				</OnPaneInit>
+
+				<Actions>
+					<Action name="Jettison this item" key="J" >
+						(switch
+							(gr gMaxCount 1)
+								(scrShowPane gScreen "JettisonQuantity")
+
+							(eq gMaxCount 1)
+								(block (itemsToJettison)
+									; Create cargo crate
+									(if (not gDest)
+										(setq gDest (sysCreateStation &stCargoCrate; (sysVectorPolarOffset gPlayerShip 0 0)))
+										)
+
+									; Dump items
+									(setq itemsToJettison (scrRemoveItem gScreen 1))
+									(intJettisonItem gDest itemsToJettison)
+									(scrShowPane gScreen "Default")
+									)
+							)
+					</Action>
+
+					<Action name="Done" cancel="1" key="D">
+						<Navigate screen="&dsNerefirInterior;"/>
+					</Action>
+
+				</Actions>
+
+			</Default>
+
+			<JettisonQuantity
+					showCounter=	"true">
+
+				<OnPaneInit>
+					(block Nil
+						(scrSetDesc gScreen (cat "How many items do you wish to jettison?"))
+						(scrSetCounter gScreen gMaxCount)
+						)
+				</OnPaneInit>
+
+				<Actions>
+					<Action name="Jettison" default="1" key="J">
+						(block (count)
+							(setq count (scrGetCounter gScreen))
+							(if (gr count gMaxCount)
+								(scrSetCounter gScreen gMaxCount)
+								(block (itemsToJettison)
+									; Create cargo crate
+									(if (not gDest)
+										(setq gDest (sysCreateStation &stCargoCrate; (sysVectorPolarOffset gPlayerShip 0 0)))
+										)
+
+									; Dump items
+									(setq itemsToJettison (scrRemoveItem gScreen count))
+									(intJettisonItem gDest itemsToJettison)
+									(scrShowPane gScreen "Default")
+									)
+								)
+							)
+					</Action>
+
+					<Action name="Cancel" cancel="1" key="C">
+						<ShowPane pane="Default"/>
+					</Action>
+
+				</Actions>
+
+			</JettisonQuantity>
+		</Panes>
+
+	</DockScreen>
+
+	<!-- Refuel ship screen -->
+
+	<DockScreen UNID="&dsNerefirManualRefuel;"
+			name=				"Ship's Cargo Hold"
+			type=				"itemPicker"
+			backgroundID=		"&rsItemListScreen;"
+			>
+
+		<ListOptions
+			dataFrom=	"player"
+			list=		"f"
+			/>
+
+		<Panes>
+			<Default
+					desc=	"Pick an item to use as fuel.">
+
+				<OnPaneInit>
+					(block (thisItem curEngine)
+						(setq thisItem (scrGetItem gScreen))
+						(setq gMaxCount 0)
+						(switch
+							(not thisItem)
+								(scrSetDesc gScreen "You do not have any items that can be used as fuel.")
+
+							(not (shpIsFuelCompatible gPlayerShip thisItem))
+								(scrSetDesc gScreen "You cannot use this kind of fuel in your ship's reactor.")
+
+							(setq gMaxCount (itmGetCount thisItem))
+							)
+
+						; Enable/disable actions
+						(scrEnableAction gScreen 0 (gr gMaxCount 0))
+						)
+				</OnPaneInit>
+
+				<Actions>
+					<Action name="Refuel" default="1" key="R">
+						(block Nil
+							; No need to show help about refueling
+							(plyClearShowHelpRefuel gPlayer)
+
+							; Handle refuel
+							(switch
+								; If this item requires confirmation, show pane
+								(itmHasModifier (scrGetItem gScreen) 'ConfirmRefuel)
+									(scrShowPane gScreen "ConfirmRefuel")
+
+								; If there are more than one item, get count
+								(gr gMaxCount 1)
+									(scrShowPane gScreen "RefuelQuantity")
+
+								(eq gMaxCount 0)
+									Nil
+
+								; Refuel from a single item
+								(block (itemsToUse)
+									(setq itemsToUse (scrRemoveItem gScreen 1))
+
+									(plyRedirectMessage gPlayer True)
+									(shpRefuelFromItem gPlayerShip itemsToUse)
+									(plyRedirectMessage gPlayer Nil)
+
+									(if (plyGetRedirectMessage gPlayer)
+										(scrShowPane gScreen "RefuelMessage")
+										(scrShowScreen gScreen "&dsShipInterior;")
+										)
+									)
+								)
+							)
+					</Action>
+
+					<Action name="Cancel" cancel="1" key="C">
+						<Navigate screen="&dsNerefirInterior;"/>
+					</Action>
+
+				</Actions>
+
+			</Default>
+
+			<ConfirmRefuel>
+				<OnPaneInit>
+					(scrSetDesc gScreen 
+						(cat "Are you sure you want to use " 
+							(itmGetName (scrGetItem gScreen) 0x04)
+							" for fuel?"
+							)
+						)
+				</OnPaneInit>
+
+				<Actions>
+					<Action name="Yes" key="Y">
+						(switch
+							(gr gMaxCount 1)
+								(scrShowPane gScreen "RefuelQuantity")
+
+							(eq gMaxCount 0)
+								(scrShowPane gScreen "Default")
+
+							(block (itemsToUse)
+								(setq itemsToUse (scrRemoveItem gScreen 1))
+
+								(plyRedirectMessage gPlayer True)
+								(shpRefuelFromItem gPlayerShip itemsToUse)
+								(plyRedirectMessage gPlayer Nil)
+
+								(if (plyGetRedirectMessage gPlayer)
+									(scrShowPane gScreen "RefuelMessage")
+									(scrShowScreen gScreen "&dsShipInterior;")
+									)
+								)
+							)
+					</Action>
+
+					<Action name="No" key="N" cancel="1">
+						(scrShowPane gScreen "Default")
+					</Action>
+				</Actions>
+			</ConfirmRefuel>
+
+			<RefuelMessage>
+				<OnPaneInit>
+					(scrSetDesc gScreen (plyGetRedirectMessage gPlayer))
+				</OnPaneInit>
+
+				<Actions>
+					<Action name="Continue" default="1" cancel="1" key="C">
+						<Navigate screen="&dsShipInterior;"/>
+					</Action>
+				</Actions>
+			</RefuelMessage>
+
+			<RefuelQuantity
+					showCounter=	"true">
+
+				<OnPaneInit>
+					(block (thisItem maxNeeded)
+						(setq thisItem (scrGetItem gScreen))
+						(setq maxNeeded (shpGetFuelNeeded gPlayerShip thisItem))
+						(if (ls maxNeeded gMaxCount)
+							(setq gMaxCount maxNeeded)
+							)
+						(scrSetDesc gScreen (cat "How many " (itmGetName thisItem 2) " do you wish to use?"))
+						(scrSetCounter gScreen gMaxCount)
+						)
+				</OnPaneInit>
+
+				<Actions>
+					<Action name="Refuel" default="1" key="R">
+						(block (count)
+							(setq count (scrGetCounter gScreen))
+							(if (gr count gMaxCount)
+								(scrSetCounter gScreen gMaxCount)
+								(block (itemsToUse)
+									(setq itemsToUse (scrRemoveItem gScreen count))
+
+									(plyRedirectMessage gPlayer True)
+									(shpRefuelFromItem gPlayerShip itemsToUse)
+									(plyRedirectMessage gPlayer Nil)
+
+									(if (plyGetRedirectMessage gPlayer)
+										(scrShowPane gScreen "RefuelMessage")
+										(scrShowScreen gScreen "&dsNerefirInterior;")
+										)
+									)
+								)
+							)
+					</Action>
+
+					<Action name="Cancel" cancel="1" key="C">
+						<Navigate screen="&dsNerefirInterior;"/>
+					</Action>
+
+				</Actions>
+
+			</RefuelQuantity>
+
+			<RefuelMessage>
+				<OnPaneInit>
+					(scrSetDesc gScreen (plyGetRedirectMessage gPlayer))
+				</OnPaneInit>
+
+				<Actions>
+					<Action name="Continue" default="1" cancel="1" key="C">
+						<Navigate screen="&dsNerefirInterior;"/>
+					</Action>
+				</Actions>
+			</RefuelMessage>
+
+		</Panes>
+
+	</DockScreen>	
+
+	<!-- Nerefir Solar Reactor -->
+
+	<ItemType UNID="&itNerefirSolarReactor;"
+			name=				"Nerefir Solar Reactor"
+			level=				"1"
+			value=				"0"
+			frequency=			"notrandom"
+			mass=				"3500"
+			modifiers=			"MajorItem; SolarReactor; NotForSale; NotRandom; Nerefir;"
+			
+			description=		"A Solar Reactor courtesy of Mayfly Industries. Use the Flywheel to create your own fuel."
+			>
+		<Image imageID="&rsItems1;" imageX="288" imageY="288" imageWidth="96" imageHeight="96"/>
+		<ReactorDevice
+				maxPower=		"7500"
+				fuelEfficiency=	"25"
+				maxFuel=		"2500000"
+				minFuelTech=	"20"
+				maxFuelTech=	"20"
+				/>
+		<Events>
+			; I use this to test new events, you can disregard them
+			<woah>
+					(enum (objGetItems gSource "I +ParticleField;") theItem
+						(if 
+							(geq (objGetArmorLevel gSource theArmor) 25)
+							; the condition here is if the armor level is greater than or equal to 25.
+							;then it adds bonus HP if it is true
+							;I have to change it so that.... two strings equal
+							; so....
+							; -eq -ItmGetStaticData- -theItem- -
+							; should be the condition?
+							(setq bonusHP (add bonusHP (itmGetStaticData theArmor "bonusHP")))
+							)
+						)
+				</woah>
+				<Save>							
+					(block Nil
+						(if 
+							; check for particle field
+							(eq (objGetData gPlayership "particlefield") 1)
+								;TRUE= don't do anything
+								(block Nil
+									(plyMessage gPlayer "Particle Field is Installed.")
+									)
+								;FALSE= create a particle field and install
+								(block Nil
+									(objAddItem gSource (itmCreate &itSolarParticleField; 1))
+									(shpInstallDevice gSource (itmCreate &itSolarParticleField; 1))
+									(plyMessage gPlayer "Particle Field not found. Installing now.")
+									)
+							)
+						(if 
+							;check for flywheel
+							(eq (objGetData gPlayership "flywheel") 1)
+								;TRUE= don't do anything
+								(block Nil
+									(plyMessage gPlayer "Solar Reactor Flywheel is Installed.")
+									)
+								;FALSE= create a flywheel and install
+								(block Nil
+									(objAddItem gSource (itmCreate &itSolarReactorFlywheel; 1))
+									(shpInstallDevice gSource (itmCreate &itSolarReactorFlywheel; 1))
+									(plyMessage gPlayer "Flywheel not found. Installing now.")
+									)
+							)
+						)
+				</Save>
+				<art>
+				(block Nil
+					;create a marker 150 ls away
+					(sysCreateMarker "Outpost" (sysVectorPolarOffset gSource (random 100 360) (random 100 150)) &svRanxEmpire;)
+					(setq newoutpost
+					(sysCreateStation &stRanxOutpost; "Outpost")
+						)
+					;create Ranx Dread to go there
+					(setq Mobile (sysCreateShip &scRanxDreadnought; gSource &svRanxEmpire;))
+					(shpOrder Mobile 'goto Outpost)
+					(switch
+						;if the dread is less than 30 ls to target, create the broken Korolov and start 'construction'
+						(leq (sysVectorDistance Mobile Outpost) 30)
+							(block Nil
+								(setq newOutpost (sysCreateStation &stRanxOutpost; "Outpost"))
+								;then get dread to guard station
+								(ShpOrder Mobile 'guard newOutpost)
+							)
+						)
+					)
+				;create a marker 150 ls away
+				(setq location (sysVectorPolarOffset gSource (random 100 360) (random 100 150)))
+				(sysCreateMarker "Outpost" location &svRanxEmpire;)
+				(sysCreateStation &stRanxOutpost; "location")
+				</art>
+			<OnCheckup>
+				;check to see if all stations are still alive?
+				;or have it done as an OnDestroy?
+			</OnCheckup>
+			<lastworking>
+			;limit outposts to 3- how do I do that?
+			(block Nil
+				;find a spot
+				(setq location (sysVectorPolarOffset gSource (random 100 360) (random 100 150)))
+				(sysCreateMarker "Outpost" location &svRanxEmpire;)
+				;create the station
+				(setq Outpost (sysCreateStation &stRanxOutpost; location))
+				;create Ranx Dread to guard station
+				(setq Mobile (sysCreateShip &scRanxDreadnought; gSource &svRanxEmpire;))
+				(shpOrder Mobile 'guard Outpost)
+				)
+			</lastworking>
+			<somethingelse>			
+			;limit outposts to 3- how do I do that?
+			(block Nil
+				;find a spot
+				(setq location (sysVectorPolarOffset gSource (random 100 360) (random 100 150)))
+				(sysCreateMarker "Outpost" location &svRanxEmpire;)
+				;create the station
+				(setq Outpost (sysCreateStation &stRanxOutpost; location))
+				;create Ranx Dread to guard station
+				(setq Mobile (sysCreateShip &scRanxDreadnought; gSource &svRanxEmpire;))
+				(shpOrder Mobile 'guard Outpost)
+				)
+			</somethingelse>
+			<Phobos>
+			(block Nil
+				;look for CW
+				(setq CW (sysFindObject gSource "TAEN:1000 +commonwealthFleet;"))
+				;kill them
+				(setq AttackFleet (sysCreateShip &scPhobos; gSource &svAres;))
+				(shpOrder AttackFleet 'attack CW)
+				)
+			</Phobos>
+			<Battle>			
+			(block Nil
+				(setq Phobos (sysCreateShip &scPhobos; gSource &svAres;))
+				(setq Ranx1 (sysCreateShip &scRanxDreadnought; gSource &svRanxEmpire;))
+				(setq Ranx2 (sysCreateShip &scRanxDreadnought; gSource &svRanxEmpire;))
+				(shpOrder Phobos 'wander)
+				(shpOrder Ranx1 'wander)
+				(shpOrder Ranx2 'wander)
+				)
+			</Battle>
+			<CSCHQ>
+			(block Nil
+					(setq HomeBase (sysFindObject gSource "+unid:CWHQ"))
+					(plyMessage gPlayer ""HomeBase".")
+					)
+			;create a scarab
+				;have a flight of Britannias defend it
+					;scrab
+						;look for ore
+						;"mine" it 
+						[how does Apemant's mining auton do that?]
+						;after the cargo is full, go back to CWHQ.
+						;enumerate amount of ores, then 
+						;increase var CW money [store it in the scarab!] by the amount of Credits the ores are worth
+						;OnDestory event on Scarab where if it dies, CWHQ makes a new one.
+						;put the limit at 3!
+			</CSCHQ>
+			<TestingCWR>
+			(block Nil
+				(setq barricade 
+				  (sysCreateStation &stMiningColony; 
+					(sysVectorPolarOffset gPlayerShip 
+					  (multiply newOrientation 90) 2
+					)
+				  )
+				)
+			)
+			</TestingCWR>
+			<RanxCreate>
+				(for RPC 0 3
+					(block Nil
+						;find a spot
+						(setq location (sysVectorPolarOffset gSource (random 100 360) (random 100 150)))
+						(sysCreateMarker "Outpost" location &svRanxEmpire;)
+						;create the station
+						(setq Outpost (sysCreateStation &stRanxOutpost; location))
+						;create Ranx Dread to guard station
+						(setq Mobile (sysCreateShip &scRanxDreadnought; gSource &svRanxEmpire;))
+						(shpOrder Mobile 'guard Outpost)
+						)
+					)
+			</RanxCreate>
+		</Events>
+		<Invoke>
+			(block Nil
+				(sysCreateStation stHeliotropeColony gSource)
+				)
+		</Invoke>
+	</ItemType>
+
+	<!-- Solar Particle Field -->
+	
+	<ItemType UNID="&itSolarParticleField;"
+			name=				"GN Particle Field"	
+			level=				"20"
+			frequency=			"notrandom"
+			modifiers=			"MajorItem; SolarReactor; NotRandom; Nerefir; ParticleField"
+			description=		"Technically the primary shield, the GN particle field is a key component to the Mayfly's success. This model was retrofitted for the Nerefir Carrier."
+			>
+		<Image imageID="&rsItems1;" imageX="192" imageY="0" imageWidth="96" imageHeight="96"/>
+		<Weapon
+				type=				"missile"
+				
+				damage=				"kinetic:0"
+				repeating= 			"150000"
+				fireRate=			"30"
+				hitPoints=			"25"
+				interaction=		"100"
+				hitEffect=			"&efShieldHit1;"
+				missileSpeed=		"17"
+				accelerationFactor=	"75"
+				lifetime=			"10d5-7"
+				powerUse=			"100"
+				deviceSlots=		"0"
+				noFriendlyFire=		"true"
+				linkedFire=			"always"
+				>				
+			<Configuration aimTolerance="5">
+				<Shot posAngle="180" posRadius="20" angle="0-180"/>	
+				<Shot posAngle="180" posRadius="20" angle="360-181"/>
+				<Shot posAngle="180" posRadius="20" angle="0-180"/>	
+				<Shot posAngle="180" posRadius="20" angle="360-181"/>
+				<Shot posAngle="180" posRadius="20" angle="0-180"/>	
+				<Shot posAngle="180" posRadius="20" angle="360-181"/>
+			</Configuration>
+		<Effect>
+			<Image imageID="&rsParticles;" imageX="0" imageY="0" imageWidth="16" imageHeight="16" imageFrameCount="12" imageTicksPerFrame="2" randomStartFrame="true"/>
+		</Effect>
+		</Weapon>
+		<Events>
+			<OnInstall>
+				(block Nil
+					(objSetData gPlayerShip "particlefield" 1)
+					)
+			</OnInstall>
+			<OnUninstall>
+				(block Nil
+					(objSetData gPlayerShip "particlefield" 0)
+					)
+			</OnUninstall>
+			;I don't think OnDestroy works for items
+			<OnDestroy>
+				(block Nil
+					(objSetData gPlayerShip "particlefield" 0)
+					)
+			</OnDestroy>
+		</Events>
+	</ItemType>
+
+	<!-- Particles -->
+	
+	<ItemType UNID="&itParticles;"
+			name=				"Particle"
+			level=				"20"
+			value=				"0"
+			mass=				"0"
+			frequency=			"notrandom"
+			numberAppearing=	"3d6"
+			modifiers=			"Consumable; Fuel; Missile; NotForSale; SolarReactor; NotRandom;"
+			data=				"2500"
+			description=		"These yet to be named Particles were made by the Solar Reactor Flywheel, which utilizes a secret form of matter decay known only to Mayfly Industries."
+			>
+		<Image imageID="&rsItems1;" imageX="288" imageY="96" imageWidth="96" imageHeight="96"/>
+	</ItemType>
+
+	<!-- Solar Reactor Flywheel -->
+	
+	<ItemType UNID="&itSolarReactorFlywheel;"
+			name=				"Solar Reactor Flywheel"
+			level=				"20"
+			mass=				"100"
+			frequency=			"notrandom"
+			modifiers=			"MajorItem; SolarReactor; NotForSale; NotRandom; Nerefir; Flywheel"
+			description=		"You are at the Solar Reactor Flywheel, where Particles, the Solar Reactor's fuel, is made."
+			>
+		<Image imageID="&rsFlywheel;" imageX="0" imageY="0" imageWidth="96" imageHeight="96"/>
+		<MiscellaneousDevice
+				powerUse=		"0"
+				deviceSlots=		"0"
+				/>
+		<Events>
+			<OnInstall>
+				(block Nil
+					(objSetData gPlayerShip "flywheel" 1)
+					)
+			</OnInstall>
+			<OnUninstall>
+				(block Nil
+					(objSetData gPlayerShip "flywheel" 0)
+					)
+			</OnUninstall>
+			;I don't think OnDestroy works for items
+			<OnDestroy>
+				(block Nil
+					(objSetData gPlayerShip "flywheel" 0)
+					)
+			</OnDestroy>
+		</Events>
+		<Invoke key="H" installedOnly="true">
+			(block (GNEquation)
+				(setq GNEquation (multiply (subtract(unvGetTick)(objGetData gSource "PreviousUse")) 45 ))
+				(objAddItem gSource (itmCreate &itParticles; GNEquation))
+				(objSetData gSource "PreviousUse"(unvGetTick))	
+				(plyMessage gPlayer "The Solar Reactor Flywheel deposits "GNEquation" particles in your cargo.")
+				)
+		</Invoke>
+	</ItemType>	
+
+	<!-- Type 4 Stealth Missiles -->
+
+	<ItemType UNID="&itStealth;"
+			name=				"Type 4 Stealth Missiles"
+			level=				"7"
+			value=				"2000"
+			mass=				"1300"
+			frequency=			"rare"
+			attributes=			"MajorItem; Military; NAMI; Specialty"
+
+			description=		"The Type 4 missile is the latest incarnation of a missile weapon for the Nerefir."
+			>
+
+		<Image imageID="&rsItemsNAMI4;" imageX="288" imageY="0" imageWidth="96" imageHeight="96"/>
+
+		<Weapon			
+				ammoID=				"&itParticles;"
+				launcher=			"true"
+				type=				"missile"
+				directional=		"true"
+				maneuverability=	"2"
+				autoAcquireTarget=	"true"
+				fragmentCount=		"5d2-15+2"
+				missileSpeed=		"15"
+				accelerationFactor=	"125"
+				maxMissileSpeed=	"60"
+				lifetime=			"150"
+				noFriendlyFire=		"true"
+						
+				stealth=			"10"
+				hitpoints=			"30"
+				
+				damage=				"thermo:1d2"
+				fireRate=			"45"
+				interaction=		"0"
+				powerUse=			"1000"
+
+				sound=				"&snMissileLauncher;"
+				>
+			<Configuration aimTolerance="0">
+				<Shot posAngle="180" posRadius="20" angle="0-180"/> 
+				<Shot posAngle="180" posRadius="20" angle="360-181"/>
+			</Configuration>
+			<Image imageID="&rsMissiles2;" imageX="0" imageY="0" imageWidth="32" imageHeight="32" imageFrameCount="0" imageTicksPerFrame="0"/>
+
+			<Exhaust
+					creationRate=	"10"
+					lifetime=		"70"
+					drag=			"80">
+
+				<Image imageID="&rsTrail;" imageX="0" imageY="0" imageWidth="15" imageHeight="11" imageFrameCount="8" imageTicksPerFrame="30"/>
+			</Exhaust>
+			
+			<Fragment
+					count=			"5d13"
+					type=			"missile"
+					
+					lifetime=		"400"
+					accelerationFactor=	"25"
+					autoAcquireTarget=	"true"
+					maneuver=		"2"
+					damage=			"thermo:5d2+3; deviceDisrupt1"
+					missileSpeed=	"55-85"
+					noFriendlyFire=	"true"
+					>
+				<Effect>
+					<Image imageID="&rsMissiles4;" imageX="0" imageY="0" imageWidth="16" imageHeight="16" imageFrameCount="4" imageTicksPerFrame="1" randomStartFrame="true"/>
+				</Effect>
+			</Fragment>
+
+		</Weapon>
+	
+		<Invoke>
+			(intAutoInstall gSource gItem)
+		</Invoke>
+	</ItemType>
+
+<ShipClass UNID="&baBasicBase;"
+			class=				"(wingman base class)"
+			virtual=			"true"
+			
+			attributes=			"baseClass"
+			>
+		<Communications>
+			<Message name="Attack target" key="1">
+				<Invoke>
+					(switch
+						(eq (objGetTarget gSender) gSource)
+							(plyMessage gPlayer "I can't attack myself, captain.")
+							
+						(not (objGetTarget gSender) Nil)
+							(plyMessage gPlayer "There is no target, captain.")
+							
+						(block (Target)
+							(setq Target (objGetTarget gPlayer))
+							(shpCancelOrders gSource)
+							(shpOrder gSource 'attack (objGetTarget gSender))
+							)
+						)
+				</Invoke>
+			</Message>
+			<Message name="Break &amp; attack" key="2">				
+				<Invoke>
+					(block (theTarget)
+						(switch
+							(or (not (setq theTarget (sysFindObject gPlayerShip "sTEAN")))
+									(gr (objGetDistance gPlayerShip theTarget) 100)
+									)
+								;nothing in range message
+								(plyMessage gPlayer "There are no hostiles within range, captain.")
+							
+							(block Nil
+								(shpCancelOrders gSource)
+								(shpOrder gSource 'attack theTarget)
+								
+								;engaging target!
+								(plyMessage gPlayer "Engaging hostiles!")
+								)
+							)
+						)
+				</Invoke>
+			</Message>			
+			<Message name="Form up" key="4">
+				<Invoke>
+					(block Nil
+						(shpCancelOrders gSource)
+						(shpOrder gSource 'escort gPlayerShip)
+						)
+				</Invoke>
+			</Message>
+				;why would you want do dock with nerefir?
+			<Message name="dock with nerefir?" key="5">
+				<Invoke>
+					(block (Target)
+						(setq Target gPlayerShip)
+						(shpCancelOrders gSource)
+						(shpOrder gSource 'dock Target)
+						)
+				</Invoke>
+			</Message>
+			<Message name="dock with station" key="6">
+				<Invoke>
+				; search for friendly stations!
+					(switch
+						(eq (objGetTarget gSender) gSource)
+							(plyMessage gPlayer "I don't want to do that right now.")
+							
+						(not (objGetTarget gSender) Nil)
+							(plyMessage gPlayer "There is no target, captain.")
+						
+						(not (not (objIsShip (objGetTarget gSender)) true))
+							(plyMessage gPlayer "Can't dock with ships.")
+							
+						(block (Target)
+							;just check for a station to dock with!
+							(setq Target (objGetTarget gPlayer))
+							(shpCancelOrders gSource)
+							(shpOrder gSource 'dock (objGetTarget gSender))
+							)
+						)
+				</Invoke>
+			</Message>	
+			<Message name="Hold" key="7">
+				<Invoke>
+					(block Nil
+						(shpCancelOrders gSource)
+						(shpOrder gSource 'hold)
+						)
+				</Invoke>
+			</Message>
+			<Message name="Guard" key="8">
+				<Invoke>
+					(switch
+						(eq (objGetTarget gSender) gSource)
+							(plyMessage gPlayer "I'm on guard.")
+							
+						(not (objGetTarget gSender) Nil)
+							(plyMessage gPlayer "There is no target, captain.")
+							
+						(block (Target)
+							(setq Target (objGetTarget gPlayer))
+							(shpCancelOrders gSource)
+							(shpOrder gSource 'guard (objGetTarget gSender))
+							)
+						)
+				</Invoke>
+			</Message>
+			<Message name="Orbit Target" key="9">
+				<Invoke>
+					(switch
+						(eq (objGetTarget gSender) gSource)
+							(plyMessage gPlayer "I can't orbit myself, captain.")
+							
+						(not (objGetTarget gSender) Nil)
+							(plyMessage gPlayer "There is no target, captain.")
+							
+						(block (Target)
+							(setq Target (objGetTarget gPlayer))
+							(shpCancelOrders gSource)
+							(shpOrder gSource 'orbit (objGetTarget gSender) 20)
+							)
+						)
+				</Invoke>
+			</Message>
+			<Message name="Patrol Area" key="P">
+				<Invoke>
+					(block Nil
+						(shpCancelOrders gSource)
+						(shpOrder gSource 'patrol gPlayerShip 50)
+						)
+				</Invoke>
+			</Message>
+			<Message name="Wander" key="W">
+				<Invoke>
+					(block Nil
+						(shpCancelOrders gSource)
+						(shpOrder gSource 'wander)
+						)
+				</Invoke>
+			</Message>
+			
+			<Message name="For Shield Bit" key="S">
+				<Invoke>
+					(block (Target)
+						(setq Target gPlayerShip)
+						(shpCancelOrders gSource)
+						(shpOrder gSource 'guard Target)
+						)
+				</Invoke>
+			</Message>
+			
+			
+
+			
+		</Communications>
+			<Events>
+				<Save>
+					(block Nil
+						;remember previous order
+						(setq prevOrder(shpGetOrder gSource))
+						;cancel current shiporder
+						(shpCancelOrders gSource)
+						;then, AIM at target
+						(setq theAttacker aOrderGiver)
+						(shpOrder gSource 'aim theAttacker)
+						; go back to prev order
+						(shpOrder gSource prevOrder)
+						; however, sometimes the previous order was to attack somebody, so ??? since it's dead, what do you do? wander?
+						)
+				</Save>
+				<OnAttacked>
+					
+				</OnAttacked>
+			</Events>
+		</ShipClass>
+<!-- Particle Rifle -->
+
+	<ItemType UNID="&itParticleRifle;"
+			name=				"Nerefir Particle Rifle"
+			level=				"5"
+			value=				"4000"
+			mass=				"5000"
+			frequency=			"notrandom"
+			attributes=			"EnergyWeapon; MajorItem; Military; Specialty; Ranx; Nerefir; NotRandom;"
+
+			description=		"FILL IN! If found, please report on Xelerus."
+			>
+
+		<Image imageID="&rsItemsBushido2;" imageX="192" imageY="96" imageWidth="96" imageHeight="96"/>
+
+		<Weapon
+				type=				"missile"
+
+				repeating=			"3"
+				missileSpeed=		"60"
+				damage=				"ion:2d6-1"
+				fireRate=			"18"
+				lifetime=			"60"
+				powerUse=			"150"
+				accelerationFactor=	"90"
+				
+				>
+			<Effect>
+				<Image imageID="&rsMissiles4;" imageX="0" imageY="0" imageWidth="16" imageHeight="16" imageFrameCount="4" imageTicksPerFrame="1" randomStartFrame="true"/>
+			</Effect>
+			<Configuration aimTolerance="15">
+				<Shot posAngle="175" posRadius="20" angle="0"/>	
+				<Shot posAngle="185" posRadius="20" angle="0"/>	
+			</Configuration>
+		</Weapon>
+
+	</ItemType>
+	
+	<!-- Ranx gunship changer -->
+
+	<ItemType UNID="&itRanxGunshipSummon;"
+			name=				"Ranx Gunship"
+			level=				"8"
+			value=				"0"
+			mass=				"5000"
+			frequency=			"notrandom"
+			modifiers=			"Fleet; MinorItem"
+
+			description=		"This will test how to change into a Ranx gunship for more maneuverability."
+			>
+
+		<Image imageID="&rsItems1;" imageX="96" imageY="288" imageWidth="96" imageHeight="96"/>
+
+		<Invoke key="">
+			(block (auton)
+				; Create the auton
+				(setq auton
+					(sysCreateShip 
+						&scNerefirRanxGunship;
+						(objGetPos gSource)
+						&svPlayer;
+						"fleet"
+						)
+					)
+
+				; set player ship as oldship
+				(setq oldShip (objGetID gPlayerShip))
+					
+				; Escort ship
+				(shpOrderEscort auton gSource)
+				;set oldship as wingman
+				(shpSetPlayerWingman oldShip)
+
+				; Identify the item
+				(itmSetKnown gItem)
+			
+				)
+		</Invoke>
+
+	</ItemType>
+<!-- Ranx Gunship -->
+
+	<ShipClass UNID="&scNerefirRanxGunship;"
+			manufacturer=		"Mayfly Industries"
+			class=				"Kalan"
+			type=				"gunship"
+			score=				"490"
+			noMapLable=			"false"
+			beacon=				"true"
+
+			mass=				"100"
+			cargoSpace=			"10"
+			reactorPower=		"750"
+			thrust=				"700"
+			maneuver=			"3"
+			maxSpeed=			"20"
+
+			leavesWreck=		"30"
+
+			inherit=			"&baFighterBase;"
+			attributes=			"auton,genericClass,"
+			dockScreen=			"Main"
+			>
+
+		<Names noArticle="true" >Kalan Gunship</Names>
+		
+		<Armor>
+			<ArmorSection start="315" span="90" armorID="&itDepletedUraniumArmor;"/>
+			<ArmorSection start="225" span="90" armorID="&itDepletedUraniumArmor;"/>
+			<ArmorSection start="135" span="90" armorID="&itDepletedUraniumArmor;"/>
+			<ArmorSection start="45"  span="90" armorID="&itDepletedUraniumArmor;"/>
+		</Armor>
+		
+		<DockingPorts>
+			<Port x="20"	y="20" />
+			<Port x="-20"	y="20" />
+			<Port x="20"	y="-20" />
+			<Port x="-20"	y="-20" />
+		</DockingPorts>
+		
+		<DockScreens>
+			<Main
+				name=			"Kalan Gunship."
+				>
+
+				<Panes>
+					<Default
+						desc="You are docked at a Kalan Gunship.">
+
+						<Actions>
+							<Action name="Loot" key="L" default="1" >
+								(block Nil
+									(setq gPrevScreen "Main")
+									(scrShowScreen gScreen "&dsLoot;")
+									)
+							</Action>
+
+							<Action name="Jettison" key="J">
+								(block Nil
+									(setq gPrevScreen "Main")
+									(scrShowScreen gScreen "&dsJettison;")
+									)
+							</Action>
+					
+							<Action name="Pilot" key="P">
+								(block (newship)
+									(setq newship gSource)
+									(setq oldShip gPlayerShip)
+									(plyChangeShip gPlayer newship)
+									;order prev ship to hold
+									(shpCancelOrders oldShip)
+									(shpOrder oldShip 'hold)
+									)
+							</Action>
+							
+							<Action name="Undock" cancel="1" key="U">
+								<Exit/>
+							</Action>
+						</Actions>
+					</Default>
+				</Panes>
+
+			</Main>
+		</DockScreens>
+		
+		<Devices>
+			<Device deviceID="&itParticleRifle;"/>
+			<Device deviceID="&itNephrenP25;"/>
+		</Devices>
+
+		<Items>
+				<Item count="1"   item="&itTargetingComputerROM;"/>
+				;Trans does not acknowledge that there is a non-chance [the targeting rom] instead of a chance
+				;I accidentally put the targeting rom there and Trans didn't warn me
+			<Table>				
+				<Item chance="60" count="2d6" item="&itHeliumAssembly;"/>
+				<Item chance="30" count="1d2" item="&itLightArmorRepair;"/>
+				<Item chance="10" count="1" item="&itMediumArmorRepair;"/>
+			</Table>
+		</Items>
+
+		<Image imageID="&rsMediumShips1;" imageX="624" imageY="0" imageWidth="48" imageHeight="48"/>
+
+		<AISettings
+			fireRateAdj=		"25"
+			fireRangeAdj=		"60"
+			fireAccuracy=		"90"
+			perception=			"4"
+			/>
+					
+		<DriveImages>
+			<NozzleImage imageID="&rsDriveExhaust;" imageX="48" imageY="0" imageWidth="48" imageHeight="48" imageFrameCount="0" imageTicksPerFrame="0"/>
+			<NozzlePos x="-32" y="10"/>
+			<NozzlePos x="-32" y="-10"/>
+		</DriveImages>
+		
+		<PlayerSettings
+			desc=				"FILL IN! If found, please report on Xelerus."
+			initialClass=		"false"
+
+			startingSystem=		"Lumen"
+			startingPos=		"Inbound"
+			>
+			<ArmorDisplay>
+				<ArmorSection name="forward"
+						imageID="&rsZubrinArmor;" 
+						imageX="0" imageY="0" imageWidth="52" imageHeight="29"
+						destX="42" destY="15" hpX="55" hpY="14"
+						nameY="8" nameBreakWidth="200" nameDestX="0" nameDestY="10" />
+
+				<ArmorSection name="starboard"
+						imageID="&rsZubrinArmor;" 
+						imageX="52" imageY="0" imageWidth="22" imageHeight="59"
+						destX="92" destY="45" hpX="95" hpY="60"
+						nameY="30" nameBreakWidth="360" nameDestX="12" nameDestY="0" />
+
+				<ArmorSection name="port"
+						imageID="&rsZubrinArmor;" 
+						imageX="142" imageY="0" imageWidth="22" imageHeight="59"
+						destX="22" destY="45" hpX="15" hpY="60"
+						nameY="52" nameBreakWidth="200" nameDestX="0" nameDestY="8" />
+
+				<ArmorSection name="aft"
+						imageID="&rsZubrinArmor;" 
+						imageX="74" imageY="0" imageWidth="68" imageHeight="14"
+						destX="34" destY="103" hpX="55" hpY="105"
+						nameY="74" nameBreakWidth="360" nameDestX="12" nameDestY="0" />
+			</ArmorDisplay>
+			<ShieldDisplay>
+				<Image imageID="&rsZubrinShields;" imageX="0" imageY="0" imageWidth="136" imageHeight="136"/>
+			</ShieldDisplay>
+
+			<ReactorDisplay>
+				<Image imageID="&rsZubrinReactor;" 
+						imageX="0" imageY="0" imageWidth="256" imageHeight="60"/>
+
+				<PowerLevelImage imageID="&rsZubrinReactor;"
+						imageX="0" imageY="60" imageWidth="202" imageHeight="14"
+						destX="54" destY="9"/>
+
+				<FuelLevelImage imageID="&rsZubrinReactor;"
+						imageX="0" imageY="74" imageWidth="194" imageHeight="14"
+						destX="54" destY="37"/>
+
+				<FuelLowLevelImage imageID="&rsZubrinReactor;"
+						imageX="0" imageY="88" imageWidth="194" imageHeight="14"/>
+
+				<ReactorText x="62" y="22" width="154" height="14"/>
+				<PowerLevelText x="62" y="0" width="154" height="9"/>
+				<FuelLevelText x="62" y="51" width="154" height="9"/>
+			</ReactorDisplay>
+		</PlayerSettings>
+		<Escorts>
+			<Ship     count="1d6"	class="&scKalanEscort;"		orders="escort"/>			
+		</Escorts>
+	</ShipClass>
+	
+<!-- Ranx Gunship -->
+
+	<ShipClass UNID="&scKalanEscort;"
+			manufacturer=		"Mayfly Industries"
+			class=				"Kalan"
+			type=				"gunship"
+			score=				"490"
+			noMapLable=			"false"
+			beacon=				"true"
+
+			mass=				"100"
+			cargoSpace=			"10"
+			reactorPower=		"750"
+			thrust=				"700"
+			maneuver=			"3"
+			maxSpeed=			"20"
+
+			leavesWreck=		"30"
+
+			inherit=			"&baFighterBase;"
+			attributes=			"auton,genericClass,"
+			dockScreen=			"Main"
+			>
+
+		<Names noArticle="true" >Kalan Gunship</Names>
+		
+		<Armor>
+			<ArmorSection start="315" span="90" armorID="&itDepletedUraniumArmor;"/>
+			<ArmorSection start="225" span="90" armorID="&itDepletedUraniumArmor;"/>
+			<ArmorSection start="135" span="90" armorID="&itDepletedUraniumArmor;"/>
+			<ArmorSection start="45"  span="90" armorID="&itDepletedUraniumArmor;"/>
+		</Armor>
+		
+		<DockingPorts>
+			<Port x="20"	y="20" />
+			<Port x="-20"	y="20" />
+			<Port x="20"	y="-20" />
+			<Port x="-20"	y="-20" />
+		</DockingPorts>
+		
+		<DockScreens>
+			<Main
+				name=			"Kalan Gunship."
+				>
+
+				<Panes>
+					<Default
+						desc="You are docked at a Kalan Gunship.">
+
+						<Actions>
+							<Action name="Loot" key="L" default="1" >
+								(block Nil
+									(setq gPrevScreen "Main")
+									(scrShowScreen gScreen "&dsLoot;")
+									)
+							</Action>
+
+							<Action name="Jettison" key="J">
+								(block Nil
+									(setq gPrevScreen "Main")
+									(scrShowScreen gScreen "&dsJettison;")
+									)
+							</Action>
+					
+							<Action name="Pilot" key="P">
+								(block (newship)
+									(setq newship gSource)
+									(setq oldShip gPlayerShip)
+									(plyChangeShip gPlayer newship)
+									;order prev ship to hold
+									(shpCancelOrders oldShip)
+									(shpOrder oldShip 'hold)
+									)
+							</Action>
+							
+							<Action name="Undock" cancel="1" key="U">
+								<Exit/>
+							</Action>
+						</Actions>
+					</Default>
+				</Panes>
+
+			</Main>
+		</DockScreens>
+		
+		<Devices>
+			<Device deviceID="&itParticleRifle;"/>
+			<Device deviceID="&itNephrenP25;"/>
+		</Devices>
+
+		<Items>
+				<Item count="1"   item="&itTargetingComputerROM;"/>
+				;Trans does not acknowledge that there is a non-chance [the targeting rom] instead of a chance
+				;I accidentally put the targeting rom there and Trans didn't warn me
+			<Table>				
+				<Item chance="60" count="2d6" item="&itHeliumAssembly;"/>
+				<Item chance="30" count="1d2" item="&itLightArmorRepair;"/>
+				<Item chance="10" count="1" item="&itMediumArmorRepair;"/>
+			</Table>
+		</Items>
+
+		<Image imageID="&rsMediumShips1;" imageX="624" imageY="0" imageWidth="48" imageHeight="48"/>
+
+		<AISettings
+			fireRateAdj=		"25"
+			fireRangeAdj=		"60"
+			fireAccuracy=		"90"
+			perception=			"4"
+			/>
+					
+		<DriveImages>
+			<NozzleImage imageID="&rsDriveExhaust;" imageX="48" imageY="0" imageWidth="48" imageHeight="48" imageFrameCount="0" imageTicksPerFrame="0"/>
+			<NozzlePos x="-32" y="10"/>
+			<NozzlePos x="-32" y="-10"/>
+		</DriveImages>
+		
+		<PlayerSettings
+			desc=				"FILL IN! If found, please report on Xelerus."
+			initialClass=		"false"
+
+			startingSystem=		"Lumen"
+			startingPos=		"Inbound"
+			>
+			<ArmorDisplay>
+				<ArmorSection name="forward"
+						imageID="&rsZubrinArmor;" 
+						imageX="0" imageY="0" imageWidth="52" imageHeight="29"
+						destX="42" destY="15" hpX="55" hpY="14"
+						nameY="8" nameBreakWidth="200" nameDestX="0" nameDestY="10" />
+
+				<ArmorSection name="starboard"
+						imageID="&rsZubrinArmor;" 
+						imageX="52" imageY="0" imageWidth="22" imageHeight="59"
+						destX="92" destY="45" hpX="95" hpY="60"
+						nameY="30" nameBreakWidth="360" nameDestX="12" nameDestY="0" />
+
+				<ArmorSection name="port"
+						imageID="&rsZubrinArmor;" 
+						imageX="142" imageY="0" imageWidth="22" imageHeight="59"
+						destX="22" destY="45" hpX="15" hpY="60"
+						nameY="52" nameBreakWidth="200" nameDestX="0" nameDestY="8" />
+
+				<ArmorSection name="aft"
+						imageID="&rsZubrinArmor;" 
+						imageX="74" imageY="0" imageWidth="68" imageHeight="14"
+						destX="34" destY="103" hpX="55" hpY="105"
+						nameY="74" nameBreakWidth="360" nameDestX="12" nameDestY="0" />
+			</ArmorDisplay>
+			<ShieldDisplay>
+				<Image imageID="&rsZubrinShields;" imageX="0" imageY="0" imageWidth="136" imageHeight="136"/>
+			</ShieldDisplay>
+
+			<ReactorDisplay>
+				<Image imageID="&rsZubrinReactor;" 
+						imageX="0" imageY="0" imageWidth="256" imageHeight="60"/>
+
+				<PowerLevelImage imageID="&rsZubrinReactor;"
+						imageX="0" imageY="60" imageWidth="202" imageHeight="14"
+						destX="54" destY="9"/>
+
+				<FuelLevelImage imageID="&rsZubrinReactor;"
+						imageX="0" imageY="74" imageWidth="194" imageHeight="14"
+						destX="54" destY="37"/>
+
+				<FuelLowLevelImage imageID="&rsZubrinReactor;"
+						imageX="0" imageY="88" imageWidth="194" imageHeight="14"/>
+
+				<ReactorText x="62" y="22" width="154" height="14"/>
+				<PowerLevelText x="62" y="0" width="154" height="9"/>
+				<FuelLevelText x="62" y="51" width="154" height="9"/>
+			</ReactorDisplay>
+		</PlayerSettings>
+	</ShipClass>
+
+
+<ItemType UNID="&itCarrierOmskDeflectorII;"
+			name=				"mark II Omsk deflector"
+			level=				"8"
+			value=				"90000"
+			mass=				"6000"
+			frequency=			"notrandom"
+			attributes=			"MajorItem; Makayev; Military; OmskDeflector; OmskDS; Specialty; Nerefir"
+
+			description=		"This special deflector was created for the Nerefir carrier. It has no upper limit to the shields."
+
+			sortName=			"Omsk deflector.20"
+			>
+
+		<Image imageID="&rsItemsMakayev3;" imageX="0" imageY="192" imageWidth="96" imageHeight="96"/>
+
+		<Shields
+				hitPoints=		"140"
+				regen=			"80"
+				depletionDelay=	"360"
+				powerUse=		"1000"
+				/>
+
+		<Events>
+			<GetMaxHP>
+				(block (bonusHP)
+					; Enumerate the number of Omsk armor segments installed
+					(setq bonusHP 0)
+					(enum (objGetItems gSource "aI +OmskArmor;") theArmor
+						(if (geq (objGetArmorLevel gSource theArmor) 25)
+							(setq bonusHP (add bonusHP (itmGetStaticData theArmor "bonusHP")))
+							)
+						)
+					)
+			</GetMaxHP>
+		</Events>
+	</ItemType>
+
+<!-- Quad Beam Rifle-->
+	<ItemType UNID="&itQuadBeamRifle;"
+			name=				"Quad Beam Rifle"
+			level=				"7"
+			value=				"0"
+			mass=				"4000"
+			frequency=			"notrandom"
+			modifiers=			"MajorItem; Nerefir; NotForSale; Carrier;"
+
+			description=		"FILL IN! If found empty, please report on Xelerus."
+			>
+		<Image imageID="&rsItems1;" imageX="96" imageY="0" imageWidth="96" imageHeight="96"/>
+		<!--
+		;Particle Trail experiment:
+			; Use OnFire to get more than one color!
+		<Weapon
+				type=				"missile"
+				
+				damage=				"kinetic:0"
+				repeating= 			"150000"
+				fireRate=			"30"
+				hitPoints=			"25"
+				interaction=		"5"
+				hitEffect=			"&efShieldHit1;"
+				missileSpeed=		"17"
+				accelerationFactor=	"175"
+				lifetime=			"10d5-7"
+				powerUse=			"100"
+				deviceSlots=		"0"
+				noFriendlyFire=		"true"
+				>				
+			<Configuration aimTolerance="15">
+				<Shot posAngle="90" posRadius="30" angle="175-185"/>
+				
+				
+				<Shot posAngle="90" posRadius="30" angle="160-200"/>
+				
+				<Shot posAngle="90" posRadius="-30" angle="175-185"/>
+				
+				
+				<Shot posAngle="90" posRadius="-30" angle="160-200"/>
+			</Configuration>
+			
+			<Effect>
+				<Image imageID="&rsEmptyTrail;" imageX="0" imageY="0" imageWidth="16" imageHeight="16" imageFrameCount="4" imageTicksPerFrame="3" />
+			</Effect>
+		</Weapon>
+		-->
+		<Weapon
+				type=				"missile"
+				ammoID=				"&itParticles;"
+				noFriendlyFire=		"true"
+				
+				damage=				"ion:2d2+5; momentum3; "
+				multiTarget=		"true"
+				omnidirectional=	"true"
+				passthrough= 		"10"
+				fireRate=			"6"
+				missileSpeed=		"100"
+				interaction=		"15"
+				lifetime=			"50"
+				powerUse=			"2500"
+				fireEffect=			"&efMediumCannonFlash;"
+				sound=				"&snRecoillessCannon;"
+				>
+			<Configuration aimTolerance="10">
+					<Shot angle="3d5-9" posAngle="45" posRadius="30" />
+					<Shot angle="3d5-9" posAngle="90" posRadius="30" />
+					<Shot angle="3d5-9" posAngle="270" posRadius="30" />
+					<Shot angle="3d5-9" posAngle="315" posRadius="30" />
+			</Configuration>
+			
+			<Effect>
+				<Bolt
+					length=				"12"
+					width=				"2"
+					primaryColor=		"0x33, 0xff, 0x33"
+					secondaryColor=		"0x00, 0x50, 0xff"
+					/>
+			</Effect>
+		</Weapon> 
+		
+		<Events>
+		<old>
+			;have a variable called reinforcements
+				(block Nil
+					; Look for a major Ares station in the system
+					(setq stationList (sysFindObject gSource "T:aresMajor;A"))
+
+					; If we found at least one, then pick a random one
+					(setq someTarget (random stationList))
+					
+					;attack!
+					(block Nil
+						(switch
+							;syslevel first
+							(leq (sysGetLevel) 4)
+								;retaliationlevel
+								(switch
+									(leq (objGetData gSource "RPCCWRetaliate") 9)
+										(setq Retaliationshiptype &scRoninC;)
+									(and (geq (objGetData gSource "RPCCWRetaliate") 10) (leq (objGetData gSource "RPCCWRetaliate") 13))
+										(setq Retaliationshiptype &scIAVMedium;)
+									(and (geq (objGetData gSource "RPCCWRetaliate") 14) (leq (objGetData gSource "RPCCWRetaliate") 20))
+										(setq Retaliationshiptype &scIAVHeavy;)
+									(and (geq (objGetData gSource "RPCCWRetaliate") 21) (leq (objGetData gSource "RPCCWRetaliate") 25))
+										(setq Retaliationshiptype &scManticore;)
+									;If none of the above apply,
+										(setq Retaliationshiptype &scBritannia;)
+									)
+							(geq (sysGetLevel) 5)
+								(switch
+									(leq (objGetData gSource "RPCCWRetaliate") 5)
+										(setq Retaliationshiptype &scCenturion;)
+									(and (geq (objGetData gSource "RPCCWRetaliate") 6) (leq (objGetData gSource "RPCCWRetaliate") 9))
+										(setq Retaliationshiptype &scCenturionX;)
+									(and (geq (objGetData gSource "RPCCWRetaliate") 10) (leq (objGetData gSource "RPCCWRetaliate") 17))
+										(setq Retaliationshiptype &scBritannia;)
+									(and (geq (objGetData gSource "RPCCWRetaliate") 18) (leq (objGetData gSource "RPCCWRetaliate") 24))
+										(setq Retaliationshiptype &scAquilaCruiser;)
+									;If none of the above apply,
+										(setq Retaliationshiptype &scCSCTaskForce;)
+									)
+							)
+						)
+					
+					;; decide where the reinforcements are coming from here we use the nearest gate
+					(setq pos (sysFindObject nil "GN"))
+					
+					;; determine what soverign the ships will have, (here we use the sov of the destroyed station)
+					(setq sov &svCommonwealth;)
+					
+					(setq theLeader (sysCreateShip Retaliationshiptype pos sov))
+					(setq cnt 5)
+					
+					;; order the leader to attack the destroyer then gate out
+					(shpOrder theLeader 'attack someTarget)
+					; I guess- this is only until I get working attack fleets
+					(shpOrder theLeader 'attackNearestEnemy)
+					(shpOrder theLeader 'gate)
+					
+					;; in case the single ship is not enough, spawn more ships
+					(if cnt
+						(for i 1 cnt
+							(block (ship)
+								(setq ship (sysCreateShip Retaliationshiptype pos sov))
+								; I guess- this is only until I get working attack fleets
+								(shpOrder ship 'attack someTarget)
+								(shpOrder ship 'escort theLeader)
+								(shpOrder ship 'gate)
+								)
+							)
+						)
+					)
+		</old>
+		<Another>
+			(block (target)
+					;; XXX remember to declare block local variables
+
+					;; Look for CW stations in the system
+					;; NOTE you don't need to set stationlist here... just pick a random
+					(setq target (random (sysFindObject gSource "st +commonwealth; ")))	
+					
+
+					;; only do anything if we have a target--- and if the syslevel is high enough
+					(if 
+						(and
+							target
+							(geq (sysGetLevel) 5)
+							)
+						(block (level type cnt pos sov leader name)
+							;; XXX again, declare block locals!
+
+							(objIncData gSource "RPCCWRetaliate" 3)
+
+							;; get the current relatiation level
+							(setq level (objGetData gSource "RPCCWRetaliate"))
+
+							;; run the switch
+							;; set both the type and the count at the same time
+							(switch
+							
+								(leq level 9)
+									(block nil
+										(setq type &scTundra;)
+										(setq cnt 6)
+									)
+								(and (geq level 10) (leq level 13))
+									(block nil
+										(setq type &scTundra;)
+										(setq cnt 8)
+									)
+								(and (geq level 14) (leq level 20))
+									(block nil
+										(setq type &scChasm;)
+										(setq cnt 6)
+									)
+								(and (geq level 21) (leq level 25))
+									(block nil
+										(setq type &scDeimos;)
+										(setq cnt 3)
+									)
+								;; else
+								(block nil
+									(setq type &scPhobos;)
+									(setq cnt 2)
+								)
+
+							) ;;end the switch
+
+							;; decide where the reinforcements are coming from
+							;; here we use the nearest gate
+							(setq pos (sysFindObject nil "GN"))
+							
+							;; determine what soverign the ships will have,
+							(setq sov &svAres;)
+
+							;; create the leader
+							(setq leader (sysCreateShip type pos sov))
+
+							;; order the leader to attack the destroyer then gate out
+							(shpOrder leader 'attack target)
+							; I guess- this is only until I get working attack fleets
+							(shpOrder leader 'attackNearestEnemy)
+							(shpOrder leader 'gate)
+
+							;; create the escorts
+							(for i 1 cnt (block (shp)
+								(setq shp (sysCreateShip type pos sov))
+								(shpOrder shp 'escort leader)
+								(shpOrder shp 'gate)
+								))
+
+							;; message the player
+							;; XXX the difference here, is that this code is only run
+							;;     if we actually have a target!
+							(setq name (typGetDataField (objGetSovereign target) 'name))
+							(plyMessage gPlayer "The Ares attack " name "!")
+						)
+					)
+				)
+		</Another>
+		</Events>
+		<Invoke>
+		;created
+		;shipOrders
+		;extra block
+		;objSetData
+			(block (roll Created)
+					(setq roll (random 0 3))
+					(plyMessage gPlayer "Construction")
+					(objSetData gSource "Created" 0)
+					(switch
+						;check to see if we have max # of ships already
+						(leq (objGetData gSource "Created") 12)
+					(block
+						(setq Created (objGetData gSource "Created"))
+						(plyMessage gPlayer "What is "Created"?")
+						(block Nil
+							(switch
+								(eq roll 0)
+									(block (Reinf)
+										(setq Reinf (sysCreateShip &scAquilaCruiser; gSource (objGetSovereign gSource)))
+										(shpOrder Reinf 'patrol gSource 75)
+										(objIncData gSource "Created")
+										(objRegisterForEvents gSource Reinf)
+										)
+								(eq roll 1)
+									(block (Reinf)
+										(setq Reinf (sysCreateShip &scAquilaCruiser; gSource (objGetSovereign gSource)))
+										(shpOrder Reinf 'patrol gSource 150)
+										(objIncData gSource "Created")
+										(objRegisterForEvents gSource Reinf)
+										)
+								(eq roll 2)
+									(block (Reinf)
+										(setq Reinf (sysCreateShip &scAquilaCruiser; gSource (objGetSovereign gSource)))
+										(shpOrder Reinf 'wander)
+										(objIncData gSource "Created")
+										(objRegisterForEvents gSource Reinf)
+										)
+								(eq roll 3)
+									(block (Reinf)
+										(setq Reinf (sysCreateShip &scBorer; gSource (objGetSovereign gSource)))
+										(shpOrderMine Reinf gSource)
+										(objIncData gSource "Created")
+										(objRegisterForEvents gSource Reinf)
+										)
+								)
+							)
+						)
+					)
+				)
+		</Invoke>
+	</ItemType>
+	
+<!-- Nerefir Exhaust -->
+	<ItemType UNID="&itExhaust;"
+			name=				"Nerefir Exhaust"
+			level=				"7"
+			value=				"0"
+			mass=				"4000"
+			frequency=			"notrandom"
+			modifiers=			"MajorItem; Nerefir; NotForSale; Carrier;"
+
+			description=		"FILL IN! If found empty, please report on Xelerus."
+			>
+		<Image imageID="&rsItems1;" imageX="96" imageY="0" imageWidth="96" imageHeight="96"/>
+		;Particle Trail experiment:
+			; Use OnFire to get more than one color!
+		<Weapon
+				type=				"missile"
+				
+				damage=				"kinetic:0"
+				repeating= 			"150000"
+				fireRate=			"60"
+				hitPoints=			"25"
+				interaction=		"100"
+				hitEffect=			"&efShieldHit1;"
+				missileSpeed=		"17"
+				accelerationFactor=	"175"
+				lifetime=			"10d5-7"
+				powerUse=			"100"
+				deviceSlots=		"0"
+				noFriendlyFire=		"true"
+				recoil=				"120"
+				>				
+			<Configuration aimTolerance="15">
+				<Shot posAngle="90" posRadius="30" angle="175-185"/>
+				
+				
+				<Shot posAngle="90" posRadius="30" angle="160-200"/>
+				
+				<Shot posAngle="90" posRadius="-30" angle="175-185"/>
+				
+				
+				<Shot posAngle="90" posRadius="-30" angle="160-200"/>
+			</Configuration>
+			
+			<Effect>
+				<Image imageID="&rsEmptyTrail;" imageX="0" imageY="0" imageWidth="16" imageHeight="16" imageFrameCount="4" imageTicksPerFrame="3" randomStartFrame="true" />
+			</Effect>
+		</Weapon>
+	</Itemtype>
+	
+	<!--The Mayfly -->
+	<ShipClass UNID="&scMayfly;"
+		manufacturer=		"Celestial Being"
+		class=				"MayflyNerf"
+		type=				"Capitalist"
+		score=				"90"
+		
+		maxDevices=			"11"
+		maxWeapons=			"7"
+		mass=				"30"
+		rotationCount=		"40"
+		maxArmor=			"10000"
+		cargoSpace=			"200"
+		maxCargoSpace=		"500"
+		thrust=				"3000"
+		maneuver=			"1"
+		maxSpeed=		"35"
+		reactorPower=		"10000"
+		fuelCapacity=		"250000"
+		
+		inherit=			"&baFighterBase;"
+		leavesWreck=		"100"
+		dockscreen=			"main"
+		>
+
+	<Armor>
+		<ArmorSection start="315" span="90" armorID="&itHeavyOmskArmor;" />
+		<ArmorSection start="225" span="90" armorID="&itHeavyOmskArmor;" /> 
+		<ArmorSection start="135" span="90" armorID="&itHeavyOmskArmor;" />
+		<ArmorSection start="45"  span="90" armorID="&itHeavyOmskArmor;" />
+	</Armor>
+
+	<Devices>
+		<Device deviceID="&itQuadBeamRifle;" posAngle="0" posRadius="0"/>
+		<Device deviceID="&itCarrierOmskDeflectorII;"/>
+		<Device deviceID="&itStealth;"/>
+		<Device deviceID="&itSolarReactorFlywheel;"/>
+		<Device deviceID="&itNerefirSolarReactor;"/>
+		<Device deviceID="&itSolarParticleField;"/>		
+	</Devices>
+	<Items>
+		<Item count="1"   item="&itTargetingComputerROM;"/>
+	</Items>
+	<DockingPorts>
+		<Port x="0"		y="0" />
+	</DockingPorts>
+		
+	<DockScreens>
+			<Main
+				name=			"Mayfly"
+				>
+
+				<Panes>
+					<Default
+						desc="You are docked with the Mayfly.">
+
+						<Actions>
+							<Action name="Loot" key="L" default="1" >
+								(block Nil
+									(setq gPrevScreen "Main")
+									(scrShowScreen gScreen "&dsLoot;")
+									)
+							</Action>
+
+							<Action name="Jettison" key="J">
+								(block Nil
+									(setq gPrevScreen "Main")
+									(scrShowScreen gScreen "&dsJettison;")
+									)
+							</Action>
+					
+							<Action name="Pilot" key="P">
+								(block (newship)
+									(setq newship gSource)
+									(setq oldShip gPlayerShip)
+									(plyChangeShip gPlayer newship)
+									;order prev ship to hold
+									(shpCancelOrders oldShip)
+									(shpOrder oldShip 'hold)
+									)
+							</Action>
+							
+							<Action name="Undock" cancel="1" key="U">
+								<Exit/>
+							</Action>
+						</Actions>
+					</Default>
+				</Panes>
+
+			</Main>
+		</DockScreens>
+		
+	<AISettings
+		fireRateAdj=		"10"
+		fireAccuracy=		"90"
+		perception=		"100"
+		ignoreShieldsDown=	"true"
+		/>			
+
+	<Image imageID="&rsExiamapNerf;" imageX="0" imageY="0" imageWidth="60" imageHeight="60"/>
+
+	<PlayerSettings
+		desc=				"Mayfly, my first mod. Awwwwww. BTW, Celestial Being infiltrates most, if not all, of Human Space, using the Brittania as a disguise for testing highly advanced weaponry."
+		initialClass=		"true"		
+		startingCredits=	"10d100+100000"
+		startingSystem=		"Lumen"
+		startingPos=		"Start"
+		>
+		
+	<DriveImages>
+		<NozzleImage imageID="&rsDriveExhaust;" imageX="48" imageY="0" imageWidth="48" imageHeight="48" imageFrameCount="0" imageTicksPerFrame="0"/>
+		<NozzlePos x="-45" y="-4"/>
+		<NozzlePos x="-45" y="5"/>
+	</DriveImages>
+		
+		<ArmorDisplay>
+			<ArmorSection name="forward"
+						imageID="&rsZubrinArmor;" 
+						imageX="0" imageY="0" imageWidth="52" imageHeight="29"
+						destX="42" destY="15" hpX="55" hpY="14"
+						nameY="8" nameBreakWidth="200" nameDestX="0" nameDestY="10" />
+
+			<ArmorSection name="starboard"
+						imageID="&rsZubrinArmor;" 
+						imageX="52" imageY="0" imageWidth="22" imageHeight="59"
+						destX="92" destY="45" hpX="95" hpY="60"
+						nameY="30" nameBreakWidth="360" nameDestX="12" nameDestY="0" />
+
+			<ArmorSection name="aft"
+						imageID="&rsZubrinArmor;" 
+						imageX="74" imageY="0" imageWidth="68" imageHeight="14"
+						destX="34" destY="103" hpX="55" hpY="105"
+						nameY="74" nameBreakWidth="360" nameDestX="12" nameDestY="0" />
+
+			<ArmorSection name="port"
+						imageID="&rsZubrinArmor;" 
+						imageX="142" imageY="0" imageWidth="22" imageHeight="59"
+						destX="22" destY="45" hpX="15" hpY="60"
+						nameY="52" nameBreakWidth="200" nameDestX="0" nameDestY="8" />
+		</ArmorDisplay>
+
+		<ShieldDisplay>
+			<Image imageID="&rsZubrinShields;" imageX="0" imageY="0" imageWidth="136" imageHeight="136"/>
+		</ShieldDisplay>
+
+		<ReactorDisplay>
+			<Image imageID="&rsZubrinReactor;" 
+						imageX="0" imageY="0" imageWidth="256" imageHeight="60"/>
+
+			<PowerLevelImage imageID="&rsZubrinReactor;"
+						imageX="0" imageY="60" imageWidth="202" imageHeight="14"
+						destX="54" destY="9"/>
+
+			<FuelLevelImage imageID="&rsZubrinReactor;"
+						imageX="0" imageY="74" imageWidth="194" imageHeight="14"
+						destX="54" destY="37"/>
+
+			<FuelLowLevelImage imageID="&rsZubrinReactor;"
+						imageX="0" imageY="88" imageWidth="194" imageHeight="14"/>
+
+			<ReactorText x="62" y="22" width="154" height="14"/>
+			<PowerLevelText x="62" y="0" width="154" height="9"/>
+			<FuelLevelText x="62" y="51" width="154" height="9"/>
+		</ReactorDisplay>		
+
+	</PlayerSettings>
+</ShipClass>
+
+	<!-- Nerefir Carrier Experiment -->
+
+	<ShipClass UNID="&scNerefirCarrier;"
+			manufacturer=		"Mayfly Industries"
+			class=				"Nerefir"
+			type=				"Carrier"
+			score=				"2830"
+			techOrder=			"mech"
+			
+			rotationCount=		"40"
+			
+			noMapLable=			"false"
+			beacon=				"true"
+
+			mass=				"25000"
+			cargoSpace=			"15000"
+			thrust=				"20000"
+			maneuver=			"8"
+			maxSpeed=			"16"
+
+			cyberDefenseLevel=	"6"
+
+			explosionType=		"&vtThermoExplosion2;"
+			leavesWreck=		"100"
+
+			fuelCapacity=		"250000"
+			maxArmor=			"35000"
+			maxCargoSpace=		"15000"
+			maxDevices=			"10"
+			
+			
+			noFriendlyFire=		"true"
+			dockScreen=			"Main"
+			modifiers=			"Nerefir;"
+			>
+		<!--
+		inherit=			"&baBasicBase;"
+		-->
+			
+		<Names noArticle="true" >Nerefir</Names>
+		
+		<DockingPorts>
+			<Port x="20"		y="80" />
+			<Port x="30"		y="40" />
+			<Port x="30"		y="-40" />
+			<Port x="20"		y="-80" />
+			
+			<Port x="-20"		y="80" />
+			<Port x="-30"		y="40" />
+			<Port x="-30"		y="-40" />
+			<Port x="-20"		y="-80" />
+		</DockingPorts>
+		
+		;just saying that nonCritical="general" doesn't work on plyships [as of 1.04] 
+		<Armor>
+			<ArmorSection start="345" span="15" armorID="&itHeavyOmskArmor;" />
+			<ArmorSection start="330" span="15" armorID="&itHeavyOmskArmor;" nonCritical="general"/>
+			<ArmorSection start="315" span="15" armorID="&itHeavyOmskArmor;" />
+			<ArmorSection start="300" span="15" armorID="&itHeavyOmskArmor;" />
+			<ArmorSection start="285" span="15" armorID="&itHeavyOmskArmor;" nonCritical="general"/>
+			<ArmorSection start="270" span="15" armorID="&itHeavyOmskArmor;" nonCritical="general"/>
+			<ArmorSection start="255" span="15" armorID="&itHeavyOmskArmor;" nonCritical="general"/>
+			<ArmorSection start="240" span="15" armorID="&itHeavyOmskArmor;" nonCritical="general"/>
+			<ArmorSection start="225" span="15" armorID="&itHeavyOmskArmor;" nonCritical="general"/>
+			<ArmorSection start="210" span="15" armorID="&itHeavyOmskArmor;" nonCritical="general"/>
+			<ArmorSection start="195" span="15" armorID="&itHeavyOmskArmor;" nonCritical="general"/>
+			<ArmorSection start="180" span="15" armorID="&itHeavyOmskArmor;" nonCritical="general"/>
+
+			<ArmorSection start="165" span="15" armorID="&itHeavyOmskArmor;" nonCritical="general"/>
+			<ArmorSection start="150" span="15" armorID="&itHeavyOmskArmor;" nonCritical="general"/>
+			<ArmorSection start="135" span="15" armorID="&itHeavyOmskArmor;" nonCritical="general"/>
+			<ArmorSection start="120" span="15" armorID="&itHeavyOmskArmor;" nonCritical="general"/>
+			<ArmorSection start="105" span="15" armorID="&itHeavyOmskArmor;" nonCritical="general"/>
+			<ArmorSection start="90"  span="15" armorID="&itHeavyOmskArmor;" nonCritical="general"/>
+			<ArmorSection start="75"  span="15" armorID="&itHeavyOmskArmor;" nonCritical="general"/>
+			<ArmorSection start="60"  span="15" armorID="&itHeavyOmskArmor;" nonCritical="general"/>
+			<ArmorSection start="45"  span="15" armorID="&itHeavyOmskArmor;" />
+			<ArmorSection start="30"  span="15" armorID="&itHeavyOmskArmor;" />
+			<ArmorSection start="15"  span="15" armorID="&itHeavyOmskArmor;" nonCritical="general"/>
+			<ArmorSection start="0"   span="15" armorID="&itHeavyOmskArmor;" />
+		</Armor>
+
+		<Devices>
+			<Device deviceID="&itQuadBeamRifle;" posAngle="0" posRadius="0"/>
+			<Device deviceID="&itStealth;" posAngle="0" posRadius="0"/>
+			<Device deviceID="&itPatchSpider;"/>
+			<Device deviceID="&itPatchSpider;"/>
+			<Device deviceID="&itNerefirSolarReactor;"/>
+			<Device deviceID="&itCarrierOmskDeflectorII;"/>	
+			<Device deviceID="&itTranspaceJumpdrive;"/>
+			<Device deviceID="&itExhaust;"/>
+			<Device deviceID="&itvtLRS;"/>
+		</Devices>
+		<!-- It used to work when I had the Ranx DN image
+		<DriveImages>
+			<NozzleImage imageID="&rsDriveExhaust;" imageX="48" imageY="0" imageWidth="48" imageHeight="48" imageFrameCount="0" imageTicksPerFrame="0"/>
+			<NozzlePos x="-28" y="-4"/>
+			<NozzlePos x="-28" y="5"/>
+		</DriveImages>
+			-->
+		<Items>
+			<Item				count="6d12"	item="&itPteracniumFuelRod;"/>
+			<Item				count="200d12"	item="&itParticles;"/>
+			<Item				count="1"		item="&itTargetingComputerROM;"/>
+			<Item				count="1"		item="&itRanxGunshipSummon;"/>
+			<Item				count="1"		item="&itShieldBit;"/>
+		</Items>
+
+		<Image imageID="&rsNerefir;" imageX="0" imageY="0" imageWidth="160" imageHeight="240" imageFrameCount="0" imageTicksPerFrame="0"/>
+		;combatStyle=		"standOff"
+		<AISettings
+			aggressor=			"true"
+			fireRateAdj=		"10"
+			fireAccuracy=		"90"
+			perception=			"20"
+			
+			ignoreShieldsDown=	"true"
+			/>
+		
+		<DockScreens>
+			<Main
+				name=			"Nerefir Experimental Carrier"
+				>
+
+				<Panes>
+					<Default
+							desc="You are docked with the Nerefir.">
+
+						<Actions>
+							<Action name="Loot" key="L" default="1" >
+								(block Nil
+									(setq gPrevScreen "Main")
+									(scrShowScreen gScreen "&dsLoot;")
+									)
+							</Action>
+
+							<Action name="Jettison" key="J">
+								(block Nil
+									(setq gPrevScreen "Main")
+									(scrShowScreen gScreen "&dsJettison;")
+									)
+							</Action>
+
+							<Action name="Pilot" key="P" >
+								(block (newship)
+									(setq newship gSource)
+									(setq oldShip gPlayerShip)
+									(plyChangeShip gPlayer newship)
+									;order prev ship to hold
+									(shpCancelOrders oldShip)
+									(shpOrder oldShip 'hold)
+									)
+							</Action>
+							
+							<Action name="Undock" cancel="1" key="U">
+								<Exit/>
+							</Action>
+						</Actions>
+					</Default>
+				</Panes>
+
+			</Main>
+		</DockScreens>
+
+		<PlayerSettings
+			desc=				"FILL IN! If found, please report on Xelerus."
+			initialClass=		"true"
+			shipScreen="&dsNerefirInterior; | Nerefir Interior"
+			startingCredits=	"10d100+10000"
+
+			startingSystem=		"Lumen"	
+			startingPos=		"Start"
+			>
+
+		<ArmorDisplay> 
+            <ArmorSection name="12 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="42" destY="15" hpX="54" hpY="18" 
+                  nameY="0" nameBreakWidth="360" nameDestX="0" nameDestY="0" /> 
+
+            <ArmorSection name="12:30 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="92" destY="45" hpX="54" hpY="32" 
+                  nameY="10" nameBreakWidth="275" nameDestX="0" nameDestY="8" /> 
+
+            <ArmorSection name="1 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="92" destY="45" hpX="80" hpY="18" 
+                  nameY="20" nameBreakWidth="275" nameDestX="0" nameDestY="8" /> 
+
+            <ArmorSection name="1:30 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="34" destY="103" hpX="80" hpY="32" 
+                  nameY="30" nameBreakWidth="200" nameDestX="0" nameDestY="8" /> 
+
+            <ArmorSection name="2 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="22" destY="45" hpX="106" hpY="46" 
+                  nameY="40" nameBreakWidth="200" nameDestX="0" nameDestY="8" /> 
+
+            <ArmorSection name="2:30 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="42" destY="15" hpX="80" hpY="46" 
+                  nameY="50" nameBreakWidth="360" nameDestX="12" nameDestY="0" /> 
+
+            <ArmorSection name="3 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="42" destY="15" hpX="106" hpY="60" 
+                  nameY="60" nameBreakWidth="360" nameDestX="12" nameDestY="0" /> 
+
+            <ArmorSection name="3:30 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="42" destY="15" hpX="80" hpY="60" 
+                  nameY="70" nameBreakWidth="360" nameDestX="12" nameDestY="0" /> 
+
+            <ArmorSection name="4 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="92" destY="45" hpX="106" hpY="74" 
+                  nameY="80" nameBreakWidth="275" nameDestX="0" nameDestY="8" /> 
+
+            <ArmorSection name="4:30 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="34" destY="103" hpX="80" hpY="74" 
+                  nameY="90" nameBreakWidth="200" nameDestX="0" nameDestY="8" /> 
+
+            <ArmorSection name="5 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="22" destY="45" hpX="80" hpY="102" 
+                  nameY="100" nameBreakWidth="200" nameDestX="0" nameDestY="8" /> 
+
+            <ArmorSection name="5:30 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="22" destY="45" hpX="80" hpY="88" 
+                  nameY="110" nameBreakWidth="200" nameDestX="0" nameDestY="8" /> 
+
+            <ArmorSection name="6 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="42" destY="15" hpX="54" hpY="102" 
+                  nameY="0" nameBreakWidth="360" nameDestX="0" nameDestY="0" /> 
+
+            <ArmorSection name="6:30 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="92" destY="45" hpX="54" hpY="88" 
+                  nameY="10" nameBreakWidth="275" nameDestX="0" nameDestY="8" /> 
+
+            <ArmorSection name="7 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="92" destY="45" hpX="28" hpY="102" 
+                  nameY="20" nameBreakWidth="275" nameDestX="0" nameDestY="8" /> 
+
+            <ArmorSection name="7:30 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="34" destY="103" hpX="28" hpY="88" 
+                  nameY="30" nameBreakWidth="200" nameDestX="0" nameDestY="8" /> 
+
+            <ArmorSection name="8 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="22" destY="45" hpX="2" hpY="74" 
+                  nameY="40" nameBreakWidth="200" nameDestX="0" nameDestY="8" /> 
+
+            <ArmorSection name="8:30 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="42" destY="15" hpX="28" hpY="74" 
+                  nameY="50" nameBreakWidth="360" nameDestX="12" nameDestY="0" /> 
+
+            <ArmorSection name="9 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="42" destY="15" hpX="2" hpY="60" 
+                  nameY="60" nameBreakWidth="360" nameDestX="12" nameDestY="0" /> 
+
+            <ArmorSection name="9:30 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="42" destY="15" hpX="28" hpY="60" 
+                  nameY="70" nameBreakWidth="360" nameDestX="12" nameDestY="0" /> 
+
+            <ArmorSection name="10 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="92" destY="45" hpX="2" hpY="46" 
+                  nameY="80" nameBreakWidth="275" nameDestX="0" nameDestY="8" /> 
+
+            <ArmorSection name="10:30 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="34" destY="103" hpX="28" hpY="46" 
+                  nameY="90" nameBreakWidth="200" nameDestX="0" nameDestY="8" /> 
+
+            <ArmorSection name="11 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="22" destY="45" hpX="28" hpY="18" 
+                  nameY="100" nameBreakWidth="200" nameDestX="0" nameDestY="8" /> 
+
+            <ArmorSection name="11:30 o'clock" 
+                  imageID="&rsZubrinArmor;" 
+                  imageX="52" imageY="0" imageWidth="0" imageHeight="0" 
+                  destX="22" destY="45" hpX="28" hpY="32" 
+                  nameY="110" nameBreakWidth="200" nameDestX="0" nameDestY="8" /> 
+
+		</ArmorDisplay>
+
+			<ShieldDisplay>
+				<Image imageID="&rsEI100XShields;" imageX="0" imageY="0" imageWidth="136" imageHeight="136"/>
+			</ShieldDisplay>
+
+			<ReactorDisplay>
+				<Image imageID="&rsZubrinReactor;" 
+						imageX="0" imageY="0" imageWidth="256" imageHeight="60"/>
+
+				<PowerLevelImage imageID="&rsZubrinReactor;"
+						imageX="0" imageY="60" imageWidth="202" imageHeight="14"
+						destX="54" destY="9"/>
+
+				<FuelLevelImage imageID="&rsZubrinReactor;"
+						imageX="0" imageY="74" imageWidth="194" imageHeight="14"
+						destX="54" destY="37"/>
+
+				<FuelLowLevelImage imageID="&rsZubrinReactor;"
+						imageX="0" imageY="88" imageWidth="194" imageHeight="14"/>
+
+				<ReactorText x="62" y="22" width="154" height="14"/>
+				<PowerLevelText x="62" y="0" width="154" height="9"/>
+				<FuelLevelText x="62" y="51" width="154" height="9"/>
+			</ReactorDisplay>
+
+		</PlayerSettings>
+
+	</ShipClass>
+
+</TranscendenceExtension>

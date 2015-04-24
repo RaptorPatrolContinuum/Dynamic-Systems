@@ -1,0 +1,312 @@
+<?xml version="1.0" ?> 
+<!DOCTYPE TranscendenceExtension 
+  [ 
+	;8000- DynamicSystems
+	<!ENTITY unidDynamicSystems				"0xE1288000">
+	<!ENTITY ssLumen          				"0xE1288001">
+	<!ENTITY rsDySysCover   				"0xE1288002">
+	    
+	<!--Ares-->
+	<!ENTITY stAresHQ				"0xE1282001">
+	<!--CW-->
+	<!ENTITY stCWHQ					"0xE1282A00">
+	<!ENTITY scCWHQ					"0xE1282A01">
+	<!--Ranx-->	
+	<!ENTITY stRanxHQ				"0xE1282B00">
+  ]> 
+<TranscendenceAdventure 
+      UNID=            "0xE1280001" 
+	  apiVersion=		"17" 
+      version="1.0"
+	  name="Dynamic Systems Demo for Retaliation Events"
+      > 
+	<!--
+	Changelog:
+	Updating this version for beta 1.2. I'll probably upload it as a different version or keep the two versions together.
+	-->
+   <AdventureDesc 
+        UNID=            "@1" 
+        name=            "Dynamic Systems Demo for Retaliation Events" 
+        backgroundID=      "&rsDySysCover;"
+		startingShipCriteria="* +Nerefir"
+		startingSystem=	"Lumen"
+		startingPos=	"Start"
+         > 
+		 <!--
+		 <Events>
+			<GetGlobalAchievements>
+				(intGetGlobalAchievements)
+			</GetGlobalAchievements>
+			
+			<OnGameStart>
+				(block Nil
+					(gamSetCrawlImage &rsProlog1;)
+					(gamSetCrawlText (cat
+						"Dynamic Systems attempts to get sovereigns to expand within a star system"
+						"and get them to shoot at each other in real-time."
+						"No scripted events [like Point Juno], or the use of stations [like"
+						"the Xenophobe worldship encounter], but instead spontaneous battles"
+						"by sovereigns."
+						))
+					)
+					
+			</OnGameStart>
+
+			<OnGameEnd>
+				(block Nil
+					(gamSetCrawlImage
+						(if (eq aEndGameReason 'leftHumanSpace)
+							&rsEndGameEscaped;
+							&rsEndGameDestroyed;
+							)
+						)
+
+					(gamSetCrawlText 
+						(plyComposeString gPlayer
+							(cat
+								"%name% " aEpitaph ". "
+								"%name% visited "
+								(if (eq aSystemsVisited 1)
+									"a single star system "
+									(cat aSystemsVisited " star systems ")
+									)
+								"and destroyed "
+								(switch
+									(or (eq aEnemiesDestroyed 0) (not aBestEnemyClass))
+										"no enemy ships"
+
+									(eq aEnemiesDestroyed aBestEnemiesDestroyed)
+										(if (eq aEnemiesDestroyed 1)
+											(shpGetClassName aBestEnemyClass 0x04)
+											(cat aEnemiesDestroyed " " (shpGetClassName aBestEnemyClass 0x02))
+											)
+
+									(eq aBestEnemiesDestroyed 1)
+										(cat aEnemiesDestroyed " enemy ships, including " (shpGetClassName aBestEnemyClass 0x04))
+
+									(cat aEnemiesDestroyed " enemy ships, including " aBestEnemiesDestroyed " " (shpGetClassName aBestEnemyClass 0x02))
+									)
+								". "
+								(if (eq aEndGameReason 'leftHumanSpace)
+									"\n\nTo be continued..."
+									"%He% never reached the Galactic Core."
+									)
+								)
+							)
+						)
+					)
+			</OnGameEnd>
+		</Events>
+		-->
+   </AdventureDesc> 
+
+   <SystemTopology> 
+
+   <Node ID="Lumen" rootNode="true"> 
+         <System name="Lumen"            level="10"> 
+            <System UNID="&ssLumen;"/> 
+         </System> 
+
+         <StarGates>
+				<StarGate Name="Inbound" DestID="[Prev]" DestGate="Outbound"/>
+				<StarGate Name="Outbound" DestID="EndGame"/> 
+		  </StarGates>
+      </Node> 
+
+	  <!--
+	<Node ID="A6">
+			<System
+					name=				"Dantalion"
+					level=				"9"
+					attributes=			"outerRealm"
+					variant=			"ungoverned">
+				<System UNID="&ssDantalion;"/>
+			</System>
+
+			<StarGates>
+				<StarGate Name="Inbound" DestID="[Prev]" DestGate="Outbound"/>
+				<StarGate Name="Outbound" DestID="EndGame"/> 
+			</StarGates>
+		</Node>	  
+   -->  
+      <Node ID="EndGame" 
+            endGame="true" 
+            endGameReason="escaped" 
+            epitaph="escaped the Sample Adventure" 
+            > 
+      </Node> 
+
+   </SystemTopology> 
+---------------------------------------------------------------------------------------------------------------------
+   <!-- Lumen -->
+   
+	<SystemType UNID="&ssLumen;" >
+		<SystemGroup>
+			<!-- Star -->
+			<Station type="&stG-TypeStar;" name="Lumen"/>
+			<Particles 
+			   name=      "radiation field"
+			   count=      "300"
+			   radius=      "8"
+			   dampening=   "996"
+			   minRadius=   "4"
+			   damage=      "plasma:1d8; radiation1"
+			   >
+
+				  <Image imageID="&rsDebris1;" imageX="0" imageY="32" imageWidth="4" imageHeight="4" imageFrameCount="8" imageTicksPerFrame="4"/>
+			</Particles>
+			<!--Stargate[s]-->
+			<Orbitals angle="random">
+				<Group distance="50">
+					<Particles 
+					   name=      "radiation field"
+					   count=      "150"
+					   radius=      "20"
+					   dampening=   "10"
+					   minRadius=   "4"
+					   damage=      "plasma:1d8; radiation1"
+					   >
+
+						  <Image imageID="&rsDebris1;" imageX="0" imageY="32" imageWidth="4" imageHeight="4" imageFrameCount="8" imageTicksPerFrame="4"/>
+					</Particles>
+					<Primary>
+						<Lookup table="StargateOutbound"/>
+					</Primary>
+					
+					<Siblings radiusInc="8">
+						<Marker objName="Start"/>
+					</Siblings>
+				</Group>
+			</Orbitals>
+			<Orbitals count="1d3+4" BodeDistanceStart="1d12+70" BodeDistanceEnd="1d110+760" angle="random">
+					<Variants>
+						<Table maxRadius="300">
+							<Lookup chance="20" table="DesertWorld"/>
+							<Lookup chance="60" table="RockyWorld"/>
+							<Lookup chance="5"  table="InnerGasGiant"/>
+							<Lookup chance="15" table="InnerMethaneGiant"/>
+						</Table>
+						<Table maxRadius="500">
+							<Lookup chance="2"  table="DesertWorld"/>
+							<Lookup chance="6"  table="RockyWorld"/>
+							<Lookup chance="5"  table="IcyWorld"/>
+							<Lookup chance="35" table="GasGiant"/>
+							<Lookup chance="22" table="RingedWorld"/>
+							<Lookup chance="23" table="MethaneGiant"/>
+							<Lookup chance="7"  table="OuterRockyGroup"/>
+						</Table>
+						<Table maxRadius="2000">
+							<Lookup chance="20" table="IcyWorld"/>
+							<Lookup chance="20" table="GasGiant"/>
+							<Lookup chance="40" table="MethaneGiant"/>
+							<Lookup chance="15" table="RingedWorld"/>
+							<Lookup chance="5"  table="OuterRockyGroup"/>
+						</Table>
+					</Variants>
+				</Orbitals>
+			<!-- Primary Station (90% chance) -->
+
+			<RandomLocation probability="90" locationCriteria="++LifeZone,*planet">
+				<RandomStation stationCriteria="*friendly,*primary"/>
+			</RandomLocation>
+			
+			<!--Random Stations-->
+			
+			<FillLocations
+					percentFull=		"80"
+					stationCriteria=	"!primary,!debris,+envEarth,-envAvoidsEarth" 
+					percentEnemies=		"65"
+					separateEnemies=	"true"
+					/>
+					
+			<!-- Random Debris -->
+
+			<RandomLocation probability="50" locationCriteria="++OuterSystem,++asteroids">
+				<Orbitals count="1d6" distance="1d8+6" angle="random">
+					<RandomStation stationCriteria="*debris"/>
+				</Orbitals>
+			</RandomLocation>
+
+			<FillLocations
+					percentFull=		"50"
+					stationCriteria=	"*debris"
+					/>
+					
+			<!--Asteroid belts-->
+			<Orbitals>
+				<Group>
+					<Orbitals count="1d3+4" BodeDistanceStart="1d12+70" BodeDistanceEnd="1d110+760" angle="random">
+						<Variants>
+							<Lookup	maxRadius="150" table="Vulcanoids"/>
+							<!--<Lookup	maxRadius="350" table="AsteroidBelt"/>-->
+						</Variants>
+					</Orbitals>
+				</Group>
+			</Orbitals>
+			
+			<!--Ranx HQ-->
+			<Orbitals distance="150" angle="random">
+				<Group>
+					<Primary>
+						<Station type="&stPlanetoid;" 
+								name="Carus" 
+								showOrbit="true"
+								/>
+					</Primary>
+
+					<Orbitals distance="18" angle="random">
+						<Group>
+							<Station type="&stRanxHQ;"/>
+						</Group>
+					</Orbitals>
+
+				</Group>
+			</Orbitals>	
+			
+			<!--Ares HQ-->
+			<Orbitals distance="250" angle="random">
+				<Group>
+					<Primary>
+						<Station type="&stCrateredPlanet;" 
+								name="Carus" 
+								showOrbit="true"
+								/>
+					</Primary>
+
+					<Orbitals distance="18" angle="random">
+						<Group>
+							<Station type="&stAresHQ;"/>
+						</Group>
+					</Orbitals>
+
+				</Group>
+			</Orbitals>
+			
+			<!--CW HQ-->
+			<Orbitals distance="350" angle="random">
+				<Group>
+					<Primary>
+						<Station type="&stBiospherePlanet;" 
+								name="Carus" 
+								showOrbit="true"
+								/>
+					</Primary>
+
+					<Orbitals distance="18" angle="random">
+						<Group>
+							<Station type="&stCWHQ;"/>
+						</Group>
+					</Orbitals>
+
+				</Group>
+			</Orbitals>
+			
+		</SystemGroup>
+
+		<Events>
+			
+		</Events>
+
+	</SystemType>
+<Image UNID="&rsDySysCover;"	bitmap="DySys Resources/DySysCover1.jpg" />
+</TranscendenceAdventure> 

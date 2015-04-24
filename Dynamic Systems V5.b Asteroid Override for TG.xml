@@ -1,0 +1,1660 @@
+<?xml version="1.0"?>
+<!DOCTYPE TranscendenceExtension
+	[
+	<!ENTITY unidMSVanillaOverride2		"0xE1281999">
+	<!ENTITY stSmallAsteroid			"0x00002200">
+	<!ENTITY stMediumAsteroid			"0x00002201">
+	<!ENTITY stLargeAsteroid			"0x00002202">
+	<!ENTITY stSmallIceAsteroid			"0x00002203">
+	<!ENTITY stLargeIceAsteroid			"0x00002204">
+	<!ENTITY stSmallVolcanicAsteroid	"0x0000220E">
+	<!ENTITY stMediumVolcanicAsteroid	"0x0000220F">
+	<!ENTITY stSmallFrostAsteroid		"0x00002211">
+	<!ENTITY stMediumFrostAsteroid		"0x00002212">
+	<!ENTITY stSmallMetallicAsteroid	"0x00002213">
+	<!ENTITY stMediumMetallicAsteroid	"0x00002214">
+	
+	<!ENTITY stOreSmallAsteroid			"0x00002300">
+	<!ENTITY stOreSmallFrostAsteroid	"0x00002301">
+	<!ENTITY stOreSmallVolcanicAsteroid	"0x00002302">
+	<!ENTITY stOreMediumAsteroid		"0x00002303">
+	<!ENTITY stOreMediumFrostAsteroid	"0x00002304">
+	<!ENTITY stOreMediumVolcanicAsteroid	"0x00002305">
+	<!ENTITY stOreSmallMetallicAsteroid	"0x00002306">
+	<!ENTITY stOreMediumMetallicAsteroid	"0x00002307">
+	
+	<!ENTITY stPrimordialAsteroidSizeA	"0x0002001C">
+	<!ENTITY stPrimordialAsteroidSizeB	"0x0002001D">
+	<!ENTITY stRockyAsteroidSizeA		"0x00020028">
+	<!ENTITY stRockyOuterAsteroidSizeA	"0x00020029">
+	<!ENTITY stRockyAsteroidSizeB		"0x0002002A">
+	<!ENTITY stRockyOuterAsteroidSizeB	"0x0002002B">
+	<!ENTITY stRockyAsteroidSizeC		"0x0002002C">
+	<!ENTITY stRockyOuterAsteroidSizeC	"0x0002002D">
+	<!ENTITY stRockyAsteroidSizeD		"0x0002002E">
+	<!ENTITY stRockyOuterAsteroidSizeD	"0x0002002F">	
+	<!ENTITY stIceAsteroidSizeA			"0x00020033">
+	<!ENTITY stIceAsteroidSizeB			"0x00020034">
+	<!ENTITY stIceAsteroidSizeC			"0x00020035">
+	<!ENTITY stIceAsteroidSizeD			"0x00020036">	
+	<!ENTITY stMetallicAsteroidSizeA	"0x0002003A">
+	<!ENTITY stMetallicAsteroidSizeB	"0x0002003B">
+	<!ENTITY stMetallicAsteroidSizeC	"0x0002003C">
+	<!ENTITY stMetallicAsteroidSizeD	"0x0002003D">	
+	<!ENTITY stPrimordialAsteroidSizeC	"0x00020041">
+	<!ENTITY stPrimordialAsteroidSizeD	"0x00020042">
+	<!ENTITY stVolcanicAsteroidSizeA	"0x00020045">
+	<!ENTITY stVolcanicAsteroidSizeB	"0x00020046">
+	<!ENTITY stVolcanicAsteroidSizeC	"0x00020047">
+	<!ENTITY stVolcanicAsteroidSizeD	"0x00020048">	
+]>
+<TranscendenceExtension UNID="&unidMSVanillaOverride2;" version="0.95" name="Dynamic Systems V5.b Asteroid Override for TG" credit="RPC">
+
+	<!--
+	NOTES:
+	YOU NEED BOTH MASS= AND MOBILE="TRUE" TO HAVE STATIONS BE AFFECTED BY MOMENTUM WEAPONS! (I think mobile="true" just lets the station get moved by code).
+	-->
+
+	<!-- Small Asteroid -->
+
+	<StationType UNID="&stSmallAsteroid;"
+		name=				"(asteroid)"
+		scale=				"world"
+		sovereign=			"&svIndependent;"
+		mobile=				"true"
+		mass=				"50"
+
+		attributes=			"asteroid, stoneAsteroid, tinyAsteroid"
+
+		ejectaType=			"&vtStoneAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="768" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="800" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="832" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="864" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="896" imageWidth="32" imageHeight="32"/>
+
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="928" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="960" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="992" imageWidth="32" imageHeight="32"/>
+		</ImageVariants>
+
+		<Events>
+			; Note: We add this even to asteroids without ore because some scenarios
+			; call for adding ore to existing asteroids
+			<OnMining>
+				(intAsteroidOnMining 100)
+			</OnMining>
+		</Events>
+
+	</StationType>
+
+	<!-- Medium Asteroid -->
+
+	<StationType UNID="&stMediumAsteroid;"
+		name=				"(asteroid)"
+		scale=				"world"
+		sovereign=			"&svIndependent;"
+		mobile=				"true"
+		mass=				"50"
+
+		attributes=			"asteroid, mediumAsteroid, stoneAsteroid"
+
+		ejectaType=			"&vtStoneAsteroidEjecta;"
+		>
+		<Names noArticle="true">Asteroid %1%0%0%0%0%0</Names>
+
+		<ImageVariants>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="0"   imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="64"  imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="128" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="192" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="256" imageWidth="64" imageHeight="64"/>
+
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="320" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="384" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="448" imageWidth="64" imageHeight="64"/>
+		</ImageVariants>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 100)
+			</OnMining>
+		</Events>
+
+	</StationType>
+
+	<!-- Large Asteroid -->
+
+	<StationType UNID="&stLargeAsteroid;"
+		name=				"(asteroid)"
+		scale=				"world"
+		sovereign=			"&svIndependent;"
+		mobile=				"true"
+		mass=				"50"
+
+		attributes=			"asteroid, smallPlanetoid, stoneAsteroid"
+
+		ejectaType=			"&vtStoneAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image			imageID="&rsWorlds1;" imageX="0" imageY="0" imageWidth="128" imageHeight="128"/>
+			<Image			imageID="&rsWorlds1;" imageX="0" imageY="128" imageWidth="128" imageHeight="128"/>
+			<Image			imageID="&rsWorlds1;" imageX="0" imageY="256" imageWidth="128" imageHeight="128"/>
+			<Image			imageID="&rsWorlds1;" imageX="0" imageY="384" imageWidth="128" imageHeight="128"/>
+		</ImageVariants>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 100)
+			</OnMining>
+		</Events>
+
+	</StationType>
+
+	<!-- Small Frost Asteroid -->
+
+	<StationType UNID="&stSmallFrostAsteroid;"
+		name=				"(asteroid)"
+		scale=				"world"
+		sovereign=			"&svIndependent;"
+		mobile=				"true"
+		mass=				"50"
+
+		attributes=			"asteroid, frostAsteroid, tinyAsteroid"
+
+		ejectaType=			"&vtIceAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="768" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="800" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="832" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="864" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="896" imageWidth="32" imageHeight="32"/>
+
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="928" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="960" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="992" imageWidth="32" imageHeight="32"/>
+		</ImageVariants>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 50)
+			</OnMining>
+		</Events>
+
+	</StationType>
+
+	<!-- Medium Frost Asteroid -->
+
+	<StationType UNID="&stMediumFrostAsteroid;"
+		name=				"(asteroid)"
+		scale=				"world"
+		sovereign=			"&svIndependent;"
+		mobile=				"true"
+		mass=				"50"
+
+		attributes=			"asteroid, frostAsteroid, mediumAsteroid"
+
+		ejectaType=			"&vtIceAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="0"   imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="64"  imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="128" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="192" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="256" imageWidth="64" imageHeight="64"/>
+
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="320" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="384" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="448" imageWidth="64" imageHeight="64"/>
+		</ImageVariants>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 50)
+			</OnMining>
+		</Events>
+
+	</StationType>
+
+	<!-- Small Ice Asteroid -->
+
+	<StationType UNID="&stSmallIceAsteroid;"
+		name=				"(asteroid)"
+		scale=				"world"
+		sovereign=			"&svIndependent;"
+		mobile=				"true"
+		mass=				"50"
+
+		attributes=			"asteroid, iceAsteroid, tinyAsteroid"
+
+		ejectaType=			"&vtIceAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image			imageID="&rsWorlds1;" imageX="0" imageY="0"   imageWidth="128" imageHeight="128"/>
+			<Image			imageID="&rsWorlds1;" imageX="0" imageY="128" imageWidth="128" imageHeight="128"/>
+			<Image			imageID="&rsWorlds1;" imageX="0" imageY="256" imageWidth="128" imageHeight="128"/>
+			<Image			imageID="&rsWorlds1;" imageX="0" imageY="384" imageWidth="128" imageHeight="128"/>
+		</ImageVariants>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 50)
+			</OnMining>
+		</Events>
+
+	</StationType>
+
+	<!-- Large Ice Asteroid -->
+
+	<StationType UNID="&stLargeIceAsteroid;"
+		name=				"(asteroid)"
+		scale=				"world"
+		sovereign=			"&svIndependent;"
+		mobile=				"true"
+		mass=				"50"
+
+		attributes=			"asteroid, iceAsteroid, smallPlanetoid"
+
+		ejectaType=			"&vtIceAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image			imageID="&rsWorlds1;" imageX="0" imageY="0"   imageWidth="128" imageHeight="128"/>
+			<Image			imageID="&rsWorlds1;" imageX="0" imageY="128" imageWidth="128" imageHeight="128"/>
+			<Image			imageID="&rsWorlds1;" imageX="0" imageY="256" imageWidth="128" imageHeight="128"/>
+			<Image			imageID="&rsWorlds1;" imageX="0" imageY="384" imageWidth="128" imageHeight="128"/>
+		</ImageVariants>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 50)
+			</OnMining>
+		</Events>
+
+	</StationType>
+
+	<!-- Small Metallic Asteroid -->
+
+	<StationType UNID="&stSmallMetallicAsteroid;"
+		name=				"(asteroid)"
+		scale=				"world"
+		sovereign=			"&svIndependent;"
+		mobile=				"true"
+		mass=				"50"
+
+		attributes=			"asteroid, metallicAsteroid, tinyAsteroid"
+
+		ejectaType=			"&vtMetallicAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="0"   imageY="128"	imageWidth="32" imageHeight="32"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="32"  imageY="128"	imageWidth="32" imageHeight="32"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="64"  imageY="128"	imageWidth="32" imageHeight="32"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="96"  imageY="128"	imageWidth="32" imageHeight="32"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="128" imageY="128"	imageWidth="32" imageHeight="32"/>
+
+			<Image	imageID="&rsMetallicAsteroids;" imageX="160"   imageY="128"	imageWidth="32" imageHeight="32"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="192"   imageY="128"	imageWidth="32" imageHeight="32"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="224"   imageY="128"	imageWidth="32" imageHeight="32"/>
+		</ImageVariants>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 30)
+			</OnMining>
+		</Events>
+
+	</StationType>
+
+	<!-- Medium Metallic Asteroid -->
+
+	<StationType UNID="&stMediumMetallicAsteroid;"
+		name=				"(asteroid)"
+		scale=				"world"
+		sovereign=			"&svIndependent;"
+		mobile=				"true"
+		mass=				"50"
+
+		attributes=			"asteroid, mediumAsteroid, metallicAsteroid"
+
+		ejectaType=			"&vtMetallicAsteroidEjecta;"
+		>
+
+		<ImageVariants>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="0"   imageY="0"		imageWidth="64" imageHeight="64"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="64"  imageY="0"		imageWidth="64" imageHeight="64"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="128" imageY="0"		imageWidth="64" imageHeight="64"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="192" imageY="0"		imageWidth="64" imageHeight="64"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="0"   imageY="64"	imageWidth="64" imageHeight="64"/>
+
+			<Image	imageID="&rsMetallicAsteroids;" imageX="64"  imageY="64"	imageWidth="64" imageHeight="64"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="128" imageY="64"	imageWidth="64" imageHeight="64"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="192" imageY="64"	imageWidth="64" imageHeight="64"/>
+		</ImageVariants>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 30)
+			</OnMining>
+		</Events>
+
+	</StationType>
+
+	<!-- Small Volcanic Asteroid -->
+
+	<StationType UNID="&stSmallVolcanicAsteroid;"
+		name=				"(asteroid)"
+		scale=				"world"
+		sovereign=			"&svIndependent;"
+		mobile=				"true"
+		mass=				"50"
+
+		attributes=			"asteroid, tinyAsteroid, volcanicAsteroid"
+
+		ejectaType=			"&vtVolcanicAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="768" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="800" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="832" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="864" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="896" imageWidth="32" imageHeight="32"/>
+
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="928" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="960" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="992" imageWidth="32" imageHeight="32"/>
+		</ImageVariants>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 20)
+			</OnMining>
+		</Events>
+
+	</StationType>
+
+	<!-- Medium Volcanic Asteroid -->
+
+	<StationType UNID="&stMediumVolcanicAsteroid;"
+		name=				"(asteroid)"
+		scale=				"world"
+		sovereign=			"&svIndependent;"
+		mobile=				"true"
+		mass=				"50"
+
+		attributes=			"asteroid, mediumAsteroid, volcanicAsteroid"
+
+		ejectaType=			"&vtVolcanicAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="512" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="576" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="640" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="704" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="768" imageWidth="64" imageHeight="64"/>
+
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="832" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="896" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="960" imageWidth="64" imageHeight="64"/>
+		</ImageVariants>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 20)
+			</OnMining>
+		</Events>
+
+	</StationType>
+
+	<!-- Small Asteroid with Ore -->
+
+	<StationType UNID="&stOreSmallAsteroid;"
+			name=				"(small ore asteroid)"
+			scale=				"world"
+			sovereign=			"&svIndependent;"
+			mobile=				"true"
+			mass=				"50"
+
+			attributes=			"asteroid, stoneAsteroid, tinyAsteroid"
+
+			ejectaType=			"&vtStoneAsteroidEjecta;"
+			>
+
+		<ImageVariants>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="768" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="800" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="832" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="864" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="896" imageWidth="32" imageHeight="32"/>
+
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="928" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="960" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="992" imageWidth="32" imageHeight="32"/>
+		</ImageVariants>
+
+		<Items>
+			<Lookup table="&tbStoneAsteroidOre;"/>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 100)
+			</OnMining>
+		</Events>
+
+	</StationType>
+	
+	<!-- Medium Asteroid with Ore -->
+
+	<StationType UNID="&stOreMediumAsteroid;"
+		name=				"(medium ore asteroid)"
+		scale=				"world"
+		sovereign=			"&svIndependent;"
+		mobile=				"true"
+		mass=				"50"
+
+		attributes=			"asteroid, mediumAsteroid, stoneAsteroid"
+
+		ejectaType=			"&vtStoneAsteroidEjecta;"
+		>
+
+		<Names noArticle="true">Asteroid %1%0%0%0%0%0</Names>
+
+		<ImageVariants>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="0"   imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="64"  imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="128" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="192" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="256" imageWidth="64" imageHeight="64"/>
+
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="320" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="384" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="448" imageWidth="64" imageHeight="64"/>
+		</ImageVariants>
+
+		<Items>
+			<Lookup count="1d6" table="&tbStoneAsteroidOre;"/>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 100)
+			</OnMining>
+		</Events>
+
+	</StationType>
+
+	<!-- Small Frost Asteroid with Ore -->
+
+	<StationType UNID="&stOreSmallFrostAsteroid;"
+		name=				"(small frost ore asteroid)"
+		scale=				"world"
+		sovereign=			"&svIndependent;"
+		mobile=				"true"
+		mass=				"50"
+
+		attributes=			"asteroid, frostAsteroid, tinyAsteroid"
+
+		ejectaType=			"&vtIceAsteroidEjecta;"
+		>
+
+		<ImageVariants>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="768" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="800" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="832" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="864" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="896" imageWidth="32" imageHeight="32"/>
+
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="928" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="960" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="992" imageWidth="32" imageHeight="32"/>
+		</ImageVariants>
+
+		<Items>
+			<Lookup table="&tbFrostAsteroidOre;"/>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 50)
+			</OnMining>
+		</Events>
+
+	</StationType>
+
+	<!-- Medium Frost Asteroid with Ore -->
+
+	<StationType UNID="&stOreMediumFrostAsteroid;"
+		name=				"(medium frost ore asteroid)"
+		scale=				"world"
+		sovereign=			"&svIndependent;"
+		mobile=				"true"
+		mass=				"50"
+
+		attributes=			"asteroid, frostAsteroid, mediumAsteroid"
+
+		ejectaType=			"&vtIceAsteroidEjecta;"
+		>
+
+		<ImageVariants>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="0"   imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="64"  imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="128" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="192" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="256" imageWidth="64" imageHeight="64"/>
+
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="320" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="384" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="448" imageWidth="64" imageHeight="64"/>
+		</ImageVariants>
+
+		<Items>
+			<Lookup count="1d6" table="&tbFrostAsteroidOre;"/>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 50)
+			</OnMining>
+		</Events>
+
+	</StationType>
+
+	<!-- Small Metallic Asteroid with Ore -->
+
+	<StationType UNID="&stOreSmallMetallicAsteroid;"
+		name=				"(asteroid)"
+		scale=				"world"
+		sovereign=			"&svIndependent;"
+		mobile=				"true"
+		mass=				"50"
+
+		attributes=			"asteroid, metallicAsteroid, tinyAsteroid"
+
+		ejectaType=			"&vtMetallicAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="0"   imageY="128"	imageWidth="32" imageHeight="32"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="32"  imageY="128"	imageWidth="32" imageHeight="32"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="64"  imageY="128"	imageWidth="32" imageHeight="32"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="96"  imageY="128"	imageWidth="32" imageHeight="32"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="128" imageY="128"	imageWidth="32" imageHeight="32"/>
+
+			<Image	imageID="&rsMetallicAsteroids;" imageX="160"   imageY="128"	imageWidth="32" imageHeight="32"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="192"   imageY="128"	imageWidth="32" imageHeight="32"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="224"   imageY="128"	imageWidth="32" imageHeight="32"/>
+		</ImageVariants>
+
+		<Items>
+			<Lookup table="&tbMetallicAsteroidOre;"/>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 30)
+			</OnMining>
+		</Events>
+
+	</StationType>
+
+	<!-- Medium Metallic Asteroid with Ore -->
+
+	<StationType UNID="&stOreMediumMetallicAsteroid;"
+		name=				"(asteroid)"
+		scale=				"world"
+		sovereign=			"&svIndependent;"
+		mobile=				"true"
+		mass=				"50"
+
+		attributes=			"asteroid, mediumAsteroid, metallicAsteroid"
+
+		ejectaType=			"&vtMetallicAsteroidEjecta;"
+		>
+
+		<ImageVariants>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="0"   imageY="0"		imageWidth="64" imageHeight="64"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="64"  imageY="0"		imageWidth="64" imageHeight="64"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="128" imageY="0"		imageWidth="64" imageHeight="64"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="192" imageY="0"		imageWidth="64" imageHeight="64"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="0"   imageY="64"	imageWidth="64" imageHeight="64"/>
+
+			<Image	imageID="&rsMetallicAsteroids;" imageX="64"  imageY="64"	imageWidth="64" imageHeight="64"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="128" imageY="64"	imageWidth="64" imageHeight="64"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="192" imageY="64"	imageWidth="64" imageHeight="64"/>
+		</ImageVariants>
+
+		<Items>
+			<Lookup count="1d6" table="&tbMetallicAsteroidOre;"/>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 30)
+			</OnMining>
+		</Events>
+
+	</StationType>
+
+	<!-- Small Volcanic Asteroid with Ore -->
+
+	<StationType UNID="&stOreSmallVolcanicAsteroid;"
+		name=				"(small volcanic ore asteroid)"
+		scale=				"world"
+		sovereign=			"&svIndependent;"
+		mobile=				"true"
+		mass=				"50"
+
+		attributes=			"asteroid, tinyAsteroid, volcanicAsteroid"
+
+		ejectaType=			"&vtVolcanicAsteroidEjecta;"
+		>
+
+		<ImageVariants>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="768" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="800" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="832" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="864" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="896" imageWidth="32" imageHeight="32"/>
+
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="928" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="960" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="992" imageWidth="32" imageHeight="32"/>
+		</ImageVariants>
+
+		<Items>
+			<Lookup table="&tbVolcanicAsteroidOre;"/>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 20)
+			</OnMining>
+		</Events>
+
+	</StationType>
+
+	<!-- Medium Volcanic Asteroid with Ore -->
+
+	<StationType UNID="&stOreMediumVolcanicAsteroid;"
+		name=				"(medium volcanic ore asteroid)"
+		scale=				"world"
+		sovereign=			"&svIndependent;"
+		mobile=				"true"
+		mass=				"50"
+
+		attributes=			"asteroid, mediumAsteroid, volcanicAsteroid"
+
+		ejectaType=			"&vtVolcanicAsteroidEjecta;"
+		>
+
+		<ImageVariants>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="512" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="576" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="640" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="704" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="768" imageWidth="64" imageHeight="64"/>
+
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="832" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="896" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="960" imageWidth="64" imageHeight="64"/>
+		</ImageVariants>
+
+		<Items>
+			<Lookup count="1d6" table="&tbVolcanicAsteroidOre;"/>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 20)
+			</OnMining>
+		</Events>
+
+	</StationType>
+
+	<!-- Size A Primordial Asteroid -->
+
+	<StationType UNID="&stPrimordialAsteroidSizeA;"
+		name=				"(primordial asteroid)"
+		scale=				"world"
+		size=				"6"
+		mass=				"6"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, inner, lifeZone, outer, primordial"
+
+		ejectaType=			"&vtStoneAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="0"   imageY="0"		imageWidth="40"  imageHeight="40"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="40"	 imageY="0"		imageWidth="40"  imageHeight="40"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="0"	 imageY="40"	imageWidth="40"  imageHeight="40"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="40"  imageY="40"	imageWidth="40"  imageHeight="40"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="0"   imageY="80"	imageWidth="40"  imageHeight="40"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="40"  imageY="80"	imageWidth="40"  imageHeight="40"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="0"   imageY="120"	imageWidth="40"  imageHeight="40"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="40"  imageY="120"	imageWidth="40"  imageHeight="40"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="92"/>
+				<Lookup chance="8" table="&tbPrimordialAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 80)
+			</OnMining>
+		</Events>
+	</StationType>
+
+	<!-- Size B Primordial Asteroid -->
+
+	<StationType UNID="&stPrimordialAsteroidSizeB;"
+		name=				"(primordial asteroid)"
+		scale=				"world"
+		size=				"55"
+		mass=				"55"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, inner, lifeZone, outer, primordial"
+
+		ejectaType=			"&vtStoneAsteroidEjecta;"
+		>
+		<Names noArticle="true">Asteroid %1%0%0%0%0%0</Names>
+
+		<ImageVariants>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="80"  imageY="0"		imageWidth="80"  imageHeight="80"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="80"  imageY="80"    imageWidth="80"  imageHeight="80"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="0"   imageY="160"   imageWidth="80"  imageHeight="80"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="80"  imageY="160"   imageWidth="80"  imageHeight="80"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="0"   imageY="240"   imageWidth="80"  imageHeight="80"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="80"  imageY="240"   imageWidth="80"  imageHeight="80"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="0"   imageY="320"   imageWidth="80"  imageHeight="80"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="80"  imageY="320"   imageWidth="80"  imageHeight="80"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="0"   imageY="400"   imageWidth="80"  imageHeight="80"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="80"  imageY="400"   imageWidth="80"  imageHeight="80"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="92"/>
+				<Lookup chance="8" count="1d6" table="&tbPrimordialAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 80)
+			</OnMining>
+		</Events>
+	</StationType>
+
+	<!-- Size C Primordial Asteroid -->
+
+	<StationType UNID="&stPrimordialAsteroidSizeC;"
+		name=				"(primordial asteroid)"
+		scale=				"world"
+		size=				"250"
+		mass=				"250"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, inner, lifeZone, outer, primordial"
+
+		ejectaType=			"&vtStoneAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="160" imageY="0"		imageWidth="90"  imageHeight="90"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="160" imageY="90"	imageWidth="90"  imageHeight="90"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="160" imageY="180"	imageWidth="90"  imageHeight="90"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="160" imageY="270"	imageWidth="90"  imageHeight="90"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="160" imageY="360"	imageWidth="90"  imageHeight="90"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="92"/>
+				<Lookup chance="8" count="1d8" table="&tbStoneAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 80)
+			</OnMining>
+		</Events>
+	</StationType>
+
+	<!-- Size D Primordial Asteroid -->
+
+	<StationType UNID="&stPrimordialAsteroidSizeD;"
+		name=				"(primordial asteroid)"
+		scale=				"world"
+		size=				"740"
+		mass=				"740"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, inner, lifeZone, outer, primordial"
+
+		ejectaType=			"&vtStoneAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="250" imageY="0"		imageWidth="120"  imageHeight="120"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="250" imageY="120"	imageWidth="120"  imageHeight="120"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="250" imageY="240"	imageWidth="120"  imageHeight="120"/>
+			<Image	imageID="&rsPrimordialAsteroids;"	imageX="250" imageY="360"	imageWidth="120"  imageHeight="120"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="92"/>
+				<Lookup chance="8" count="1d10" table="&tbStoneAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 80)
+			</OnMining>
+		</Events>
+	</StationType>
+	
+	<!-- Size A Rocky Asteroid -->
+
+	<StationType UNID="&stRockyAsteroidSizeA;"
+		name=				"(rocky asteroid)"
+		scale=				"world"
+		size=				"4"
+		mass=				"4"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, inner, lifeZone, rocky"
+
+		ejectaType=			"&vtStoneAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="768" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="800" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="832" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="864" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="896" imageWidth="32" imageHeight="32"/>
+
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="928" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="960" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="992" imageWidth="32" imageHeight="32"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="90"/>
+				<Lookup chance="10" table="&tbStoneAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 100)
+			</OnMining>
+		</Events>
+	</StationType>
+
+	<!-- Size A Rocky Outer Asteroid -->
+
+	<StationType UNID="&stRockyOuterAsteroidSizeA;"
+		name=				"(rocky outer asteroid)"
+		scale=				"world"
+		size=				"4"
+		mass=				"4"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, outer, rocky"
+
+		ejectaType=			"&vtIceAsteroidEjecta;"
+		>
+
+		<ImageVariants>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="768" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="800" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="832" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="864" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="896" imageWidth="32" imageHeight="32"/>
+
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="928" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="960" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds1;" imageX="224" imageY="992" imageWidth="32" imageHeight="32"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="95"/>
+				<Lookup chance="5" table="&tbFrostAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 50)
+			</OnMining>
+		</Events>
+	</StationType>
+
+	<!-- Size B Rocky Asteroid -->
+
+	<StationType UNID="&stRockyAsteroidSizeB;"
+		name=				"(rocky asteroid)"
+		scale=				"world"
+		size=				"65"
+		mass=				"65"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, inner, lifeZone, rocky"
+
+		ejectaType=			"&vtStoneAsteroidEjecta;"
+		>
+		<Names noArticle="true">Asteroid %1%0%0%0%0%0</Names>
+
+		<ImageVariants>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="0"   imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="64"  imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="128" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="192" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="256" imageWidth="64" imageHeight="64"/>
+
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="320" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="384" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="128" imageY="448" imageWidth="64" imageHeight="64"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="90"/>
+				<Lookup chance="10" count="1d6" table="&tbStoneAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 100)
+			</OnMining>
+		</Events>
+	</StationType>
+
+	<!-- Size B Rocky Outer Asteroid -->
+
+	<StationType UNID="&stRockyOuterAsteroidSizeB;"
+		name=				"(rocky outer asteroid)"
+		scale=				"world"
+		size=				"65"
+		mass=				"65"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, outer, rocky"
+
+		ejectaType=			"&vtIceAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="0"   imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="64"  imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="128" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="192" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="256" imageWidth="64" imageHeight="64"/>
+
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="320" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="384" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds1;" imageX="192" imageY="448" imageWidth="64" imageHeight="64"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="95"/>
+				<Lookup chance="5" count="1d6" table="&tbFrostAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 50)
+			</OnMining>
+		</Events>
+	</StationType>
+
+	<!-- Size C Rocky Asteroid -->
+
+	<StationType UNID="&stRockyAsteroidSizeC;"
+		name=				"(rocky asteroid)"
+		scale=				"world"
+		size=				"250"
+		mass=				"250"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, inner, lifeZone, rocky"
+
+		ejectaType=			"&vtStoneAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image	imageID="&rsRockyAsteroids;" imageX="0"   imageY="0"   imageWidth="90" imageHeight="90"/>
+			<Image	imageID="&rsRockyAsteroids;" imageX="0"   imageY="90"  imageWidth="90" imageHeight="90"/>
+			<Image	imageID="&rsRockyAsteroids;" imageX="0"   imageY="180" imageWidth="90" imageHeight="90"/>
+			<Image	imageID="&rsRockyAsteroids;" imageX="0"   imageY="270" imageWidth="90" imageHeight="90"/>
+			<Image	imageID="&rsRockyAsteroids;" imageX="0"   imageY="360" imageWidth="90" imageHeight="90"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="90"/>
+				<Lookup chance="10" count="1d8" table="&tbStoneAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 100)
+			</OnMining>
+		</Events>
+	</StationType>
+
+	<!-- Size C Rocky Outer Asteroid -->
+
+	<StationType UNID="&stRockyOuterAsteroidSizeC;"
+		name=				"(rocky outer asteroid)"
+		scale=				"world"
+		size=				"250"
+		mass=				"250"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, outer, rocky"
+
+		ejectaType=			"&vtIceAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image	imageID="&rsRockyAsteroids;" imageX="90"  imageY="0"   imageWidth="90" imageHeight="90"/>
+			<Image	imageID="&rsRockyAsteroids;" imageX="90"  imageY="90"  imageWidth="90" imageHeight="90"/>
+			<Image	imageID="&rsRockyAsteroids;" imageX="90"  imageY="180" imageWidth="90" imageHeight="90"/>
+			<Image	imageID="&rsRockyAsteroids;" imageX="90"  imageY="270" imageWidth="90" imageHeight="90"/>
+			<Image	imageID="&rsRockyAsteroids;" imageX="90"  imageY="360" imageWidth="90" imageHeight="90"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="95"/>
+				<Lookup chance="5" count="1d8" table="&tbFrostAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 50)
+			</OnMining>
+		</Events>
+	</StationType>
+
+	<!-- Size D Rocky Asteroid -->
+
+	<StationType UNID="&stRockyAsteroidSizeD;"
+		name=				"(rocky asteroid)"
+		scale=				"world"
+		size=				"625"
+		mass=				"625"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, inner, lifeZone, rocky"
+
+		ejectaType=			"&vtStoneAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image	imageID="&rsRockyAsteroids;" imageX="180" imageY="0"   imageWidth="110" imageHeight="110"/>
+			<Image	imageID="&rsRockyAsteroids;" imageX="180" imageY="110" imageWidth="110" imageHeight="110"/>
+			<Image	imageID="&rsRockyAsteroids;" imageX="180" imageY="220" imageWidth="110" imageHeight="110"/>
+			<Image	imageID="&rsRockyAsteroids;" imageX="180" imageY="330" imageWidth="110" imageHeight="110"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="90"/>
+				<Lookup chance="10" count="1d10" table="&tbStoneAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 100)
+			</OnMining>
+		</Events>
+	</StationType>
+
+	<!-- Size D Rocky Outer Asteroid -->
+
+	<StationType UNID="&stRockyOuterAsteroidSizeD;"
+		name=				"(rocky outer asteroid)"
+		scale=				"world"
+		size=				"625"
+		mass=				"625"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, outer, rocky"
+
+		ejectaType=			"&vtIceAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image	imageID="&rsRockyAsteroids;" imageX="290" imageY="0"   imageWidth="110" imageHeight="110"/>
+			<Image	imageID="&rsRockyAsteroids;" imageX="290" imageY="110" imageWidth="110" imageHeight="110"/>
+			<Image	imageID="&rsRockyAsteroids;" imageX="290" imageY="220" imageWidth="110" imageHeight="110"/>
+			<Image	imageID="&rsRockyAsteroids;" imageX="290" imageY="330" imageWidth="110" imageHeight="110"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="95"/>
+				<Lookup chance="5" count="1d10" table="&tbFrostAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 50)
+			</OnMining>
+		</Events>
+	</StationType>
+	
+	<!-- Size A Ice Asteroid -->
+
+	<StationType UNID="&stIceAsteroidSizeA;"
+		name=				"(ice asteroid)"
+		scale=				"world"
+		size=				"7"
+		mass=				"7"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, ice, inner, lifeZone, outer"
+
+		ejectaType=			"&vtIceAsteroidEjecta;"
+		>
+
+		<ImageVariants>
+			<Image			imageID="&rsIceAsteroids;" imageX="0"   imageY="0"   imageWidth="40" imageHeight="40"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="0"   imageY="40"  imageWidth="40" imageHeight="40"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="0"   imageY="80"  imageWidth="40" imageHeight="40"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="0"   imageY="120" imageWidth="40" imageHeight="40"/>
+
+			<Image			imageID="&rsIceAsteroids;" imageX="40"  imageY="0"   imageWidth="40" imageHeight="40"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="40"  imageY="40"  imageWidth="40" imageHeight="40"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="40"  imageY="80"  imageWidth="40" imageHeight="40"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="40"  imageY="120" imageWidth="40" imageHeight="40"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="95"/>
+				<Lookup chance="5" table="&tbFrostAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 50)
+			</OnMining>
+		</Events>
+	</StationType>
+
+	<!-- Size B Ice Asteroid -->
+
+	<StationType UNID="&stIceAsteroidSizeB;"
+		name=				"(ice asteroid)"
+		scale=				"world"
+		size=				"60"
+		mass=				"60"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, ice, inner, lifeZone, outer"
+
+		ejectaType=			"&vtIceAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image			imageID="&rsIceAsteroids;" imageX="80"  imageY="0"   imageWidth="60" imageHeight="60"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="80"  imageY="60"  imageWidth="60" imageHeight="60"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="80"  imageY="120" imageWidth="60" imageHeight="60"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="140" imageY="0"   imageWidth="60" imageHeight="60"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="140" imageY="60"  imageWidth="60" imageHeight="60"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="140" imageY="120" imageWidth="60" imageHeight="60"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="95"/>
+				<Lookup chance="5" count="1d6" table="&tbFrostAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 50)
+			</OnMining>
+		</Events>
+	</StationType>
+
+	<!-- Size C Ice Asteroid -->
+
+	<StationType UNID="&stIceAsteroidSizeC;"
+		name=				"(ice asteroid)"
+		scale=				"world"
+		size=				"165"
+		mass=				"165"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, ice, inner, lifeZone, outer"
+
+		ejectaType=			"&vtIceAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image			imageID="&rsIceAsteroids;" imageX="0"   imageY="160" imageWidth="80" imageHeight="80"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="0"   imageY="240" imageWidth="80" imageHeight="80"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="0"   imageY="320" imageWidth="80" imageHeight="80"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="0"   imageY="400" imageWidth="80" imageHeight="80"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="0"   imageY="480" imageWidth="80" imageHeight="80"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="0"   imageY="560" imageWidth="80" imageHeight="80"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="0"   imageY="640" imageWidth="80" imageHeight="80"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="0"   imageY="720" imageWidth="80" imageHeight="80"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="0"   imageY="800" imageWidth="80" imageHeight="80"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="95"/>
+				<Lookup chance="5" count="1d8" table="&tbFrostAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 50)
+			</OnMining>
+		</Events>
+	</StationType>
+
+	<!-- Size D Ice Asteroid -->
+
+	<StationType UNID="&stIceAsteroidSizeD;"
+		name=				"(ice asteroid)"
+		scale=				"world"
+		size=				"670"
+		mass=				"670"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, ice, inner, lifeZone, outer"
+
+		ejectaType=			"&vtIceAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image			imageID="&rsIceAsteroids;" imageX="80"  imageY="180" imageWidth="120" imageHeight="120"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="80"  imageY="300" imageWidth="120" imageHeight="120"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="80"  imageY="420" imageWidth="120" imageHeight="120"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="80"  imageY="540" imageWidth="120" imageHeight="120"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="80"  imageY="660" imageWidth="120" imageHeight="120"/>
+			<Image			imageID="&rsIceAsteroids;" imageX="80"  imageY="780" imageWidth="120" imageHeight="120"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="95"/>
+				<Lookup chance="5" count="1d10" table="&tbFrostAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 50)
+			</OnMining>
+		</Events>
+	</StationType>
+	
+	<!-- Size A Metallic Asteroid -->
+
+	<StationType UNID="&stMetallicAsteroidSizeA;"
+		name=				"(metallic asteroid)"
+		scale=				"world"
+		size=				"4"
+		mass=				"4"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, inner, lifeZone, metallic, outer"
+
+		ejectaType=			"&vtMetallicAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="0"   imageY="128"	imageWidth="32" imageHeight="32"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="32"  imageY="128"	imageWidth="32" imageHeight="32"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="64"  imageY="128"	imageWidth="32" imageHeight="32"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="96"  imageY="128"	imageWidth="32" imageHeight="32"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="128" imageY="128"	imageWidth="32" imageHeight="32"/>
+
+			<Image	imageID="&rsMetallicAsteroids;" imageX="160"   imageY="128"	imageWidth="32" imageHeight="32"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="192"   imageY="128"	imageWidth="32" imageHeight="32"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="224"   imageY="128"	imageWidth="32" imageHeight="32"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="90"/>
+				<Lookup chance="10" table="&tbMetallicAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 30)
+			</OnMining>
+		</Events>
+	</StationType>
+
+	<!-- Size B Metallic Asteroid -->
+
+	<StationType UNID="&stMetallicAsteroidSizeB;"
+		name=				"(metallic asteroid)"
+		scale=				"world"
+		size=				"55"
+		mass=				"55"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, inner, lifeZone, metallic, outer"
+
+		ejectaType=			"&vtMetallicAsteroidEjecta;"
+		>
+		<Names noArticle="true">Asteroid %1%0%0%0%0%0</Names>
+
+		<ImageVariants>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="0"   imageY="0"		imageWidth="64" imageHeight="64"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="64"  imageY="0"		imageWidth="64" imageHeight="64"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="128" imageY="0"		imageWidth="64" imageHeight="64"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="192" imageY="0"		imageWidth="64" imageHeight="64"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="0"   imageY="64"	imageWidth="64" imageHeight="64"/>
+
+			<Image	imageID="&rsMetallicAsteroids;" imageX="64"  imageY="64"	imageWidth="64" imageHeight="64"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="128" imageY="64"	imageWidth="64" imageHeight="64"/>
+			<Image	imageID="&rsMetallicAsteroids;" imageX="192" imageY="64"	imageWidth="64" imageHeight="64"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="90"/>
+				<Lookup chance="10" count="1d6" table="&tbMetallicAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 30)
+			</OnMining>
+		</Events>
+	</StationType>
+
+	<!-- Size C Metallic Asteroid -->
+
+	<StationType UNID="&stMetallicAsteroidSizeC;"
+		name=				"(metallic asteroid)"
+		scale=				"world"
+		size=				"250"
+		mass=				"250"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, inner, lifeZone, metallic, outer"
+
+		ejectaType=			"&vtMetallicAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image	imageID="&rsMetallicAsteroids2;" imageX="0"   imageY="0"		imageWidth="90" imageHeight="90"/>
+			<Image	imageID="&rsMetallicAsteroids2;" imageX="0"   imageY="90"		imageWidth="90" imageHeight="90"/>
+			<Image	imageID="&rsMetallicAsteroids2;" imageX="0"   imageY="180"		imageWidth="90" imageHeight="90"/>
+			<Image	imageID="&rsMetallicAsteroids2;" imageX="0"   imageY="270"		imageWidth="90" imageHeight="90"/>
+			<Image	imageID="&rsMetallicAsteroids2;" imageX="0"   imageY="360"		imageWidth="90" imageHeight="90"/>
+			<Image	imageID="&rsMetallicAsteroids2;" imageX="0"   imageY="450"		imageWidth="90" imageHeight="90"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="90"/>
+				<Lookup chance="10" count="1d8" table="&tbMetallicAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 30)
+			</OnMining>
+		</Events>
+	</StationType>
+
+	<!-- Size D Metallic Asteroid -->
+
+	<StationType UNID="&stMetallicAsteroidSizeD;"
+		name=				"(metallic asteroid)"
+		scale=				"world"
+		size=				"625"
+		mass=				"625"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, inner, lifeZone, metallic, outer"
+
+		ejectaType=			"&vtMetallicAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image	imageID="&rsMetallicAsteroids2;" imageX="90"  imageY="0"		imageWidth="120" imageHeight="120"/>
+			<Image	imageID="&rsMetallicAsteroids2;" imageX="90"  imageY="120"		imageWidth="120" imageHeight="120"/>
+			<Image	imageID="&rsMetallicAsteroids2;" imageX="90"  imageY="240"		imageWidth="120" imageHeight="120"/>
+			<Image	imageID="&rsMetallicAsteroids2;" imageX="90"  imageY="360"		imageWidth="120" imageHeight="120"/>
+			<Image	imageID="&rsMetallicAsteroids2;" imageX="90"  imageY="480"		imageWidth="120" imageHeight="120"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="90"/>
+				<Lookup chance="10" count="1d10" table="&tbMetallicAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 30)
+			</OnMining>
+		</Events>
+	</StationType>
+	
+	<!-- Size A Volcanic Asteroid -->
+
+	<StationType UNID="&stVolcanicAsteroidSizeA;"
+		name=				"(volcanic asteroid)"
+		scale=				"world"
+		size=				"4"
+		mass=				"4"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, inner, lifeZone, outer, volcanic"
+
+		ejectaType=			"&vtVolcanicAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="768" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="800" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="832" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="864" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="896" imageWidth="32" imageHeight="32"/>
+
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="928" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="960" imageWidth="32" imageHeight="32"/>
+			<Image			imageID="&rsWorlds2;" imageX="192" imageY="992" imageWidth="32" imageHeight="32"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="85"/>
+				<Lookup chance="15" table="&tbVolcanicAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 20)
+			</OnMining>
+		</Events>
+	</StationType>
+
+	<!-- Size B Volcanic Asteroid -->
+
+	<StationType UNID="&stVolcanicAsteroidSizeB;"
+		name=				"(volcanic asteroid)"
+		scale=				"world"
+		size=				"70"
+		mass=				"70"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, inner, lifeZone, outer, volcanic"
+
+		ejectaType=			"&vtVolcanicAsteroidEjecta;"
+		>
+		<Names noArticle="true">Asteroid %1%0%0%0%0%0</Names>
+
+		<ImageVariants>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="512" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="576" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="640" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="704" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="768" imageWidth="64" imageHeight="64"/>
+
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="832" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="896" imageWidth="64" imageHeight="64"/>
+			<Image			imageID="&rsWorlds2;" imageX="128" imageY="960" imageWidth="64" imageHeight="64"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="85"/>
+				<Lookup chance="15" count="1d6" table="&tbVolcanicAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 20)
+			</OnMining>
+		</Events>
+	</StationType>
+
+	<!-- Size C Volcanic Asteroid -->
+
+	<StationType UNID="&stVolcanicAsteroidSizeC;"
+		name=				"(volcanic asteroid)"
+		scale=				"world"
+		size=				"255"
+		mass=				"255"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, inner, lifeZone, outer, volcanic"
+
+		ejectaType=			"&vtVolcanicAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image	imageID="&rsVolcanicAsteroids;" imageX="0"   imageY="0"   imageWidth="90" imageHeight="90"/>
+			<Image	imageID="&rsVolcanicAsteroids;" imageX="0"   imageY="90"  imageWidth="90" imageHeight="90"/>
+			<Image	imageID="&rsVolcanicAsteroids;" imageX="0"   imageY="180" imageWidth="90" imageHeight="90"/>
+			<Image	imageID="&rsVolcanicAsteroids;" imageX="0"   imageY="270" imageWidth="90" imageHeight="90"/>
+			<Image	imageID="&rsVolcanicAsteroids;" imageX="0"   imageY="360" imageWidth="90" imageHeight="90"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="85"/>
+				<Lookup chance="15" count="1d8" table="&tbVolcanicAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 20)
+			</OnMining>
+		</Events>
+	</StationType>
+
+	<!-- Size D Volcanic Asteroid -->
+
+	<StationType UNID="&stVolcanicAsteroidSizeD;"
+		name=				"(volcanic asteroid)"
+		scale=				"world"
+		size=				"590"
+		mass=				"590"
+		sovereign=			"&svIndependent;"
+		 
+		mobile=				"true"
+
+		attributes=			"asteroid, generic, inner, lifeZone, outer, volcanic"
+
+		ejectaType=			"&vtVolcanicAsteroidEjecta;"
+		>
+		<ImageVariants>
+			<Image	imageID="&rsVolcanicAsteroids;" imageX="90"  imageY="0"   imageWidth="110" imageHeight="110"/>
+			<Image	imageID="&rsVolcanicAsteroids;" imageX="90"  imageY="110" imageWidth="110" imageHeight="110"/>
+			<Image	imageID="&rsVolcanicAsteroids;" imageX="90"  imageY="220" imageWidth="110" imageHeight="110"/>
+			<Image	imageID="&rsVolcanicAsteroids;" imageX="90"  imageY="330" imageWidth="110" imageHeight="110"/>
+		</ImageVariants>
+
+		<Items>
+			<Table>
+				<Null chance="85"/>
+				<Lookup chance="15" count="1d10" table="&tbVolcanicAsteroidOre;"/>
+			</Table>
+		</Items>
+
+		<Events>
+			<OnMining>
+				(intAsteroidOnMining 20)
+			</OnMining>
+		</Events>
+	</StationType>
+</TranscendenceExtension>

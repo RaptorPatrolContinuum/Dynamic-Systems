@@ -1,0 +1,291 @@
+<?xml version="1.0"?>
+<!DOCTYPE TranscendenceExtension
+	[
+	<!ENTITY MovingPlanets						"0xE1284300">
+	<!ENTITY stMovingPlanetsSpawner				"0xE1284301">
+	<!ENTITY stMovingPlanets					"0xE1284302">
+
+]>
+<TranscendenceExtension UNID="&MovingPlanets;" version="1.0" name="Copernican Revolution" credits="Oldmanwynter (thanks for fixing it! :D), RPC">
+<Globals>
+	(block Nil
+		(setq RPCFindAngle (lambda (Object1 Object2)
+			(block (Lobject1 Lobject2)
+				(if
+					(gr (ObjGetDistance Object1 Nil) (ObjGetDistance Object2 Nil))
+						(block Nil
+							(setq greater Object1)
+							(setq lesser Object2)
+							)
+						(block Nil
+							(setq greater Object2)
+							(setq lesser Object1)
+							)
+					)
+				(sysVectorAngle (sysVectorSubtract (ObjGetPos greater) (ObjGetPos lesser)))
+				)
+			))
+		)
+</Globals>
+<!-- thanks Prophet!-->
+
+<StationType UNID="&stMovingPlanetsSpawner;"
+    name=               "Moving Planets"
+    virtual=            "True"
+    >
+    <Events>
+        <OnGlobalSystemCreated>
+		(block Nil
+			
+            (sysCreateStation &stMovingPlanets; nil)
+			)
+        </OnGlobalSystemCreated>
+    </Events>
+</StationType>
+<!--- Gravity Well --->
+        
+<StationType UNID="&stMovingPlanets;"
+    name=               "Moving Planets"
+    scale=              "world"
+    backgroundObject=   "true"
+    sovereign=          "&svIndependent;"	
+    >
+    <ImageVariants>
+        <Image          imageID="&rsWorlds2;" imageX="0" imageY="0" imageWidth="1" imageHeight="1" />
+    </ImageVariants>
+    <Events>
+		<OnCreate>
+			(block Nil
+			;gravity
+				(if
+					(or
+						(eq (sysGetName) "Point Juno")
+						(eq (sysGetName) "Huaramarca")
+						(eq (sysGetName) "Heretic")
+						(eq (sysGetName) "Charon")
+						(eq (sysGetName) "Elysium")
+						(eq (sysGetName) "Rigel Aurelius")
+						(eq (sysGetName) "Eridani")
+						(eq (sysGetName) "St. Katharine's Star")
+						)
+						Nil
+						;if none of these systems:
+						(sysAddObjRecurringTimerEvent 100 gSource "Gravity")
+					)
+				)
+		</OnCreate>
+		<Gravity>
+			(block Nil
+				(enum (sysFindObject gSource "tR:1") Planet
+					(switch
+						(ls (ObjGetDistance Planet (SysFindObject Planet "TN"))  50)
+						(enum (SysFindObject Planet "TN:50") station
+							(switch
+								(staGetDockedShips Station)
+								(block (StationPos StationDist StationAngle)
+									(setq StationDist (ObjGetDistance Station Planet))
+									(setq StationAngle (RPCFindAngle Planet Station))
+									(enum (staGetDockedShips Station) Docked
+										(block Nil
+											;basically ObjMoveTo everything at the same time and compensate for ship distance?
+											;set the angle and the dist
+											(ObjSetData Docked "GravAngle" (RPCFindAngle Station Docked))
+											(ObjSetData Docked "GravDist" (ObjGetDistance station Docked))
+											)
+										)
+									;I would like the stations to orbit the planets, but without mobile="true" on stations, it's too derpy :/
+									(setq StationPos(objMoveTo Station (sysVectorPolarOffset Planet StationAngle StationDist)))
+									(objIncVel Planet (sysVectorPolarVelocity (add (sysVectorAngle (ObjGetPos Planet)) 90) 1))
+									(enum (staGetDockedShips Station) Docked
+										(block Nil
+											;basically ObjMoveTo everything at the same time and compensate for ship distance?
+											;set the angle and the dist
+											(objMoveTo Docked (sysVectorPolarOffset Station (ObjGetData Docked "GravAngle") (ObjGetData Docked "GravDist")))
+											)
+										)
+									)
+								(not (ObjIsAbandoned Station))
+								(block Nil
+									(objMoveTo Station (sysVectorPolarOffset Planet (RPCFindAngle Planet Station) (ObjGetDistance Station Planet)))
+									)
+								)
+							)
+						;no stations near it:
+						(block Nil
+							(ObjSetVel Planet (ObjGetVel Planet))
+							(objIncVel Planet (sysVectorPolarVelocity (add (sysVectorAngle (ObjGetPos Planet)) 90) 1))
+							)
+						)
+					)
+				)
+		</Gravity>
+		<store>
+			(enum (sysFindObject gSource "TMR:1") Station
+		(if 
+			(not (ObjIsAbandoned Station))
+			<!--
+			(or
+				(not (ObjIsAbandoned Station))
+				(eq (ObjGetType Station) &stNavBeacon;)
+				)
+				-->
+			(block (Planet)
+				(setq Planet (sysFindObject Station "Nt:planet;"))
+				(switch
+					;if planet is ls 150 ls away:
+					(ls (ObjGetDistance Station Planet) 100)
+						(block Nil
+							(switch
+								;there are docked ships
+								(staGetDockedShips Station)
+									(block (StationPos)
+										(enum (staGetDockedShips Station) Docked
+											(block Nil
+												;basically ObjMoveTo everything at the same time and compensate for ship distance?
+												;set the angle and the dist
+												(ObjSetData Docked "GravAngle" (RPCFindAngle Station Docked))
+												(ObjSetData Docked "GravDist" (ObjGetDistance station Docked))
+												)
+											)
+										(setq StationPos(objMoveTo Station (sysVectorPolarOffset Planet (modulo(add (RPCFindAngle Planet Station) 1) 360) (ObjGetDistance Station Planet))))
+										(enum (staGetDockedShips Station) Docked
+											(block Nil
+												;basically ObjMoveTo everything at the same time and compensate for ship distance?
+												;set the angle and the dist
+												(objMoveTo Docked (sysVectorPolarOffset Station (ObjGetData Docked "GravAngle") (ObjGetData Docked "GravDist")))
+												)
+											)
+										)
+								;otherwise:
+								(objMoveTo Station (sysVectorPolarOffset Planet (add (RPCFindAngle Planet Station) 1) (ObjGetDistance Station Planet)))
+								)
+							<!--
+							(objMoveTo Station (sysVectorPolarOffset Planet (add (RPCFindAngle Planet Station) 1) (ObjGetDistance Station Planet)))
+							(if (staGetDockedShips Station)
+								(enum (staGetDockedShips Station) docked
+									(objMoveTo Docked (sysVectorPolarOffset Station (add (RPCFindAngle Planet Station) 1) (ObjGetDistance docked station)))
+									)
+								)-->
+							)
+					;otherwise, assume deep space:
+						(block Nil
+							(switch
+								;there are docked ships
+								(staGetDockedShips Station)
+									(block Nil
+										(enum (staGetDockedShips Station) Docked
+											(block Nil
+												;basically ObjMoveTo everything at the same time and compensate for ship distance?
+												;set the angle and the dist
+												(ObjSetData Docked "GravAngle" (RPCFindAngle Station Docked))
+												(ObjSetData Docked "GravDist" (ObjGetDistance station Docked))
+												)
+											)
+										(objMoveTo Station (sysVectorPolarOffset (objGetPos Station) (modulo(add (sysVectorAngle (ObjGetPos Station)) 90) 360) 1))
+										(enum (staGetDockedShips Station) Docked
+											(block Nil
+												;basically ObjMoveTo everything at the same time and compensate for ship distance?
+												;set the angle and the dist
+												(objMoveTo Docked (sysVectorPolarOffset Station (ObjGetData Docked "GravAngle") (ObjGetData Docked "GravDist")))
+												)
+											)
+										)
+								;otherwise:
+								(objMoveTo Station (sysVectorPolarOffset (objGetPos Station) (add (sysVectorAngle (ObjGetPos Station)) 90) 1))
+								)
+							<!--
+							(objMoveTo Station (sysVectorPolarOffset (objGetPos Station) (add (sysVectorAngle (ObjGetPos Station)) 90) 1))
+							(if (staGetDockedShips Station)
+								(enum (staGetDockedShips Station) docked
+									(block Nil
+										(objMoveTo docked (sysVectorPolarOffset (objGetPos Station) (add (sysVectorAngle (ObjGetPos Station)) 90) (ObjGetDistance docked station)))
+										)
+									)
+								)-->
+							)
+					)
+				)
+			)
+		)
+
+		</store>
+		<SystemRestore1>
+			(block Nil
+				(enum (sysFindObject gSource "tR:1") Planet
+					(switch
+						(ls (ObjGetDistance Planet (SysFindObject Planet "TN"))  50)
+						(enum (SysFindObject Planet "TN:50") station
+							(switch
+								(staGetDockedShips Station)
+								(block (StationPos StationDist StationAngle)
+									(setq StationDist (ObjGetDistance Station Planet))
+									(setq StationAngle (RPCFindAngle Planet Station))
+									(enum (staGetDockedShips Station) Docked
+										(block Nil
+											;basically ObjMoveTo everything at the same time and compensate for ship distance?
+											;set the angle and the dist
+											(ObjSetData Docked "GravAngle" (RPCFindAngle Station Docked))
+											(ObjSetData Docked "GravDist" (ObjGetDistance station Docked))
+											)
+										)
+									(objIncVel Planet (sysVectorPolarVelocity (add (sysVectorAngle (ObjGetPos Planet)) 90) 1))
+									;I would like the stations to orbit the planets, but without mobile="true" on stations, it's too derpy :/
+									(setq StationPos(objMoveTo Station (sysVectorPolarOffset Planet StationAngle StationDist)))
+									(enum (staGetDockedShips Station) Docked
+										(block Nil
+											;basically ObjMoveTo everything at the same time and compensate for ship distance?
+											;set the angle and the dist
+											(objMoveTo Docked (sysVectorPolarOffset Station (ObjGetData Docked "GravAngle") (ObjGetData Docked "GravDist")))
+											)
+										)
+									)
+								(objMoveTo Station (sysVectorPolarOffset Planet (add (RPCFindAngle Planet Station) 1) (ObjGetDistance Station Planet)))
+								)
+							)
+						;no stations near it:
+						(block Nil
+							(ObjSetVel Planet (ObjGetVel Planet))
+							(objIncVel Planet (sysVectorPolarVelocity (add (sysVectorAngle (ObjGetPos Planet)) 90) 1))
+							)
+						)
+					)
+	<!--
+	(enum (sysFindObject gSource "TMR:1") Station
+		(block Nil
+			(ObjSetVel Station (ObjGetVel Station))
+			(objMoveTo Station (sysVectorPolarOffset (objGetPos Station) (add (sysVectorAngle (ObjGetPos Station)) 90) 1))
+			)
+		)
+	-->
+	
+		;if there are:
+			;Ares Sentries &scAresCannon;
+			;actually, just overwrote Ares Cannons :P
+			<!--
+			(enum (SysFindObject Nil "s+UNID:&scAresCannon;") Sentry
+				(block (base)
+					(setq base (SysFindObject Sentry "NT:Ares;"))
+					(dbglog(ObjSetData Sentry "Angle" (RPCFindAngle Base Sentry)))
+					(dbglog(ObjSetData Sentry "Dist" (ObjGetDistance Base Sentry)))
+					;(objMoveTo Sentry (sysVectorPolarOffset base (ObjGetData Sentry "Angle") (ObjGetData Sentry "Dist")))
+					)
+				)-->
+				)
+			<!--
+			(block Nil
+				(enum (sysFindObject gSource "tR:1; ;") Planet
+					(block Nil
+						(objIncVel Planet (sysVectorPolarVelocity (add (sysVectorAngle (ObjGetPos Planet)) 90) 5))
+						)
+					)
+				(enum (sysFindObject gSource "TMR:1; ;") Planet
+					(block Nil
+						(objMoveTo Planet (sysVectorPolarVelocity (add (sysVectorAngle (ObjGetPos Planet)) 90) 5))
+						)
+					)
+				)
+			-->
+		</SystemRestore1>
+    </Events>
+</StationType>
+</TranscendenceExtension>

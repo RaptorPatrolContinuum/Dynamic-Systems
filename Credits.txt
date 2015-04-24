@@ -1,0 +1,13 @@
+This is by no means complete, nor well thought out.
+Apemant- mining auton code.
+Prohpet
+Drako Slyith
+Alterlost
+George
+CodeCannon- help with the station respawn code :D
+	-requested Eridani to be a peaceful system
+	-fixed Korolov station respawns so they don't blow up their own stations.
+Thanks to DSMK2 for the Sun weapons, and Djohaal for making awesome renders :D
+oldmanwynter- Celestial Movment. For fixing the moving planets code :D
+Patupi- awesome scaffold graphics :D
+Starweaver- code snippets and support :D
