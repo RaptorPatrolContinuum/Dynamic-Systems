@@ -5,16 +5,19 @@
 	;NOTE:
 	;any entities here are overridden from Vanilla Trans
 		; any entities in this indent are new items that use my UNID
+	;vtOverrideOverseer
 	<!ENTITY unidMSVanillaOverride		"0xE1281000">
 	
 	<!ENTITY svRogueFleet				"0x0000100B">
 	
 	<!ENTITY stTinkerGathering			"0x08040080">
 	
-	<!ENTITY stPrimordialStar			"0x00020014">
+	
 	<!--I am missing one of the next ~50 stations so yeah if you have time please tell me so I can add the background plane and stuff.-->
 	
-	
+	<!--
+	<!ENTITY stPrimordialStar			"0x00020014">
+	;found a way not to rewrite them
 	<!ENTITY stPrimordialPlanetoidSizeF	"0x0002001E">
 	<!ENTITY stPrimordialPlanetoidSizeF2	"0x0002001F">
 	<!ENTITY stPrimordialTerrestrialSizeH	"0x00020020">
@@ -47,16 +50,19 @@
 	<!ENTITY stHydrogenGasGiantSizeM	"0x00020059">
 	<!ENTITY stMethaneGasGiantSizeK		"0x0002005D">
 	
-	<!ENTITY stO-TypeStar				"0x00002100">
-	<!ENTITY stA-TypeStar				"0x00002101">
-	<!ENTITY stG-TypeStar				"0x00002102">
-	<!ENTITY stM-TypeStar				"0x00002103">
-	<!ENTITY stWhiteDwarfStar			"0x00002104">
-	<!ENTITY stRedDwarfStar				"0x00002105">
-	<!ENTITY stBlueGiantStar			"0x00002106">
-	<!ENTITY stRedGiantStar				"0x00002107">
-	<!ENTITY stNebulaStar				"0x00002108">
-	<!ENTITY stK-TypeStar				"0x00002109">
+	<!ENTITY stPlanetoid				"0x00002205">
+	<!ENTITY stCrateredPlanet			"0x00002206">
+	<!ENTITY stIcePlanet				"0x00002207">
+	<!ENTITY stGreenhousePlanet			"0x00002208">
+	<!ENTITY stBiospherePlanet			"0x00002209">
+	<!ENTITY stDesertPlanet				"0x0000220A">
+	<!ENTITY stHydrogenGasGiant			"0x0000220B">
+	<!ENTITY stRingedGasGiant			"0x0000220C">
+	<!ENTITY stMethaneGasGiant			"0x0000220D">
+
+	<!ENTITY stVolcanicPlanet			"0x00002210">
+	
+	-->
 		<!ENTITY itSunDamageYellowSmall			"0xE1281100">
 		<!ENTITY itSunDamageYellowMedium		"0xE1281101">
 		<!ENTITY itSunDamageYellowLarge			"0xE1281102">
@@ -76,31 +82,28 @@
 		<!ENTITY itSunDamagePurpleSmall			"0xE1281116">
 		<!ENTITY itSunDamagePurpleMedium		"0xE1281117">
 		<!ENTITY itSunDamagePurpleLarge			"0xE1281118">
-	<!ENTITY stPlanetoid				"0x00002205">
-	<!ENTITY stCrateredPlanet			"0x00002206">
-	<!ENTITY stIcePlanet				"0x00002207">
-	<!ENTITY stGreenhousePlanet			"0x00002208">
-	<!ENTITY stBiospherePlanet			"0x00002209">
-	<!ENTITY stDesertPlanet				"0x0000220A">
-	<!ENTITY stHydrogenGasGiant			"0x0000220B">
-	<!ENTITY stRingedGasGiant			"0x0000220C">
-	<!ENTITY stMethaneGasGiant			"0x0000220D">
-
-	<!ENTITY stVolcanicPlanet			"0x00002210">
+		<!ENTITY vtOverrideOverseer				"0xE1281119">
+		<!ENTITY itSunDamageWhiteSmall			"0xE1281A20">
+		<!ENTITY itSunDamageWhiteMedium			"0xE1281A21">
+		<!ENTITY itSunDamageWhiteLarge			"0xE1281A22">
 	
 	<!ENTITY itUrakMassDriverAdvanced	"0x0803014A">
 	<!ENTITY itUrakHowitzer				"0x08030149">
 	
 	<!ENTITY svDwargRaiders				"0x08020140">
-	<!ENTITY itDwargXiphonCannon		"0x08020149">	
 		<!ENTITY itDwargHowitzer			"0xE1281A00">
 	<!ENTITY scDwargMaster				"0x08020144">
 	<!ENTITY scDwargBehemoth			"0x08020145">
 	
+		<!--
 		<!ENTITY svRanxEmpire				"0xE1281B00">
+		-->
+	
 	<!ENTITY tbRanxEncounters			"0x080400C4">
-		<!ENTITY itRanxBeamRifle			"0xE1281001">
-	<!ENTITY scRanxGunship				"0x080400C2">
+		<!ENTITY itRanxBeamRifle			"0xE1281B01">
+		<!ENTITY scRanxBomber				"0xE1281B02">
+		<!ENTITY scRanxFrigate				"0xE1281B03">
+		<!ENTITY scRanxTurret				"0xE1281B04">
 	<!ENTITY scRanxDreadnought			"0x080400C3">
 	<!ENTITY stRanxFortress				"0x080400C1">	
 	<!ENTITY stRanxOutpost				"0x080400C0">
@@ -108,7 +111,6 @@
 		<!ENTITY itLAM						"0xE1281014">
 	<!ENTITY scCenturion				"0x00103001">
 	<!ENTITY scCenturionX				"0x00103004">
-	<!ENTITY scBritannia				"0x001A3007">	
 	<!ENTITY scAquilaCruiser			"0x001A3003">
 	<!--
 	<!ENTITY scCSCHospital				"0x001A3001">
@@ -122,7 +124,6 @@
 	;rewrite baCSCBase to add the LAM and the damage control parties for compatibility w/ PSD.
 	<!ENTITY scRogueMineLayer			"0x080300C2">
 	
-	<!ENTITY itLightningCannon			"0x001B4001">
 	<!ENTITY itMicronukeCannon			"0x001B4004">
 		<!ENTITY itAresMicroTurret			"0xE1281010">
 	<!ENTITY scAresCannon				"0x001B3002">
@@ -140,8 +141,18 @@
 	<!ENTITY stCommonwealthTurret		"0x00102009">
 	<!ENTITY scCorporateCruiser			"0x00153001">
 		<!ENTITY itCorporateRailgun			"0xE1281011">
+	<!--Resources-->
+	
+	<!ENTITY rsRanxBomber					"0xE1281C00">
+	<!ENTITY rsRanxFrigate					"0xE1281C01">
+	<!ENTITY rsRanxTurret					"0xE1281C02">
 ]>
 <TranscendenceExtension UNID="&unidMSVanillaOverride;" version="0.95" name="Dynamic Systems V4 Vanilla Override" credit="RPC">
+
+
+<image UNID="&rsRanxBomber;"	bitmap="DySys Resources\RanxBomber.jpg" 	bitmask="DySys Resources\RanxBomberMask.bmp"				loadOnUse="true"/>
+<image UNID="&rsRanxFrigate;"	bitmap="DySys Resources\RanxFrigate.jpg" 	bitmask="DySys Resources\RanxFrigateMask.bmp"				loadOnUse="true"/>
+<image UNID="&rsRanxTurret;"	bitmap="DySys Resources\RanxTurret.jpg" 	bitmask="DySys Resources\RanxTurretMask.bmp"				loadOnUse="true"/>
 
 	<Sovereign UNID="&svRogueFleet;"
 		name="rogue fleet"
@@ -199,6 +210,165 @@ useScreen=			"Main"
 			</Invoke>
 		</Itemtype>
 
+	<StationType UNID="&vtOverrideOverseer;"
+        name=               "Virtual Station"
+        virtual=            "True"
+        >
+       <Events>
+			<OnGlobalSystemCreated>
+				(block Nil
+					(sysCreateStation &vtOverrideOverseer; nil)
+					)
+			</OnGlobalSystemCreated>
+			
+			<OnCreate>
+				(block Nil
+					;add recurring timer event that checks for suns and does their weaponsfire eff
+					(sysAddObjRecurringTimerEvent 30 gSource "Sun")
+					;set all planets to be uninteractable
+					(enum (sysFindObject Nil "t") PlanetCandidate (block Nil
+						(switch
+							(eq (ObjGetProperty PlanetCandidate 'scale) "world")
+								(block Nil
+									(ObjSetProperty PlanetCandidate 'Parallax 101)
+									)
+							)
+						))
+					;set gates to be uninteractable
+					(enum (sysFindObject Nil "G") Stargate (block Nil
+						(ObjSetProperty Stargate 'Parallax 101)
+						))
+					)
+			</OnCreate>
+			
+			<Sun>
+				(block Nil
+				<!--
+				(enum (SysFindObject Nil "tB:star;") test (block Nil
+					(PrintTo 'log "what's the name")
+					(PrintTo 'log (SysGetNode))
+					(PrintTo 'log (ObjGetProperty test 'name))
+					
+					))
+				
+					-->
+					(enum (SysFindObject Nil "tB:star;") sunObj	(block Nil
+						(switch
+							(eq (ObjGetType sunObj) &stStarClassM8;)
+								(block Nil
+									(objSetProperty sunObj 'Parallax 101)
+									;(sysCreateWeaponFire weaponID          objSource posVector             dir speed objTarget [detonateNow])
+									(sysCreateWeaponFire &itSunDamageRedSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 5)) (random 0 359)(typGetDataField &itSunDamageBlueSmall; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageRedMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageBlueMedium; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageRedLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageBlueLarge; 'speed) gSource)
+									)
+							(eq (ObjGetType sunObj) &stStarClassM5;)
+								(block Nil
+									(objSetProperty sunObj 'Parallax 101)
+									(sysCreateWeaponFire &itSunDamageRedSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 5)) (random 0 359)(typGetDataField &itSunDamageBlueSmall; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageRedMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageBlueMedium; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageRedLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageBlueLarge; 'speed) gSource)
+									)
+							(eq (ObjGetType sunObj) &stStarClassM0;)
+								(block Nil
+									(objSetProperty sunObj 'Parallax 101)
+									(sysCreateWeaponFire &itSunDamageBlueSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 5)) (random 0 359)(typGetDataField &itSunDamageBlueSmall; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageBlueMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageBlueMedium; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageBlueLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageBlueLarge; 'speed) gSource)
+									)
+							(eq (ObjGetType sunObj) &stStarClassK5;)
+								(block Nil
+									(objSetProperty sunObj 'Parallax 101)
+									(sysCreateWeaponFire &itSunDamageOrangeSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 5)) (random 0 359)(typGetDataField &itSunDamageBlueSmall; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageOrangeMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageBlueMedium; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageOrangeLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageBlueLarge; 'speed) gSource)
+									)
+							(eq (ObjGetType sunObj) &stStarClassK0;)
+								(block Nil
+									(objSetProperty sunObj 'Parallax 101)
+									(sysCreateWeaponFire &itSunDamageOrangeSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 5)) (random 0 359)(typGetDataField &itSunDamageBlueSmall; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageOrangeMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageBlueMedium; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageOrangeLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageBlueLarge; 'speed) gSource)
+									)
+							(eq (ObjGetType sunObj) &stStarClassG5;)
+								(block Nil
+									(objSetProperty sunObj 'Parallax 101)
+									(sysCreateWeaponFire &itSunDamageYellowSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 5)) (random 0 359)(typGetDataField &itSunDamageBlueSmall; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageYellowMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageBlueMedium; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageYellowLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageBlueLarge; 'speed) gSource)
+									)
+							(eq (ObjGetType sunObj) &stStarClassG2;)
+								(block Nil
+									(objSetProperty sunObj 'Parallax 101)
+									(sysCreateWeaponFire &itSunDamageYellowSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 5)) (random 0 359)(typGetDataField &itSunDamageBlueSmall; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageYellowMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageBlueMedium; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageYellowLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageBlueLarge; 'speed) gSource)
+									)
+							(eq (ObjGetType sunObj) &stStarClassG0;)
+								(block Nil
+									(objSetProperty sunObj 'Parallax 101)
+									(sysCreateWeaponFire &itSunDamageYellowSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 5)) (random 0 359)(typGetDataField &itSunDamageBlueSmall; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageYellowMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageBlueMedium; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageYellowLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageBlueLarge; 'speed) gSource)
+									)
+							(eq (ObjGetType sunObj) &stStarClassF5;)
+								(block Nil
+									(objSetProperty sunObj 'Parallax 101)
+									(sysCreateWeaponFire &itSunDamageWhiteSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 5)) (random 0 359)(typGetDataField &itSunDamageBlueSmall; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageWhiteMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageBlueMedium; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageWhiteLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageBlueLarge; 'speed) gSource)
+									)
+							(eq (ObjGetType sunObj) &stStarClassF0;)
+								(block Nil
+									(objSetProperty sunObj 'Parallax 101)
+									(sysCreateWeaponFire &itSunDamageWhiteSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 5)) (random 0 359)(typGetDataField &itSunDamageBlueSmall; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageWhiteMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageBlueMedium; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageWhiteLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageBlueLarge; 'speed) gSource)
+									)
+							(eq (ObjGetType sunObj) &stStarClassA5;)
+								(block Nil
+									(objSetProperty sunObj 'Parallax 101)
+									(sysCreateWeaponFire &itSunDamageBlueSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 5)) (random 0 359)(typGetDataField &itSunDamageBlueSmall; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageBlueMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageBlueMedium; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageBlueLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageBlueLarge; 'speed) gSource)
+									)
+							(eq (ObjGetType sunObj) &stStarClassA0;)
+								(block Nil
+									(objSetProperty sunObj 'Parallax 101)
+									(sysCreateWeaponFire &itSunDamageBlueSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 5)) (random 0 359)(typGetDataField &itSunDamageBlueSmall; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageBlueMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageBlueMedium; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageBlueLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageBlueLarge; 'speed) gSource)
+									)
+							(eq (ObjGetType sunObj) &stNebulaStar;)
+								(block Nil
+									(objSetProperty sunObj 'Parallax 101)
+									(sysCreateWeaponFire &itSunDamageBlueSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 5)) (random 0 359)(typGetDataField &itSunDamageBlueSmall; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageBlueMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageBlueMedium; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageBlueLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageBlueLarge; 'speed) gSource)
+									)
+							(eq (ObjGetType sunObj) &stRedGiantStar;)
+								(block Nil
+									(objSetProperty sunObj 'Parallax 101)
+									(sysCreateWeaponFire &itSunDamageRedSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 5)) (random 0 359)(typGetDataField &itSunDamageBlueSmall; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageRedMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageBlueMedium; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageRedLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageBlueLarge; 'speed) gSource)
+									)
+							(eq (ObjGetType sunObj) &stWhiteDwarfStar;)
+								(block Nil
+									(objSetProperty sunObj 'Parallax 101)
+									(sysCreateWeaponFire &itSunDamageWhiteSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 5)) (random 0 359)(typGetDataField &itSunDamageBlueSmall; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageWhiteMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageBlueMedium; 'speed) gSource)
+									(sysCreateWeaponFire &itSunDamageWhiteLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageBlueLarge; 'speed) gSource)
+									)
+							Nil
+							)
+						))
+					)
+			</Sun>
+       </Events>
+    </StationType>	
+		
+		
 	<Sovereign UNID="&svSun;"
 			name="Stars"
 			alignment="constructive chaos"
@@ -1171,7 +1341,199 @@ useScreen=			"Main"
 
 	</ItemType>
 	
-	<!-- Primordial Star -->
+	<!-- Sun Damage [White-Small] -->
+
+	<ItemType UNID="&itSunDamageWhiteSmall;"
+			name=				"Sun Damage"
+			level=				"13"
+			value=				"4000000"
+			mass=				"15000"
+			frequency=			"notrandom"
+			virtual=			"true"
+
+			description=		"The powers of the sun flow through here."
+			>
+
+		<Image imageID="&rsItems1;" imageX="96" imageY="0" imageWidth="96" imageHeight="96"/>
+
+		<Weapon
+				fireRate=			"50"
+				powerUse=			"8000"
+				>
+
+			<Missiles>
+				<Missile
+						type=			"missile"
+
+						damage=			"plasma:6d8; WMD7; momentum5; EMP3;"
+						missileSpeed=	"9-25"						
+						accelerationFactor="110"
+						
+						maxMissileSpeed="30"
+						maneuverability="6"
+						lifetime=		"180"
+						
+						noFriendlyFire=	"true"
+						
+						vaporTrailLength="16"
+						vaporTrailWidth="110"
+						vaporTrailWidthInc="25"
+						vaporTrailColor="0x99, 0xCC, 0xFF"
+						
+						sound=			"&snRecoillessCannon;"
+						>
+
+					<Effect>
+						<Flare
+							style=			"fadingBlast"
+							radius=			"10"
+							primaryColor=	"#bfbfbf"
+							
+						/>
+						<!--
+						<ParticleComet
+								particleCount=	"200"
+								primaryColor=	"0xFF, 0xCC, 0x33"
+
+								width=			"10"
+								length=			"80"
+								/>
+								-->
+					</Effect>
+				</Missile>
+			</Missiles>
+
+		</Weapon>
+
+	</ItemType>
+	
+	<!-- Sun Damage [White-Medium] -->
+
+	<ItemType UNID="&itSunDamageWhiteMedium;"
+			name=				"Sun Damage"
+			level=				"13"
+			value=				"4000000"
+			mass=				"15000"
+			frequency=			"notrandom"
+			virtual=			"true"
+
+			description=		"The powers of the sun flow through here."
+			>
+
+		<Image imageID="&rsItems1;" imageX="96" imageY="0" imageWidth="96" imageHeight="96"/>
+
+		<Weapon
+				fireRate=			"50"
+				powerUse=			"8000"
+				>
+
+			<Missiles>
+				<Missile
+						type=			"missile"
+
+						damage=			"plasma:6d8; WMD7; momentum5;"
+						missileSpeed=	"10-35"						
+						accelerationFactor="110"
+						
+						maxMissileSpeed="30"
+						maneuverability="6"
+						lifetime=		"180"
+						
+						noFriendlyFire=	"true"
+
+						sound=			"&snRecoillessCannon;"
+						>
+
+					<Effect>
+						<Flare
+							style=			"fadingBlast"
+							radius=			"20"
+							primaryColor=	"#bfbfbf"
+							
+						/>
+
+						<ParticleComet
+								particleCount=	"200"
+								primaryColor=	"#404040"
+								width=			"20"
+								length=			"120"
+								/>
+					</Effect>
+				</Missile>
+			</Missiles>
+
+		</Weapon>
+
+	</ItemType>
+	
+	<!-- Sun Damage [White-Large] -->
+
+	<ItemType UNID="&itSunDamageWhiteLarge;"
+			name=				"Sun Damage"
+			level=				"13"
+			value=				"4000000"
+			mass=				"15000"
+			frequency=			"notrandom"
+			virtual=			"true"
+
+			description=		"The powers of the sun flow through here."
+			>
+
+		<Image imageID="&rsItems1;" imageX="96" imageY="0" imageWidth="96" imageHeight="96"/>
+
+		<Weapon
+				fireRate=			"50"
+				powerUse=			"8000"
+				>
+
+			<Missiles>
+				<Missile
+						type=			"missile"
+
+						damage=			"plasma:6d8; WMD7; momentum5;"
+						missileSpeed=	"20-45"
+						accelerationFactor="110"
+						
+						maxMissileSpeed="30"
+						maneuverability="6"
+						lifetime=		"180"
+						
+						noFriendlyFire=	"true"
+
+						sound=			"&snRecoillessCannon;"
+						>
+
+					<Effect>
+						<Starburst
+							style=			"flare"
+							spikeCount=		"8"
+							spikeLength=	"15-25"
+							primaryColor=	"#f2f2f2"
+							SecondaryColor=	"#ffff99"
+							/>
+						<Flare
+							style=			"fadingBlast"
+							radius=			"40"
+							primaryColor=	"#ffffcc"
+							
+						/>
+
+						<ParticleComet
+								particleCount=	"200"
+								primaryColor=	"#ffff1a"
+
+								width=			"40"
+								length=			"200"
+								/>
+					</Effect>
+				</Missile>
+			</Missiles>
+
+		</Weapon>
+
+	</ItemType>	
+	
+	<!-- Primordial Star 
 
 	<StationType UNID="&stPrimordialStar;"
 		name=				"(primordial star)"
@@ -1206,344 +1568,10 @@ useScreen=			"Main"
 			</Sun>
 		</Events>
 	</StationType>
-
+	-->
 	
-	<!-- O-Type Star -->
 
-	<StationType UNID="&stO-TypeStar;"
-		name=				"(star)"
-		scale=				"star"
-		sovereign=			"&svIndependent;"
-		backgroundPlane = 	"101"
-
-		attributes=			"star"
-		>
-	<Image imageID="&rsStar1;" imageX="0" imageY="0" imageWidth="512" imageHeight="512" imageFrameCount="0" imageTicksPerFrame="0"/>
-	<Events>
-		<OnCreate>
-			(sysAddObjRecurringTimerEvent 30 gSource "Sun")
-		</OnCreate>
-		<Sun>
-			(block Nil
-			;(sysCreateWeaponFire weaponID          objSource posVector             dir speed objTarget [detonateNow])
-			(sysCreateWeaponFire &itSunDamageBlueSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 5)) (random 0 359)(typGetDataField &itSunDamageBlueSmall; 'speed) gSource)
-			(sysCreateWeaponFire &itSunDamageBlueMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageBlueMedium; 'speed) gSource)
-			(sysCreateWeaponFire &itSunDamageBlueLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageBlueLarge; 'speed) gSource)
-			)
-		</Sun>
-	</Events>
-	</StationType>
-
-	<!-- A-Type Star -->
-
-	<StationType UNID="&stA-TypeStar;"
-		name=				"(A class star)"
-		scale=				"star"
-		sovereign=			"&svIndependent;"
-		spaceColor=			"0x12, 0x50, 0x79"
-		maxLightRadius=		"800"
-		backgroundPlane = 	"101"
-
-		attributes=			"generic, star"
-		>
-
-		<Image>
-			<FilterColorize hue="203" saturation="75">
-				<Image imageID="&rsAStar;" imageX="0" imageY="0" imageWidth="512" imageHeight="512"/>
-			</FilterColorize>
-		</Image>
-		<Events>
-			<OnCreate>
-				(if
-					;it's St. Kat's
-					(eq (sysGetName) "St. Katharine's Star")
-					;don't have solar events
-					Nil
-					;else
-					(sysAddObjRecurringTimerEvent 30 gSource "Sun")
-					)
-			</OnCreate>
-			<Sun>
-				(block Nil
-				;(sysCreateWeaponFire weaponID          objSource posVector             dir speed objTarget [detonateNow])
-				(sysCreateWeaponFire &itSunDamageBlueSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageBlueSmall; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamageBlueMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageBlueMedium; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamageBlueLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 20)) (random 0 359)(typGetDataField &itSunDamageBlueLarge; 'speed) gSource)
-				)
-			</Sun>
-		</Events>
-	</StationType>
-	
-	<!-- G-Type Star -->
-
-	<StationType UNID="&stG-TypeStar;"
-		name=				"(G class star)"
-		scale=				"star"
-		sovereign=			"&svIndependent;"
-		spaceColor=			"0x68, 0x63, 0x23"
-		maxLightRadius=		"620"
-		backgroundPlane = 	"101"
-
-		attributes=			"generic, star"
-		>
-
-		<Image>
-			<FilterColorize hue="57" saturation="50">
-				<Image imageID="&rsStar1;" imageX="0" imageY="0" imageWidth="512" imageHeight="512"/>
-			</FilterColorize>
-		</Image>
-		<Events>
-			<OnCreate>
-				(block Nil
-					(sysAddObjRecurringTimerEvent 30 gSource "Sun")
-					;(sysAddObjRecurringTimerEvent 30 gSource "Gravity")
-					)
-			</OnCreate>
-			<!--
-			<Gravity>
-				
-				WORKS!:
-				(objIncVel wreck (sysVectorPolarVelocity (modulo (add 180 (sysVectorAngle (objGetpos wreck))) 359) 1))
-				
-				(enum (sysFindObject gSource "Mt") wreck
-					;and objisAbandoned
-					(if (objisAbandoned wreck)
-						(block Nil
-							(objIncVel wreck (sysVectorPolarVelocity (modulo (add 180 (sysVectorAngle (objGetpos wreck))) 359) (divide 150 (objGetDistance gSource wreck))))
-							;(objIncVel wreck (sysVectorPolarVelocity 180  10))
-							;(sysCalcFireSolution (sysVectorSubtract (objGetpos aTargetobj) aFirePos) (objGetVel aTargetObj) (typGetDataField (itmGetUNID gItem) 'speed)) 
-							;(objIncVel wreck (sysVectorPolarVelocity (sysCalcFireSolution (objGetPos wreck) (objGetVel wreck) 10) 10))
-							;(objIncVel wreck (sysVectorPolarVelocity (sysVectorAngle (objGetpos wreck)) 10))
-							;(objIncVel wreck (sysVectorPolarVelocity (modulo (add 180 (sysVectorAngle (objGetpos wreck))) 359) 1))
-							;(objIncVel wreck (sysVectorPolarVelocity (shpgetDirection gPlayerShip) 10))
-							(plymessage gplayer "gravity")
-							)
-						)
-					)
-			</Gravity>
-			-->
-			<Sun>
-				(block Nil
-				;(sysCreateWeaponFire weaponID          objSource posVector             dir speed objTarget [detonateNow])
-				(sysCreateWeaponFire &itSunDamageYellowSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageYellowSmall; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamageYellowMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageYellowMedium; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamageYellowLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 20)) (random 0 359)(typGetDataField &itSunDamageYellowLarge; 'speed) gSource)
-				)
-			</Sun>
-		</Events>
-	</StationType>
-
-	<!-- M-Type Star -->
-
-	<StationType UNID="&stM-TypeStar;"
-		name=				"(star)"
-		scale=				"star"
-		sovereign=			"&svIndependent;"
-		backgroundPlane = 	"101"
-
-		attributes=			"star"
-		>
-	<Image imageID="&rsStar1;" imageX="0" imageY="0" imageWidth="512" imageHeight="512" imageFrameCount="0" imageTicksPerFrame="0"/>
-		<Events>
-			<OnCreate>
-				(sysAddObjRecurringTimerEvent 30 gSource "Sun")
-			</OnCreate>
-			<Sun>
-				(block Nil
-				;(sysCreateWeaponFire weaponID          objSource posVector             dir speed objTarget [detonateNow])
-				(sysCreateWeaponFire &itSunDamageRedSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageRedSmall; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamageRedMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageRedMedium; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamageRedLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 25)) (random 0 359)(typGetDataField &itSunDamageRedLarge; 'speed) gSource)
-				)
-			</Sun>
-		</Events>
-	</StationType>
-
-	<!-- White Dwarf Star -->
-
-	<StationType UNID="&stWhiteDwarfStar;"
-		name=				"(star)"
-		scale=				"star"
-		sovereign=			"&svIndependent;"
-		backgroundPlane = 	"101"
-
-		attributes=			"star"
-		>
-	<Image imageID="&rsStar1;" imageX="0" imageY="0" imageWidth="512" imageHeight="512" imageFrameCount="0" imageTicksPerFrame="0"/>
-		<Events>
-			<OnCreate>
-				(sysAddObjRecurringTimerEvent 30 gSource "Sun")
-			</OnCreate>
-			<Sun>
-				(block Nil
-				;(sysCreateWeaponFire weaponID          Nil posVector             dir speed objTarget [detonateNow])
-				(sysCreateWeaponFire &itSunDamageYellowSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageYellowSmall; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamageYellowMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageYellowMedium; 'speed) gSource)			
-				)
-			</Sun>
-		</Events>
-	</StationType>
-	
-	<!-- Red Dwarf Star -->
-
-	<StationType UNID="&stRedDwarfStar;"
-		name=				"(red dwarf star)"
-		scale=				"star"
-		sovereign=			"&svIndependent;"
-		spaceColor=			"0x59, 0x0e, 0x00"
-		maxLightRadius=		"320"
-		backgroundPlane = 	"101"
-
-		attributes=			"generic, star"
-		>
-	<Image imageID="&rsRedDwarfStar;" imageX="0" imageY="0" imageWidth="256" imageHeight="256" imageFrameCount="0" imageTicksPerFrame="0"/>
-		<Events>
-			<OnCreate>
-				(sysAddObjRecurringTimerEvent 30 gSource "Sun")
-			</OnCreate>
-			<Sun>
-				(block Nil
-				;(sysCreateWeaponFire weaponID          Nil posVector             dir speed objTarget [detonateNow])
-				(sysCreateWeaponFire &itSunDamageRedSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageRedSmall; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamageRedMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageRedMedium; 'speed) gSource)			
-				)
-			</Sun>
-		</Events>
-	</StationType>
-
-	<!-- Blue Giant Star -->
-
-	<StationType UNID="&stBlueGiantStar;"
-		name=				"(star)"
-		scale=				"star"
-		sovereign=			"&svIndependent;"
-		backgroundPlane = 	"101"
-
-		attributes=			"star"
-		>
-	<Image imageID="&rsStar1;" imageX="0" imageY="0" imageWidth="512" imageHeight="512" imageFrameCount="0" imageTicksPerFrame="0"/>
-		<Events>
-			<OnCreate>
-				(sysAddObjRecurringTimerEvent 30 gSource "Sun")
-			</OnCreate>
-			<Sun>
-				(block Nil
-				;(sysCreateWeaponFire weaponID          objSource posVector             dir speed objTarget [detonateNow])
-				(sysCreateWeaponFire &itSunDamageBlueSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageBlueSmall; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamageBlueMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 20)) (random 0 359)(typGetDataField &itSunDamageBlueMedium; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamageBlueMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 23)) (random 0 359)(typGetDataField &itSunDamageBlueMedium; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamageBlueLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 25)) (random 0 359)(typGetDataField &itSunDamageBlueLarge; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamageBlueLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 30)) (random 0 359)(typGetDataField &itSunDamageBlueLarge; 'speed) gSource)
-				)
-			</Sun>
-		</Events>
-
-	</StationType>
-	
-	<!-- Red Giant Star -->
-
-	<StationType UNID="&stRedGiantStar;"
-		name=				"(red giant star)"
-		scale=				"star"
-		sovereign=			"&svIndependent;"
-		spaceColor=			"0x59, 0x0e, 0x00"
-		maxLightRadius=		"620"
-		backgroundPlane = 	"101"
-
-		attributes=			"generic, star"
-		>
-	<Image imageID="&rsRedGiantStar;" imageX="0" imageY="0" imageWidth="512" imageHeight="512" imageFrameCount="0" imageTicksPerFrame="0"/>
-		<Events>
-			<OnCreate>
-				(sysAddObjRecurringTimerEvent 30 gSource "Sun")
-			</OnCreate>
-			<Sun>
-				(block Nil
-				;(sysCreateWeaponFire weaponID          objSource posVector             dir speed objTarget [detonateNow])
-				(sysCreateWeaponFire &itSunDamageRedSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageRedSmall; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamageRedMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 20)) (random 0 359)(typGetDataField &itSunDamageRedMedium; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamageRedMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 23)) (random 0 359)(typGetDataField &itSunDamageRedMedium; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamageRedLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 30)) (random 0 359)(typGetDataField &itSunDamageRedLarge; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamageRedLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 35)) (random 0 359)(typGetDataField &itSunDamageRedLarge; 'speed) gSource)
-				)
-			</Sun>
-		</Events>
-
-	</StationType>
-	
-	<!-- K-Type Star -->
-
-	<StationType UNID="&stK-TypeStar;"
-		name=				"(K class star)"
-		scale=				"star"
-		sovereign=			"&svIndependent;"
-		spaceColor=			"0x70, 0x44, 0x1a"
-		maxLightRadius=		"620"
-		backgroundPlane = 	"101"
-
-		attributes=			"generic, star"
-		>
-
-		<Image>
-			<FilterColorize hue="30" saturation="63">
-				<Image imageID="&rsStar1;" imageX="0" imageY="0" imageWidth="512" imageHeight="512"/>
-			</FilterColorize>
-		</Image>
-		<Events>
-			<OnCreate>
-				(block Nil
-					(sysAddObjRecurringTimerEvent 30 gSource "Sun")
-					;(sysAddObjRecurringTimerEvent 30 gSource "Gravity")
-					)
-			</OnCreate>
-			<Sun>
-				(block Nil
-				;(sysCreateWeaponFire weaponID          objSource posVector             dir speed objTarget [detonateNow])
-				(sysCreateWeaponFire &itSunDamageOrangeSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamageYellowSmall; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamageOrangeMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamageYellowMedium; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamageOrangeLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 20)) (random 0 359)(typGetDataField &itSunDamageYellowLarge; 'speed) gSource)
-				)
-			</Sun>
-		</Events>
-	</StationType>
-	
-	<!-- Nebula Star -->
-
-	<StationType UNID="&stNebulaStar;"
-		name=				"(nebula star)"
-		scale=				"star"
-		sovereign=			"&svIndependent;"
-		spaceColor=			"0x43, 0x3d, 0x4d"
-		maxLightRadius=		"400"
-		backgroundPlane = 	"101"
-
-		attributes=			"generic, star"
-		>
-
-		<Image>
-			<FilterColorize hue="262" saturation="12">
-				<Image imageID="&rsStar1;" imageX="0" imageY="0" imageWidth="512" imageHeight="512"/>
-			</FilterColorize>
-		</Image>
-		<Events>
-			<OnCreate>
-				(block Nil
-					(sysAddObjRecurringTimerEvent 30 gSource "Sun")
-					;(sysAddObjRecurringTimerEvent 30 gSource "Gravity")
-					)
-			</OnCreate>
-			<Sun>
-				(block Nil
-				;(sysCreateWeaponFire weaponID          objSource posVector             dir speed objTarget [detonateNow])
-				(sysCreateWeaponFire &itSunDamagePurpleSmall; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 10)) (random 0 359)(typGetDataField &itSunDamagePurpleSmall; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamagePurpleMedium; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 15)) (random 0 359)(typGetDataField &itSunDamagePurpleMedium; 'speed) gSource)
-				(sysCreateWeaponFire &itSunDamagePurpleLarge; Nil (sysVectorPolarOffset (objGetPos gSource) (random 0 360) (random 0 20)) (random 0 359)(typGetDataField &itSunDamagePurpleLarge; 'speed) gSource)
-				)
-			</Sun>
-		</Events>
-	</StationType>
-
-	<!-- Planetoid -->
+	<!-- Planetoid 
 
 	<StationType UNID="&stPlanetoid;"
 		name=				"(rocky planetoid)"
@@ -1564,10 +1592,10 @@ useScreen=			"Main"
 			<Image			imageID="&rsWorlds1;" imageX="0" imageY="384" imageWidth="128" imageHeight="128" />
 		</ImageVariants>
 	</StationType>
-	
+	-->
 	<!-- Cratered Planet
 	
-	 -->
+	
 
 	<StationType UNID="&stCrateredPlanet;"
 		name=				"(rocky terrestrial)"
@@ -1585,9 +1613,9 @@ useScreen=			"Main"
 			<Image			imageID="&rsWorlds1;" imageX="0" imageY="256" imageWidth="128" imageHeight="128" />
 			<Image			imageID="&rsWorlds1;" imageX="0" imageY="384" imageWidth="128" imageHeight="128" />
 		</ImageVariants>
-	</StationType>
+	</StationType> -->
 	
-	<!-- Ice Planet -->
+	<!-- Ice Planet 
 
 	<StationType UNID="&stIcePlanet;"
 		name=				"(ice terrestrial)"
@@ -1605,9 +1633,9 @@ useScreen=			"Main"
 			<Image			imageID="&rsWorldsIcePlanet3;" imageX="0" imageY="0"   imageWidth="182" imageHeight="182" />
 			<Image			imageID="&rsWorldsIcePlanet4;" imageX="0" imageY="0"   imageWidth="182" imageHeight="182" />
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 	
-	<!-- Volcanic Planet -->
+	<!-- Volcanic Planet 
 
 	<StationType UNID="&stVolcanicPlanet;"
 		name=				"(volcanic terrestrial)"
@@ -1626,8 +1654,9 @@ useScreen=			"Main"
 			<Image			imageID="&rsWorlds2;" imageX="0" imageY="896" imageWidth="128" imageHeight="128"/>
 		</ImageVariants>
 	</StationType>
+	-->
 	
-	<!-- Biosphere -->
+	<!-- Biosphere 
 
 	<StationType UNID="&stBiospherePlanet;"
 		name=				"(biosphere terrestrial)"
@@ -1645,9 +1674,9 @@ useScreen=			"Main"
 			<Image			imageID="&rsWorlds2;" imageX="128" imageY="256" imageWidth="128" imageHeight="128"/>
 			<Image			imageID="&rsWorlds2;" imageX="128" imageY="384" imageWidth="128" imageHeight="128"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Desert Planet -->
+	<!-- Desert Planet 
 
 	<StationType UNID="&stDesertPlanet;"
 		name=				"(desert terrestrial)"
@@ -1665,9 +1694,9 @@ useScreen=			"Main"
 			<Image			imageID="&rsWorlds2;" imageX="0" imageY="256" imageWidth="128" imageHeight="128"/>
 			<Image			imageID="&rsWorlds2;" imageX="0" imageY="384" imageWidth="128" imageHeight="128"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Greenhouse Planet -->
+	<!-- Greenhouse Planet 
 
 	<StationType UNID="&stGreenhousePlanet;"
 		name=				"(greenhouse terrestrial)"
@@ -1685,9 +1714,9 @@ useScreen=			"Main"
 			<Image			imageID="&rsWorlds1;" imageX="0" imageY="256" imageWidth="128" imageHeight="128" />
 			<Image			imageID="&rsWorlds1;" imageX="0" imageY="384" imageWidth="128" imageHeight="128" />
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Hydrogen Gas Giant -->
+	<!-- Hydrogen Gas Giant 
 
 	<StationType UNID="&stHydrogenGasGiant;"
 		name=				"(hydrogen gas giant)"
@@ -1700,9 +1729,9 @@ useScreen=			"Main"
 		attributes=			"gasGiant"
 		>
 		<Image imageID="&rsWorlds1;" imageX="0" imageY="512" imageWidth="256" imageHeight="256" imageFrameCount="0" imageTicksPerFrame="0"/>
-	</StationType>
+	</StationType>-->
 
-	<!-- Methane Gas Giant -->
+	<!-- Methane Gas Giant 
 
 	<StationType UNID="&stMethaneGasGiant;"
 		name=				"(methane gas giant)"
@@ -1715,13 +1744,13 @@ useScreen=			"Main"
 		attributes=			"gasGiant"
 		>
 		<Image imageID="&rsWorlds1;" imageX="0" imageY="768" imageWidth="192" imageHeight="192" imageFrameCount="0" imageTicksPerFrame="0"/>
-	</StationType>
+	</StationType>-->
 	
 	<!--NEW IN 1.2 beta 2-->
 	
 	<!-- ASTEROIDS & PLANETS -->
 
-	<!-- Size E Primordial Planetoid -->
+	<!-- Size E Primordial Planetoid 
 
 	<StationType UNID="&stPrimordialPlanetoidSizeE;"
 		name=				"(primordial planetoid)"
@@ -1740,9 +1769,9 @@ useScreen=			"Main"
 			<Image	imageID="&rsPrimordialAsteroids;"	imageX="370" imageY="130"	imageWidth="130"  imageHeight="130"/>
 			<Image	imageID="&rsPrimordialAsteroids;"	imageX="370" imageY="260"	imageWidth="130"  imageHeight="130"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Size F Primordial Planetoid -->
+	<!-- Size F Primordial Planetoid 
 
 	<StationType UNID="&stPrimordialPlanetoidSizeF;"
 		name=				"(primordial planetoid)"
@@ -1761,9 +1790,9 @@ useScreen=			"Main"
 			<Image	imageID="&rsPrimordialAsteroids;"	imageX="500" imageY="160"   imageWidth="160"  imageHeight="160"/>
 			<Image	imageID="&rsPrimordialAsteroids;"	imageX="500" imageY="320"   imageWidth="160"  imageHeight="160"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Size G Primordial Planetoid -->
+	<!-- Size G Primordial Planetoid 
 
 	<StationType UNID="&stPrimordialPlanetoidSizeG;"
 		name=				"(primordial planetoid)"
@@ -1779,9 +1808,9 @@ useScreen=			"Main"
 			<Image	imageID="&rsPrimordialAsteroids;"	imageX="660" imageY="0"     imageWidth="180"  imageHeight="180"/>
 			<Image	imageID="&rsPrimordialAsteroids;"	imageX="660" imageY="180"   imageWidth="180"  imageHeight="180"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Size H Primordial Terrestrial -->
+	<!-- Size H Primordial Terrestrial 
 
 	<StationType UNID="&stPrimordialTerrestrialSizeH;"
 		name=				"(primordial terrestrial)"
@@ -1796,9 +1825,9 @@ useScreen=			"Main"
 		<ImageVariants>
 			<Image	imageID="&rsPrimordialWorlds;"	imageX="0"   imageY="580"   imageWidth="182"  imageHeight="182"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Size J Primordial Terrestrial -->
+	<!-- Size J Primordial Terrestrial
 
 	<StationType UNID="&stPrimordialTerrestrialSizeJ;"
 		name=				"(primordial terrestrial)"
@@ -1813,9 +1842,9 @@ useScreen=			"Main"
 		<ImageVariants>
 			<Image	imageID="&rsPrimordialWorlds;"	imageX="340" imageY="0"     imageWidth="270"  imageHeight="270"/>
 		</ImageVariants>
-	</StationType>
+	</StationType> -->
 
-	<!-- Size K Primordial Gas Giant -->
+	<!-- Size K Primordial Gas Giant
 
 	<StationType UNID="&stPrimordialGasGiantSizeK;"
 		name=				"(primordial gas giant)"
@@ -1830,9 +1859,9 @@ useScreen=			"Main"
 		<ImageVariants>
 			<Image	imageID="&rsPrimordialWorlds;"	imageX="0"   imageY="0"     imageWidth="340"  imageHeight="340"/>
 		</ImageVariants>
-	</StationType>	
+	</StationType>	 -->
 	
-	<!-- Rocky Planetoid Size E -->
+	<!-- Rocky Planetoid Size E 
 
 	<StationType UNID="&stRockyPlanetoidSizeE;"
 		name=				"(rocky planetoid)"
@@ -1851,9 +1880,9 @@ useScreen=			"Main"
 			<Image	imageID="&rsRockyAsteroids;" imageX="400" imageY="130" imageWidth="130" imageHeight="130"/>
 			<Image	imageID="&rsRockyAsteroids;" imageX="400" imageY="260" imageWidth="130" imageHeight="130"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Rocky Planetoid Size F -->
+	<!-- Rocky Planetoid Size F 
 
 	<StationType UNID="&stRockyPlanetoidSizeF;"
 		name=				"(rocky planetoid)"
@@ -1872,9 +1901,9 @@ useScreen=			"Main"
 			<Image	imageID="&rsRockyAsteroids;" imageX="660" imageY="160" imageWidth="160" imageHeight="160"/>
 			<Image	imageID="&rsRockyAsteroids;" imageX="660" imageY="320" imageWidth="160" imageHeight="160"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Rocky Planetoid Size G -->
+	<!-- Rocky Planetoid Size G 
 
 	<StationType UNID="&stRockyPlanetoidSizeG;"
 		name=				"(rocky planetoid)"
@@ -1892,9 +1921,9 @@ useScreen=			"Main"
 			<Image	imageID="&rsRockyAsteroids;" imageX="980" imageY="0"   imageWidth="175" imageHeight="175"/>
 			<Image	imageID="&rsRockyAsteroids;" imageX="980" imageY="175" imageWidth="175" imageHeight="175"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 	
-	<!-- Ice Planetoid Size E -->
+	<!-- Ice Planetoid Size E 
 
 	<StationType UNID="&stIcePlanetoidSizeE;"
 		name=				"(ice planetoid)"
@@ -1912,9 +1941,9 @@ useScreen=			"Main"
 			<Image			imageID="&rsIceAsteroids;" imageX="200" imageY="0"   imageWidth="140" imageHeight="140"/>
 			<Image			imageID="&rsIceAsteroids;" imageX="200" imageY="140" imageWidth="140" imageHeight="140"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Ice Planetoid Size F -->
+	<!-- Ice Planetoid Size F 
 
 	<StationType UNID="&stIcePlanetoidSizeF;"
 		name=				"(ice planetoid)"
@@ -1932,9 +1961,9 @@ useScreen=			"Main"
 			<Image			imageID="&rsIceAsteroids;" imageX="200" imageY="280" imageWidth="160" imageHeight="160"/>
 			<Image			imageID="&rsIceAsteroids;" imageX="200" imageY="440" imageWidth="160" imageHeight="160"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Ice Planetoid Size G -->
+	<!-- Ice Planetoid Size G 
 
 	<StationType UNID="&stIcePlanetoidSizeG;"
 		name=				"(ice planetoid)"
@@ -1952,9 +1981,9 @@ useScreen=			"Main"
 			<Image			imageID="&rsIceAsteroids;" imageX="200" imageY="600" imageWidth="180" imageHeight="180"/>
 			<Image			imageID="&rsIceAsteroids;" imageX="200" imageY="780" imageWidth="180" imageHeight="180"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 	
-	<!-- Metallic Planetoid Size E -->
+	<!-- Metallic Planetoid Size E 
 
 	<StationType UNID="&stMetallicPlanetoidSizeE;"
 		name=				"(metallic planetoid)"
@@ -1973,9 +2002,9 @@ useScreen=			"Main"
 			<Image	imageID="&rsMetallicAsteroids2;" imageX="210"  imageY="140"		imageWidth="140" imageHeight="140"/>
 			<Image	imageID="&rsMetallicAsteroids2;" imageX="210"  imageY="280"		imageWidth="140" imageHeight="140"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Metallic Planetoid Size F -->
+	<!-- Metallic Planetoid Size F 
 
 	<StationType UNID="&stMetallicPlanetoidSizeF;"
 		name=				"(metallic planetoid)"
@@ -1994,9 +2023,9 @@ useScreen=			"Main"
 			<Image	imageID="&rsMetallicAsteroids2;" imageX="350"  imageY="150"		imageWidth="150" imageHeight="150"/>
 			<Image	imageID="&rsMetallicAsteroids2;" imageX="350"  imageY="300"		imageWidth="150" imageHeight="150"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Metallic Planetoid Size G -->
+	<!-- Metallic Planetoid Size G 
 
 	<StationType UNID="&stMetallicPlanetoidSizeG;"
 		name=				"(metallic planetoid)"
@@ -2014,9 +2043,9 @@ useScreen=			"Main"
 			<Image	imageID="&rsMetallicAsteroids2;" imageX="210"  imageY="450"		imageWidth="180" imageHeight="180"/>
 			<Image	imageID="&rsMetallicAsteroids2;" imageX="390"  imageY="450"		imageWidth="180" imageHeight="180"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Volcanic Planetoid Size E -->
+	<!-- Volcanic Planetoid Size E 
 
 	<StationType UNID="&stVolcanicPlanetoidSizeE;"
 		name=				"(volcanic planetoid)"
@@ -2035,9 +2064,9 @@ useScreen=			"Main"
 			<Image	imageID="&rsVolcanicAsteroids;" imageX="200"  imageY="130" imageWidth="130" imageHeight="130"/>
 			<Image	imageID="&rsVolcanicAsteroids;" imageX="200"  imageY="260" imageWidth="130" imageHeight="130"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Volcanic Planetoid Size F -->
+	<!-- Volcanic Planetoid Size F 
 
 	<StationType UNID="&stVolcanicPlanetoidSizeF;"
 		name=				"(volcanic planetoid)"
@@ -2056,9 +2085,9 @@ useScreen=			"Main"
 			<Image	imageID="&rsVolcanicAsteroids;" imageX="330"  imageY="160" imageWidth="160" imageHeight="160"/>
 			<Image	imageID="&rsVolcanicAsteroids;" imageX="330"  imageY="320" imageWidth="160" imageHeight="160"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Volcanic Planetoid Size G -->
+	<!-- Volcanic Planetoid Size G 
 
 	<StationType UNID="&stVolcanicPlanetoidSizeG;"
 		name=				"(volcanic planetoid)"
@@ -2076,9 +2105,9 @@ useScreen=			"Main"
 			<Image	imageID="&rsVolcanicAsteroids;" imageX="490"  imageY="0"   imageWidth="180" imageHeight="180"/>
 			<Image	imageID="&rsVolcanicAsteroids;" imageX="490"  imageY="180" imageWidth="180" imageHeight="180"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Size H Volcanic Terrestrial -->
+	<!-- Size H Volcanic Terrestrial 
 
 	<StationType UNID="&stVolcanicTerrestrialSizeH;"
 		name=				"(volcanic terrestrial)"
@@ -2096,9 +2125,9 @@ useScreen=			"Main"
 			<Image	imageID="&rsVolcanicTerrestrials;" imageX="0"   imageY="400" imageWidth="200" imageHeight="200"/>
 			<Image	imageID="&rsVolcanicTerrestrials;" imageX="0"   imageY="600" imageWidth="200" imageHeight="200"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 	
-	<!-- Biosphere -->
+	<!-- Biosphere 
 
 	<StationType UNID="&stBiosphereTerrestrialSizeI;"
 		name=				"(biosphere terrestrial)"
@@ -2115,9 +2144,9 @@ useScreen=			"Main"
 			<Image	imageID="&rsBiosphereTerrestrials;" imageX="0"   imageY="230" imageWidth="230" imageHeight="230"/>
 			<Image	imageID="&rsBiosphereTerrestrials;" imageX="0"   imageY="460" imageWidth="230" imageHeight="230"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Desert Planet -->
+	<!-- Desert Planet 
 
 	<StationType UNID="&stDesertTerrestrialSizeH;"
 		name=				"(desert terrestrial)"
@@ -2134,9 +2163,9 @@ useScreen=			"Main"
 			<Image	imageID="&rsDesertTerrestrials;" imageX="0"   imageY="220" imageWidth="220" imageHeight="220"/>
 			<Image	imageID="&rsDesertTerrestrials;" imageX="0"   imageY="440" imageWidth="220" imageHeight="220"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Greenhouse Planet -->
+	<!-- Greenhouse Planet 
 
 	<StationType UNID="&stGreenhouseTerrestrialSizeI;"
 		name=				"(greenhouse terrestrial)"
@@ -2153,9 +2182,9 @@ useScreen=			"Main"
 			<Image	imageID="&rsGreenhouseTerrestrials;" imageX="0"   imageY="250" imageWidth="250" imageHeight="250"/>
 			<Image	imageID="&rsGreenhouseTerrestrials;" imageX="0"   imageY="500" imageWidth="250" imageHeight="250"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Hydrogen Gas Giant -->
+	<!-- Hydrogen Gas Giant 
 
 	<StationType UNID="&stHydrogenGasGiantSizeM;"
 		name=				"(hydrogen gas giant)"
@@ -2172,9 +2201,9 @@ useScreen=			"Main"
 			<Image	imageID="&rsHydrogenGasGiant02;" imageX="0"   imageY="0"   imageWidth="450" imageHeight="450"/>
 			<Image	imageID="&rsHydrogenGasGiant03;" imageX="0"   imageY="0"   imageWidth="450" imageHeight="450"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
-	<!-- Methane Gas Giant -->
+	<!-- Methane Gas Giant 
 
 	<StationType UNID="&stMethaneGasGiantSizeK;"
 		name=				"(methane gas giant)"
@@ -2189,12 +2218,12 @@ useScreen=			"Main"
 		<ImageVariants>
 			<Image	imageID="&rsMethaneGasGiant01;" imageX="0"   imageY="0"   imageWidth="340" imageHeight="340"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 
 	<!-- Ringed Gas Giant
 	
 		LATER: This image is out-of-scale. Scale should be based on the size of
-		the planet, not the full size of the rings. -->
+		the planet, not the full size of the rings. 
 
 	<StationType UNID="&stRingedGasGiant;"
 		name=				"(ringed gas giant)"
@@ -2217,7 +2246,7 @@ useScreen=			"Main"
 			<Image			imageID="&rsWorldsRingedGiant7;" imageX="0" imageY="0" imageWidth="448" imageHeight="340"/>
 			<Image			imageID="&rsWorldsRingedGiant8;" imageX="0" imageY="0" imageWidth="432" imageHeight="380"/>
 		</ImageVariants>
-	</StationType>
+	</StationType>-->
 	
 	<!--/NEW IN 1.2 beta 2-->
 
@@ -2411,46 +2440,49 @@ useScreen=			"Main"
 		<Image imageID="&rsWorlds1;" imageX="0" imageY="768" imageWidth="192" imageHeight="192" imageFrameCount="0" imageTicksPerFrame="0"/>
 	</StationType>-->
 
-<!-- Urak Mass Driver, Advanced -->
+	<!-- Urak Mass Driver, Advanced -->
+
 	<ItemType UNID="&itUrakMassDriverAdvanced;"
 			name=				"advanced Urak mass driver"
 			level=				"4"
-			value=				"5000"
+			value=				"4600"
 			mass=				"4500"
 			frequency=			"rare"
-			modifiers=			"MajorItem; NotForSale; Urak"
+			attributes=			"MajorItem; NotForSale; Urak"
 
 			description=		"The advanced version of the Urak mass driver fires high-explosive shells."
 
 			sortName=			"Urak.1.20"
 			>
-		<Image imageID="&rsItems1;" imageX="96" imageY="0" imageWidth="96" imageHeight="96"/>
+
+		<Image imageID="&rsItems4;" imageX="0" imageY="192" imageWidth="96" imageHeight="96"/>
+
 		<Weapon
 				type=				"missile"
 
-				damage=				"blast:3d4+4; momentum1; WMD3"
-				fireRate=			"12"
-				missileSpeed=		"40"
-				lifetime=			"30"
-				powerUse=			"20"
+				damage=				"blast:1d6+1; momentum:1; WMD:4"
+				fireRate=			"14"
+				missileSpeed=		"35"
+				lifetime=			"70"
+				powerUse=			"100"
 
 				effect=				"&efBlastShellDefault;"
-				fireEffect=			"&efBlastFireDefault;"
 				sound=				"&snRecoillessCannon;"
 				>
+
 			<Configuration aimTolerance="5">
 				<Shot posAngle="90" posRadius="12" angle="3d5-9"/>
 				<Shot posAngle="270" posRadius="12" angle="3d5-9"/>
 			</Configuration>
 		</Weapon>
 	</ItemType>
-	
+
 	<!-- Urak Howitzer -->
 
 	<ItemType UNID="&itUrakHowitzer;"
 			name=				"Urak howitzer"
 			level=				"5"
-			value=				"9000"
+			value=				"7000"
 			mass=				"4500"
 			frequency=			"veryrare"
 			numberAppearing=	"1"
@@ -2461,44 +2493,29 @@ useScreen=			"Main"
 			sortName=			"Urak.1.10"
 			>
 
-		<Image imageID="&rsItems1;" imageX="96" imageY="0" imageWidth="96" imageHeight="96"/>
+		<Image imageID="&rsItems5;" imageX="0" imageY="96" imageWidth="96" imageHeight="96"/>
 
 		<Weapon
 				type=				"missile"
-				fragmentCount=		"1d5+5"
 
 				minFireArc=			"340"
 				maxFireArc=			"20"
-				damage=				"blast:4d12; momentum3; WMD3"
-				fireRate=			"35"
+				fireRate=			"36"
 				missileSpeed=		"50"
 				hitPoints=			"10"
 				lifetime=			"90"
-				powerUse=			"150"
+				powerUse=			"200"
 				recoil=				"2"
 
 				effect=				"&efBlastShellDefault;"
-				fireEffect=			"&efBlastFireDefault;"
-				hitEffect=			"&efFragmentationExplosion;"
 				sound=				"&snRecoillessCannon;"
 				>
 
-			<HitEffect
-					sound="&snArmorHit1;"
-					>
-				<Image imageID="&rsMediumExplosions;" 
-						imageX="0" 
-						imageY="0" 
-						imageWidth="64" 
-						imageHeight="64"
-						imageFrameCount="16"
-						imageTicksPerFrame="2"/>
-			</HitEffect>
-
 			<Fragment 
+					count=			"30-36"
 					type=			"missile"
-					lifetime=		"4"
-					damage=			"blast:1d4+4; momentum2; WMD3"
+					lifetime=		"10"
+					damage=			"blast:1d6; momentum:1; WMD:4"
 					missileSpeed=	"32-48"
 					>
 
@@ -2520,7 +2537,6 @@ useScreen=			"Main"
 				</Effect>
 			</Fragment>
 		</Weapon>
-
 	</ItemType>
 *****************************************************************************************************	
 ;not going to be in the override until I figure out the best way to give the player the GN particle
@@ -2593,7 +2609,7 @@ useScreen=			"Main"
 		<Weapon
 				type=				"missile"
 
-				damage=				"blast:4d16; momentum3; WMD4"
+				damage=				"blast:4d16; momentum3; WMD5"
 				fireRate=			"25"
 				missileSpeed=		"50"
 				lifetime=			"120"
@@ -2627,41 +2643,53 @@ useScreen=			"Main"
 			</HitEffect>
 		</Weapon>
 	</ItemType>
-	
+		
 	<!-- Dwarg Master -->
-	
+
 	<ShipClass UNID="&scDwargMaster;"
 			manufacturer=		""
 			class=				"Dwarg master"
 			type=				""
-			score=				"785"
+			defaultSovereign=	"&svDwargRaiders;"
 
-			mass=				"100"
+			size=				"77"
+			mass=				"1900"
 			cargoSpace=			"25"
-			thrust=				"300"
-			maneuver=			"5"
+			thrustRatio=		"5"
 			maxSpeed=			"22"
-
-			leavesWreck=		"50"
 
 			attributes=			"dwarg,genericClass"
 			>
+
 		<Armor>
 			<ArmorSection start="315" span="90" armorID="&itDwargCatoptricArmor;" />
 			<ArmorSection start="225" span="90" armorID="&itDwargCatoptricArmor;" />
 			<ArmorSection start="135" span="90" armorID="&itDwargCatoptricArmor;" />
 			<ArmorSection start="45"  span="90" armorID="&itDwargCatoptricArmor;" />
 		</Armor>
+
 		<Devices>
 			<Device deviceID="&itDwargCnidocystCannon;" omnidirectional="true"/>
 			<Device deviceID="&itDwargXiphonCannon;" secondaryWeapon="true" omnidirectional="true"/>
 			<Device deviceID="&itDwargHowitzer;" secondaryWeapon="true" omnidirectional="true"/>
 		</Devices>
+
+		<Maneuver
+			maxRotationRate=	"7.0"
+			rotationAccel=		"1.0"
+			/>
+
 		<Items>
 			<Item count="4d20" item="&itDwargCnidocystNodule;"/>
 			<Item count="5d6" item="&itHeliumAssembly;"/>
 		</Items>
-		<Image imageID="&rsMediumShips3;" imageX="672" imageY="0" imageWidth="96" imageHeight="96" imageFrameCount="0" imageTicksPerFrame="0"/>
+
+		<Image imageID="&rsMediumShips3;" imageX="672" imageY="0" imageWidth="96" imageHeight="96"/>
+
+		<Effects>
+			<Effect type="thrustMain"		posAngle="180"	posRadius="43"	posZ="0"	rotation="180"/>
+		</Effects>
+		
 		<AISettings
 			aggressor=			"true"
 			combatStyle=		"standOff"
@@ -2669,31 +2697,28 @@ useScreen=			"Main"
 			fireAccuracy=		"95"
 			perception=			"4"
 			/>
-		<DriveImages>
-			<NozzleImage imageID="&rsDriveExhaust;" imageX="48" imageY="0" imageWidth="48" imageHeight="48" rotationOffset="-24"/>
-			<NozzlePos x="-44" y="0" z="0"/>
-		</DriveImages>
+
 	</ShipClass>
 
 	<!-- Dwarg Behemoth -->
-	
+
 	<ShipClass UNID="&scDwargBehemoth;"
 			manufacturer=		""
 			class=				"Zoanthrope behemoth"
 			type=				""
-			score=				"910"
+			defaultSovereign=	"&svDwargRaiders;"
 
-			mass=				"12500"
+			size=				"90"
+			mass=				"10000"
 			cargoSpace=			"100"
-			thrust=				"1200"
-			maneuver=			"8"
+			thrustRatio=		"0.2"
 			maxSpeed=			"12"
 
-			explosionType=		"&vtBlastExplosion4;"
-			leavesWreck=		"100"
+			explosionType=		"&vtBlastExplosion3;"
 
 			attributes=			"dwarg, genericClass, zoanthrope"
 			>
+
 		<Armor>
 			<ArmorSection start="345" span="30" armorID="&itDwargHolochroalArmor;" />
 			<ArmorSection start="315" span="30" armorID="&itDwargHolochroalArmor;" />
@@ -2708,6 +2733,7 @@ useScreen=			"Main"
 			<ArmorSection start="45"  span="30" armorID="&itDwargHolochroalArmor;" />
 			<ArmorSection start="15"  span="30" armorID="&itDwargHolochroalArmor;" nonCritical="dev0" />
 		</Armor>
+
 		<Devices>
 			<Device deviceID="&itDwargBehemothCannon;"/>
 			<Device deviceID="&itDwargXiphonCannon;" secondaryWeapon="true" minFireArc="350" maxFireArc="190" posAngle="90" posRadius="30"/>
@@ -2715,6 +2741,28 @@ useScreen=			"Main"
 			<Device deviceID="&itDwargHowitzer;" secondaryWeapon="true" minFireArc="350" maxFireArc="190" posAngle="90" posRadius="15"/>
 			<Device deviceID="&itDwargHowitzer;" secondaryWeapon="true" minFireArc="170" maxFireArc="10" posAngle="270" posRadius="15"/>
 		</Devices>
+
+		<Maneuver
+			maxRotationRate=	"5"
+			rotationAccel=		"0.5"
+			/>
+
+		<Interior>
+			<Compartment name="interior"
+					hitPoints=	"180"
+					/>
+			
+			<Compartment name="main drive"
+					type=		"mainDrive"
+					hitPoints=	"80"
+
+					posX=		"-41"
+					posY=		"0"
+					sizeX=		"29"
+					sizeY=		"45"
+					/>
+		</Interior>
+		
 		<Items>
 			<Item				  count="2d6"	item="&itXenotiteFuelRod;"/>
 			<Table>
@@ -2723,23 +2771,50 @@ useScreen=			"Main"
 				<Lookup chance="20" count="1" table="&trMajorItem6;"/>
 			</Table>
 		</Items>
-		<Image imageID="&rsMediumShips4;" imageX="896" imageY="0" imageWidth="128" imageHeight="128" imageFrameCount="0" imageTicksPerFrame="0"/>
+
+		<Image imageID="&rsMediumShips4;" imageX="896" imageY="0" imageWidth="128" imageHeight="128"/>
+
+		<Effects>
+			<Effect type="thrustMain"		posAngle="176"	posRadius="57"	posZ="-7"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="-176"	posRadius="57"	posZ="-7"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="172"	posRadius="57"	posZ="0"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="180"	posRadius="56"	posZ="0"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="-172"	posRadius="57"	posZ="0"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="176"	posRadius="57"	posZ="7"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="-176"	posRadius="57"	posZ="7"	rotation="180"	effect="&efMainThrusterLarge;"/>
+		</Effects>
+			
 		<Events>
 			<OnObjDestroyed>
 				(intZoanthropeOnObjDestroyed)
 			</OnObjDestroyed>
+
 			<OnOrderChanged>
 				(intZoanthropeOnOrderChanged)
 			</OnOrderChanged>
 		</Events>
+
 		<AISettings
 			aggressor=			"true"
 			fireRateAdj=		"20"
 			fireAccuracy=		"95"
 			perception=			"4"
 			/>
+
 	</ShipClass>
 *****************************************************************************************************
+	<Sovereign 
+		UNID="&svRanxEmpire;"
+		name="Ranx Empire"
+		alignment="destructive order"
+			
+		>
+		<Relationships>
+			<Relationship sovereign="&svAres;" disposition="enemy" mutual="true"/>
+			<Relationship sovereign="&svGaianTerraformers;" disposition="enemy" mutual="true"/>
+		</Relationships>
+	</Sovereign>
+		<!--
 		<Sovereign UNID="&svRanxEmpire;"
 				name="Ranx Empire"
 				alignment="destructive chaos"
@@ -2750,7 +2825,7 @@ useScreen=			"Main"
 				<Relationship sovereign="&svGaianTerraformers;" disposition="enemy" mutual="true"/>
 			</Relationships>
 		</Sovereign>
-		
+		-->
 	<!-- Ranx Encounter Table -->
 	
 	<ShipTable unid="&tbRanxEncounters;">
@@ -2770,6 +2845,18 @@ useScreen=			"Main"
 			<Ship levelFrequency="----- -rrrr" count="1"	class="&scRanxDreadnought;"	orders="wander"	maxShips="4">
 				<Escorts>
 					<Ship					   count="1d4"	class="&scRanxGunship;"	orders="escort"/>
+				</Escorts>
+			</Ship>
+			
+			<Ship levelFrequency="----- ccurr" count="1"	class="&scRanxGunship;"	orders="wander"	maxShips="4">
+				<Escorts>
+					<Ship					   count="1d4"	class="&scRanxBomber;"	orders="escort"/>
+				</Escorts>
+			</Ship>
+			
+			<Ship levelFrequency="----- -ucur" count="1"	class="&scRanxFrigate;"	orders="wander"	maxShips="4">
+				<Escorts>
+					<Ship					   count="1d4"	class="&scRanxBomber;"	orders="escort"/>
 				</Escorts>
 			</Ship>
 		</LevelTable>
@@ -2814,39 +2901,59 @@ useScreen=			"Main"
 				</Effect>
 			</Weapon>
 		</ItemType>
+	
+	<!-- Ranx Bomber -->
 
-	<!-- Ranx Gunship -->
-	<ShipClass UNID="&scRanxGunship;"
+	<ShipClass UNID="&scRanxBomber;"
 			manufacturer=		"Ranx"
 			class=				""
-			type=				"gunship"
-			score=				"490"
+			type=				"bomber"
+			defaultSovereign=	"&svRanxEmpire;"
 
-			mass=				"100"
-			cargoSpace=			"10"
-			thrust=				"700"
-			maneuver=			"3"
-			maxSpeed=			"18"
-
-			leavesWreck=		"30"
+			level=				"7"
+			mass=				"75"
+			cargoSpace=			"150"
+			thrustRatio=		"12"
+			maxSpeed=			"15"
 
 			attributes=			"genericClass,ranx"
 			>
 
-		<Armor>
-			<ArmorSection start="315" span="90" armorID="&itDepletedUraniumArmor;"/>
-			<ArmorSection start="225" span="90" armorID="&itDepletedUraniumArmor;"/>
-			<ArmorSection start="135" span="90" armorID="&itDepletedUraniumArmor;"/>
-			<ArmorSection start="45"  span="90" armorID="&itDepletedUraniumArmor;"/>
-		</Armor>
+		<Armor
+			armorID=			"&itDepletedUraniumArmor;"
+			count=				"8"
+			/>
 
 		<Devices>
-			<Device deviceID="&itAkan30Cannon;"/>
+			<Device deviceID="&itTritiumCannon;"						omnidirectional="true"				posAngle="180" posRadius="20" posZ="20"/>
+			<Device deviceID="&itRanxBeamRifle;"	 secondaryWeapon="true" omnidirectional="true"				posAngle="0" posRadius="20" posZ="0"/>
 			<Device deviceID="&itMonopoleDeflector;"/>
+			<Device deviceID="&itPatchSpider;"/>
 		</Devices>
 
+		<Maneuver
+			maxRotationRate=	"12.0"
+			rotationAccel=		"5.0"
+			/>
+		
+		<Interior>
+			<Compartment name="interior"
+					hitPoints=	"50"
+					/>
+			
+			<Compartment name="main drive"
+					type=		"mainDrive"
+					hitPoints=	"100"
+
+					posX=		"-20"
+					posY=		"0"
+					sizeX=		"44"
+					sizeY=		"44"
+					/>
+		</Interior>
+
+		
 		<Items>
-			<Item count="20d20"	item="&itAkan30CannonShell;" />
 			<Table>
 				<Item chance="60" count="2d6" item="&itHeliumAssembly;"/>
 				<Item chance="30" count="1d2" item="&itLightArmorRepair;"/>
@@ -2854,8 +2961,13 @@ useScreen=			"Main"
 			</Table>
 		</Items>
 
-		<Image imageID="&rsMediumShips1;" imageX="624" imageY="0" imageWidth="48" imageHeight="48"/>
+		<Image imageID="&rsRanxBomber;" imageX="0" imageY="0" imageWidth="96" imageHeight="96" rotationOffset="0" rotationCount="40"/>
 
+		<Effects>
+			<Effect type="thrustMain"		posAngle="130"	posRadius="12"	posZ="8"	rotation="180"	bringToFront="*"/>
+			<Effect type="thrustMain"		posAngle="-130"	posRadius="12"	posZ="8"	rotation="180"	bringToFront="*"/>
+		</Effects>
+		
 		<AISettings
 			fireRateAdj=		"25"
 			fireRangeAdj=		"60"
@@ -2865,39 +2977,173 @@ useScreen=			"Main"
 			combatStyle=		"advanced"
 			/>
 
-		<DriveImages>
-			<NozzleImage imageID="&rsDriveExhaust;" imageX="48" imageY="0" imageWidth="48" imageHeight="48" imageFrameCount="0" imageTicksPerFrame="0"/>
-			<NozzlePos x="-32" y="10"/>
-			<NozzlePos x="-32" y="-10"/>
-		</DriveImages>
 	</ShipClass>
-	<!-- Ranx Dreadnought -->
 
-	<ShipClass UNID="&scRanxDreadnought;"
+	<!-- Ranx Frigate -->
+
+	<ShipClass UNID="&scRanxFrigate;"
 			manufacturer=		"Ranx"
 			class=				""
-			type=				"dreadnought"
+			type=				"frigate"
+			defaultSovereign=	"&svRanxEmpire;"
 
 			attributes=			"capitalShip, genericClass, majorShip, ranx"
 			   
-			size=				"350"
-			mass=				"25000"
-			cargoSpace=			"15000"
+			size=				"200"
+			mass=				"20000"
+			cargoSpace=			"1500"
 			thrustRatio=		"0.5"
-			maneuver=			"16"
-			maxSpeed=			"8"
+			maxSpeed=			"10"
 
 			cyberDefenseLevel=	"6"
 
-			explosionType=		"&vtThermoExplosion2;"
-			leavesWreck=		"100"
+			explosionType=		"&vtThermoExplosion3;"
 			>
 
 		<!-- Configuration -->
 		
 		<Armor
 			armorID=			"&itTransuranicPlate;"
-			count=				"18"
+			count=				"24"
+			/>
+		
+		<Devices>
+			<Device deviceID="&itKilotonCannon;"						omnidirectional="true"				posAngle="180" posRadius="25" posZ="20"/>
+			<Device deviceID="&itRanxBeamRifle;" secondaryWeapon="true" minFireArc="350" maxFireArc="200" posAngle="72" posRadius="30"/>
+			<Device deviceID="&itRanxBeamRifle;" secondaryWeapon="true" minFireArc="200" maxFireArc="10" posAngle="288" posRadius="30"/>
+			<Device deviceID="&itArmorRepairDevice;"/>
+			<Device deviceID="&itPatchSpider;"/>
+		</Devices>
+
+		<Maneuver
+			maxRotationRate=	"4.0"
+			rotationAccel=		"0.2"
+			/>
+
+		<Interior>
+			<Compartment name="interior"
+					hitPoints=	"150"
+					/>
+			
+			<Compartment name="main drive"
+					type=		"mainDrive"
+					hitPoints=	"100"
+
+					posX=		"-115"
+					posY=		"0"
+					sizeX=		"44"
+					sizeY=		"44"
+					/>
+		</Interior>
+
+		<Items>
+			<Item	count="80-160"		item="&itKilotonCannonShell;"/>
+			<Item	count="2d12"		item="&itPteracniumFuelRod;"/>
+			<Table>
+				<Lookup	chance="40"	count="1d4"		table="&trConsumables8;"/>
+				<Lookup	chance="30"	count="1d2"		table="&trMinorItem8;"/>
+				<Lookup	chance="30"	count="1"		table="&trMajorItem7;"/>
+			</Table>
+		</Items>
+
+		<!-- Image and Effects -->
+
+		<Image imageID="&rsRanxFrigate;" imageX="0" imageY="0" imageWidth="128" imageHeight="128" rotationCount="40"/>
+
+		<Effects>
+			<Effect type="thrustMain"		posAngle="175"	posRadius="50"	posZ="0"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="180"	posRadius="50"	posZ="0"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="-175"	posRadius="50"	posZ="0"	rotation="180"	effect="&efMainThrusterLarge;"/>
+		</Effects>
+		
+		<!-- AI and Behavior -->
+
+		<AISettings
+			aggressor=			"true"
+			fireRateAdj=		"35"
+			fireAccuracy=		"90"
+			perception=			"6"
+			
+			combatStyle=		"standOff"
+			/>
+
+	</ShipClass>
+	<!-- Ranx Autoturret -->
+
+	<ShipClass UNID="&scRanxTurret;"
+			manufacturer=		"Ranx"
+			class=				"Ranx autoturret"
+			type=				""
+
+			attributes=			"Ranx, genericClass"
+			   
+			mass=				"400"
+			thrustRatio=		"0"
+			maneuver=			"1"
+			maxSpeed=			"0"
+			cargoSpace=			"0"
+
+			leavesWreck=		"50"
+			>
+
+		<!-- Configuration -->
+		
+		<Armor
+			armorID=			"&itTransuranicPlate;"
+			count=				"2"
+			/>
+		
+		<Devices>
+			<Device deviceID="&itKilotonCannon;" omnidirectional="true" secondaryWeapon="true"  />
+			<Device deviceID="&itRanxBeamRifle;" omnidirectional="true" secondaryWeapon="true"  secondary="true" />
+			<Device deviceID="&itArmorRepairDevice;"/>
+		</Devices>
+		
+		<Items>
+			<Item	count="80-160"		item="&itKilotonCannonShell;"/>
+		</Items>
+
+		<!-- Image and Effects -->
+
+		<Image imageID="&rsRanxTurret;" imageX="0" imageY="0" imageWidth="64" imageHeight="64" rotationCount="1"/>
+
+		<!-- AI and Behavior -->
+
+		<AISettings
+			fireRateAdj=		"40"
+			fireAccuracy=		"90"
+			perception=			"4"
+
+			noFriendlyFire=		"true"
+			/>
+	</ShipClass>
+		
+	<!-- Ranx Dreadnought -->
+
+	<ShipClass UNID="&scRanxDreadnought;"
+			manufacturer=		"Ranx"
+			class=				""
+			type=				"dreadnought"
+			defaultSovereign=	"&svRanxEmpire;"
+
+			attributes=			"capitalShip, genericClass, majorShip, ranx"
+			   
+			size=				"350"
+			mass=				"60000"
+			cargoSpace=			"15000"
+			thrustRatio=		"0.5"
+			maxSpeed=			"8"
+
+			cyberDefenseLevel=	"6"
+
+			explosionType=		"&vtThermoExplosion3;"
+			>
+
+		<!-- Configuration -->
+		
+		<Armor
+			armorID=			"&itTransuranicPlate;"
+			count=				"16"
 			/>
 		
 		<Devices>
@@ -2912,6 +3158,11 @@ useScreen=			"Main"
 			<Device deviceID="&itPatchSpider;"/>
 			<Device deviceID="&itPatchSpider;"/>
 		</Devices>
+
+		<Maneuver
+			maxRotationRate=	"2.0"
+			rotationAccel=		"0.2"
+			/>
 
 		<Interior>
 			<Compartment name="interior"
@@ -2944,6 +3195,12 @@ useScreen=			"Main"
 
 		<Image imageID="&rsRanxDreadnought;" imageX="0" imageY="0" imageWidth="280" imageHeight="280"/>
 
+		<Effects>
+			<Effect type="thrustMain"		posAngle="175"	posRadius="136"	posZ="0"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="180"	posRadius="136"	posZ="0"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="-175"	posRadius="136"	posZ="0"	rotation="180"	effect="&efMainThrusterLarge;"/>
+		</Effects>
+		
 		<!-- AI and Behavior -->
 
 		<AISettings
@@ -2977,7 +3234,7 @@ useScreen=			"Main"
 			 <EscortCheck>
 				(block Nil
 					
-					(enum (sysFindObject gSource "sO:escort;") gunship
+					(enum (SysFindObject gSource "sO:escort;") gunship
 						(if 
 							;the ships is not accounted for, account for it and increase headcount Data
 							(not (objGetData gunship "accounted"))
@@ -2994,7 +3251,7 @@ useScreen=			"Main"
 						)
 					
 					(block Nil
-						(enum (sysFindObject gSource "sO:escort;") gunship
+						(enum (SysFindObject gSource "sO:escort;") gunship
 							(if 
 								;distance between the two is gr than 50 ls,
 								(gr (sysVectorDistance gunship gSource) 50)
@@ -3049,7 +3306,16 @@ useScreen=			"Main"
 								
 								(for i 1 newsquad
 									(block (ship)
-										(setq ship (sysCreateShip &scRanxGunship; (sysFindObject nil "GN") (objGetSovereign gSource)))
+										(setq ship (sysCreateShip 
+											(randomTable 
+												20
+													&scRanxFrigate;
+												35
+													&scRanxBomber;
+												45
+													&scRanxGunship;
+												)
+											 (SysFindObject nil "GN") (objGetSovereign gSource)))
 										(shpOrder ship 'escort gSource)
 										)
 									)
@@ -3148,7 +3414,8 @@ useScreen=			"Main"
 	
 	</ShipClass>
 		-->
-		<!-- Ranx Outpost -->
+	
+	<!-- Ranx Outpost -->
 
 	<StationType UNID="&stRanxOutpost;"
 			name=				"Ranx outpost"
@@ -3160,13 +3427,14 @@ useScreen=			"Main"
 
 			multiHull=			"true"
 			armorID=			"&itLightOrthoSteel;"
-			hitPoints=			"350"
-			explosionType=		"&vtThermoExplosion1;"
+			hitPoints=			"370"
+            regen=              "1.1"
+			explosionType=		"&vtThermoExplosion2;"
 			ejectaType=			"&vtWreckEjecta;"
 
-			attributes=			"enemy, envEarth, envAvoidsAir, human, populated, ranx"
+			attributes=			"enemy, envEarth, envAvoidsAir, generic, human, populated, ranx"
 			levelFrequency=		"----- ucur- ----- ----- -----"
-			locationCriteria=	"+planetary,-OuterSystem"
+			locationCriteria=	"-outerSystem, +planetary|+50"
 			enemyExclusionRadius="60"
 			>
 
@@ -3186,19 +3454,38 @@ useScreen=			"Main"
 
 		<Ships>
 			<Ship			count="2d4"	class="&scRanxGunship;"	orders="patrol" patrolDist="5"/>
-			<Ship			count="1d4"	class="&scRanxGunship;"	orders="guard" />
+			<Ship			count="1"	class="&scRanxFrigate;"	orders="patrol" patrolDist="50"/>
+			<Table>
+				<Ship chance="25"  count="1d4"	class="&scRanxFrigate;" orders="patrol" patrolDist="25">
+					<Escorts>
+						<Ship			count="1d4"	class="&scRanxGunship;"	orders="escort"/>
+					</Escorts>
+				</Ship>
+				<Ship chance="75"  count="1"	class="&scRanxBomber;"	orders="patrol" patrolDist="25">
+					<Escorts>
+						<Ship			count="1d4"	class="&scRanxGunship;"	orders="escort"/>
+					</Escorts>
+				</Ship>
+			</Table>
 		</Ships>
 
 		<Reinforcements minShips="4">
 			<Ship		count="1d4"		class="&scRanxGunship;" orders="patrol" patrolDist="5"/>
+			<Ship		count="1d4"		class="&scRanxBomber;" orders="guard" patrolDist="15"/>
+			<Ship		count="1d4"		class="&scRanxFrigate;" orders="patrol" patrolDist="15"/>
 		</Reinforcements>
 
+		<Satellites>
+			<Orbitals count="1d4" distance="12" angle="equidistant">
+				<Ship class="&scRanxTurret;" count="1" sovereign="&svRanxEmpire;" orders="hold"/>
+			</Orbitals>
+		</Satellites>
+		
 		<Encounters frequency="uncommon">
 			<Lookup table="&tbRanxEncounters;"/>
 		</Encounters>
 
 	</StationType>
-	
 	<!-- Ranx Fortress -->
 
 	<StationType UNID="&stRanxFortress;"
@@ -3207,18 +3494,18 @@ useScreen=			"Main"
 			dockScreen=			"&dsAbandonedStation;"
 			abandonedScreen=	"&dsAbandonedStation;"
 			dockingPorts=		"8"
-			repairRate=			"2"
 			canAttack=			"true"
 
 			multiHull=			"true"
 			armorID=			"&itOrthoSteel;"
-			hitPoints=			"1000"
-			explosionType=		"&vtThermoExplosion3;"
+			hitPoints=			"1800"
+            regen=              "18"
+			explosionType=		"&vtThermoExplosion4;"
 			ejectaType=			"&vtWreckEjecta;"
 
-			attributes=			"enemy, envEarth, envAvoidsAir, human, majorStation, populated, ranx"
+			attributes=			"enemy, envEarth, envAvoidsAir, generic, human, majorStation, populated, ranx"
 			levelFrequency=		"----- -rcr- ----- ----- -----"
-			locationCriteria=	"+planetary,-OuterSystem"
+			locationCriteria=	"-outerSystem, +planetary|+50"
 			enemyExclusionRadius="100"
 			>
 
@@ -3238,32 +3525,41 @@ useScreen=			"Main"
 		</Items>
 
 		<Ships>
-			<Ship			count="1d6"	class="&scRanxGunship;"	orders="patrol" patrolDist="5"/>
-			<Ship			count="1d6"	class="&scRanxGunship;"	orders="guard" />
-			<Ship					count="1d3"	class="&scRanxDreadnought;"	orders="patrol" patrolDist="150">
+			<Ship					count="1"	class="&scRanxDreadnought;"	orders="patrol" patrolDist="150">
 				<Escorts>
 					<Ship			count="1d5"	class="&scRanxGunship;"	orders="escort"/>
+					<Ship			count="1d5"	class="&scRanxBomber;"	orders="escort"/>
 				</Escorts>
 			</Ship>
-			<Ship			count="1d6"	class="&scRanxGunship;"	orders="patrol" patrolDist="50"/>
+			<Ship			count="1d3"	class="&scRanxBomber;"	orders="guard" />
+			<Ship			count="1d3"	class="&scRanxFrigate;"	orders="patrol" patrolDist="50"/>
 		</Ships>
 
 		<Reinforcements minShips="5">
 			<Table>
-				<Ship chance="25"  count="1d4"	class="&scRanxGunship;" orders="patrol" patrolDist="5"/>
+				<Ship chance="25"  count="1d4"	class="&scRanxDreadnought;" orders="patrol" patrolDist="25">
+					<Escorts>
+						<Ship			count="1d4"	class="&scRanxFrigate;"	orders="escort"/>
+					</Escorts>
+				</Ship>
 				<Ship chance="75"  count="1"	class="&scRanxDreadnought;"	orders="patrol" patrolDist="25">
 					<Escorts>
-						<Ship			count="1d4"	class="&scRanxGunship;"	orders="escort"/>
+						<Ship			count="1d4"	class="&scRanxBomber;"	orders="escort"/>
 					</Escorts>
 				</Ship>
 			</Table>
 		</Reinforcements>
+		
+		<Satellites>
+			<Orbitals count="3d4" distance="40" angle="equidistant">
+				<Ship class="&scRanxTurret;" count="1" sovereign="&svRanxEmpire;" orders="hold"/>
+			</Orbitals>
+		</Satellites>
 
 		<Encounters frequency="common">
 			<Lookup table="&tbRanxEncounters;"/>
 		</Encounters>
 	</StationType>
-		
 	
 
 ******************************************************************************************************
@@ -3365,7 +3661,6 @@ useScreen=			"Main"
 			</Missiles>
 		</Weapon>
 	</ItemType>
-
 	
 	<!-- Centurion-class Heavy Gunship -->
 
@@ -3373,15 +3668,12 @@ useScreen=			"Main"
 			manufacturer=		"Pacific Defense Corporation"
 			class=				"Centurion"
 			type=				"heavy gunship"
-			score=				"635"
+			defaultSovereign=	"&svCommonwealthFleet;"
 
-			mass=				"250"
+			mass=				"90"
 			cargoSpace=			"50"
-			thrust=				"1250"
-			maneuver=			"3"
+			thrustRatio=		"9.0"
 			maxSpeed=			"20"
-
-			leavesWreck=		"50"
 
 			attributes=			"commonwealth,commonMilitary,genericClass"
 			>
@@ -3407,11 +3699,25 @@ useScreen=			"Main"
 			</Table>
 		</Devices>
 
+		<Maneuver
+			maxRotationRate=	"9.0"
+			rotationAccel=		"1.0"
+			/>
+
 		<Items>
 			<Item count="2d6" item="&itHeliumAssembly;"/>
 		</Items>
 
 		<Image imageID="&rsMediumShips2;" imageX="320" imageY="0" imageWidth="64" imageHeight="64"/>
+
+		<Effects>
+			<Effect type="thrustMain"		posAngle="141"	posRadius="27"	posZ="0"	rotation="180"/>
+			<Effect type="thrustMain"		posAngle="-141"	posRadius="27"	posZ="0"	rotation="180"/>
+			<Effect type="rotateRight"		posAngle="82"	posRadius="23"	posZ="0"	rotation="0"/>
+			<Effect type="rotateRight"		posAngle="-98"	posRadius="23"	posZ="0"	rotation="180"/>
+			<Effect type="rotateLeft"		posAngle="-82"	posRadius="23"	posZ="0"	rotation="0"/>
+			<Effect type="rotateLeft"		posAngle="98"	posRadius="23"	posZ="0"	rotation="180"/>
+		</Effects>
 
 		<AISettings
 			fireRateAdj=		"20"
@@ -3421,12 +3727,6 @@ useScreen=			"Main"
 			combatStyle=		"advanced"
 			/>
 
-		<DriveImages>
-			<NozzleImage imageID="&rsDriveExhaust;" imageX="48" imageY="0" imageWidth="48" imageHeight="48" rotationOffset="-24"/>
-			<NozzlePos x="-24" y="18"	z="0"/>
-			<NozzlePos x="-24" y="-18"	z="0"/>
-		</DriveImages>
-
 	</ShipClass>
 	
 	<!-- Centurion/X-class Heavy Gunship -->
@@ -3435,15 +3735,12 @@ useScreen=			"Main"
 			manufacturer=		"Pacific Defense Corporation"
 			class=				"Centurion/X"
 			type=				"heavy gunship"
-			score=				"1230"
+			defaultSovereign=	"&svCommonwealthFleet;"
 
-			mass=				"250"
+			mass=				"90"
 			cargoSpace=			"50"
-			thrust=				"2000"
-			maneuver=			"3"
+			thrustRatio=		"12.0"
 			maxSpeed=			"22"
-
-			leavesWreck=		"50"
 
 			attributes=			"commonwealth,commonMilitary,genericClass"
 			>
@@ -3462,8 +3759,13 @@ useScreen=			"Main"
 			<Table>
 				<Device chance="80" item="&itR5Deflector;"/>
 				<Device chance="20" item="&itR5BDeflector;"/>
-			</Table>			
+			</Table>
 		</Devices>
+
+		<Maneuver
+			maxRotationRate=	"12.0"
+			rotationAccel=		"1.0"
+			/>
 
 		<Items>
 			<Item count="2d6" item="&itHeliumAssembly;"/>
@@ -3471,71 +3773,14 @@ useScreen=			"Main"
 
 		<Image imageID="&rsMediumShips2;" imageX="320" imageY="0" imageWidth="64" imageHeight="64"/>
 
-		<AISettings
-			fireRateAdj=		"15"
-			fireAccuracy=		"90"
-			perception=			"4"
-			
-			combatStyle=		"advanced"
-			/>
-
-		<DriveImages>
-			<NozzleImage imageID="&rsDriveExhaust;" imageX="48" imageY="0" imageWidth="48" imageHeight="48" rotationOffset="-24"/>
-			<NozzlePos x="-24" y="18"	z="0"/>
-			<NozzlePos x="-24" y="-18"	z="0"/>
-		</DriveImages>
-
-	</ShipClass>
-	
-	<!-- Britannia-class Heavy Gunship -->
-
-	<ShipClass UNID="&scBritannia;"
-			manufacturer=		"Pacific Defense Corporation"
-			class=				"Britannia"
-			type=				"heavy gunship"
-			score=				"635"
-
-			mass=				"300"
-			cargoSpace=			"50"
-			thrust=				"1250"
-			maneuver=			"3"
-			maxSpeed=			"22"
-
-			leavesWreck=		"40"
-
-			attributes=			"commonwealth,commonMilitary,genericClass"
-			>
-
-		<Armor>
-			<ArmorSection start="315" span="90" armorID="&itP120HexphaseArmor;"/>
-			<ArmorSection start="225" span="90" armorID="&itP120HexphaseArmor;"/>
-			<ArmorSection start="135" span="90" armorID="&itP120HexphaseArmor;"/>
-			<ArmorSection start="45"  span="90" armorID="&itP120HexphaseArmor;"/>
-		</Armor>
-
-		<Devices>
-			<Device deviceID="&itStarCannon;"/>
-			<Device deviceID="&itR5BDeflector;"/>
-			<Device deviceID="&itNM900MissilePod;"/>
-		</Devices>
-
-		<Items>
-			<Item count="2d6" item="&itHeliumAssembly;"/>
-		</Items>
-
-		<Image imageID="&rsBritannia;" imageWidth="80" imageHeight="80"/>
-
-		<Events>
-			<Reload>
-				(block (theMissilePod)
-					(setq theMissilePod (item (objGetItems gSource "lI") 0))
-					(if theMissilePod
-						; Tell the missile pod to reload itself
-						(objFireItemEvent gSource theMissilePod "Reload")
-						)
-					)
-			</Reload>
-		</Events>
+		<Effects>
+			<Effect type="thrustMain"		posAngle="141"	posRadius="27"	posZ="0"	rotation="180"/>
+			<Effect type="thrustMain"		posAngle="-141"	posRadius="27"	posZ="0"	rotation="180"/>
+			<Effect type="rotateRight"		posAngle="82"	posRadius="23"	posZ="0"	rotation="0"/>
+			<Effect type="rotateRight"		posAngle="-98"	posRadius="23"	posZ="0"	rotation="180"/>
+			<Effect type="rotateLeft"		posAngle="-82"	posRadius="23"	posZ="0"	rotation="0"/>
+			<Effect type="rotateLeft"		posAngle="98"	posRadius="23"	posZ="0"	rotation="180"/>
+		</Effects>
 
 		<AISettings
 			fireRateAdj=		"15"
@@ -3545,11 +3790,6 @@ useScreen=			"Main"
 			combatStyle=		"advanced"
 			/>
 
-		<DriveImages>
-			<NozzleImage imageID="&rsDriveExhaust;" imageX="48" imageY="0" imageWidth="48" imageHeight="48" rotationOffset="-24"/>
-			<NozzlePos x="-24" y="12"	z="0"/>
-			<NozzlePos x="-24" y="-12"	z="0"/>
-		</DriveImages>
 	</ShipClass>
 	
 	<!-- Aquila-class Cruiser -->
@@ -3558,48 +3798,27 @@ useScreen=			"Main"
 			manufacturer=		"Pacific Defense Corporation"
 			class=				"Aquila"
 			type=				"cruiser"
+			defaultSovereign=	"&svCommonwealthFleet;"
 
-			mass=				"10000"
+			size=				"220"
+			mass=				"26000"
 			cargoSpace=			"1000"
-			thrust=				"5000"
-			maneuver=			"12"
+			thrustRatio=		"1"
 			maxSpeed=			"16"
 
 			cyberDefenseLevel=	"8"
-			explosionType=		"&vtThermoExplosion2;"
-			leavesWreck=		"100"
+			explosionType=		"&vtThermoExplosion3;"
 
 			attributes=			"capitalShip, commonwealth, commonwealthFleet, commonwealthMilitary, genericClass"
 			>
 
-		<Armor>
-			<ArmorSection start="345" span="15" armorID="&itP210HexphaseArmor;" />
-			<ArmorSection start="330" span="15" armorID="&itP210HexphaseArmor;" />
-			<ArmorSection start="315" span="15" armorID="&itP210HexphaseArmor;" nonCritical="general"/>
-			<ArmorSection start="300" span="15" armorID="&itP210HexphaseArmor;" nonCritical="general"/>
-			<ArmorSection start="285" span="15" armorID="&itP210HexphaseArmor;" nonCritical="general"/>
-			<ArmorSection start="270" span="15" armorID="&itP210HexphaseArmor;" nonCritical="general"/>
-			<ArmorSection start="255" span="15" armorID="&itP210HexphaseArmor;" nonCritical="general"/>
-			<ArmorSection start="240" span="15" armorID="&itP210HexphaseArmor;" nonCritical="general"/>
-			<ArmorSection start="225" span="15" armorID="&itP210HexphaseArmor;" nonCritical="general"/>
-			<ArmorSection start="210" span="15" armorID="&itP210HexphaseArmor;" nonCritical="general"/>
-			<ArmorSection start="195" span="15" armorID="&itP210HexphaseArmor;" />
-			<ArmorSection start="180" span="15" armorID="&itP210HexphaseArmor;" />
-
-			<ArmorSection start="165" span="15" armorID="&itP210HexphaseArmor;" />
-			<ArmorSection start="150" span="15" armorID="&itP210HexphaseArmor;" />
-			<ArmorSection start="135" span="15" armorID="&itP210HexphaseArmor;" nonCritical="general"/>
-			<ArmorSection start="120" span="15" armorID="&itP210HexphaseArmor;" nonCritical="general"/>
-			<ArmorSection start="105" span="15" armorID="&itP210HexphaseArmor;" nonCritical="general"/>
-			<ArmorSection start="90"  span="15" armorID="&itP210HexphaseArmor;" nonCritical="general"/>
-			<ArmorSection start="75"  span="15" armorID="&itP210HexphaseArmor;" nonCritical="general"/>
-			<ArmorSection start="60"  span="15" armorID="&itP210HexphaseArmor;" nonCritical="general"/>
-			<ArmorSection start="45"  span="15" armorID="&itP210HexphaseArmor;" nonCritical="general"/>
-			<ArmorSection start="30"  span="15" armorID="&itP210HexphaseArmor;" nonCritical="general"/>
-			<ArmorSection start="15"  span="15" armorID="&itP210HexphaseArmor;" />
-			<ArmorSection start="0"   span="15" armorID="&itP210HexphaseArmor;" />
-		</Armor>
-
+		<!-- Configuration -->
+		
+		<Armor
+			armorID=			"&itP210HexphaseArmor;"
+			count=				"16"
+			/>
+		
 		<Devices>
 			<Device deviceID="&itStarCannon;" secondaryWeapon="true" minFireArc="355" maxFireArc="175" posAngle="99" posRadius="22"/>
 			<Device deviceID="&itStarCannon;" secondaryWeapon="true" minFireArc="160" maxFireArc="5" posAngle="261" posRadius="22"/>
@@ -3607,14 +3826,41 @@ useScreen=			"Main"
 			<Device deviceID="&itR9Deflector;"/>
 		</Devices>
 
-		<Image imageID="&rsLargeShips1;" imageX="1728" imageY="0" imageWidth="192" imageHeight="192" imageFrameCount="0" imageTicksPerFrame="0"/>
+		<Maneuver
+			maxRotationRate=	"3"
+			rotationAccel=		"0.5"
+			/>
+
+		<Interior>
+			<Compartment name="interior"
+					hitPoints=	"200"
+					/>
+			
+			<Compartment name="main drive"
+					type=		"mainDrive"
+					hitPoints=	"100"
+
+					posX=		"-75"
+					posY=		"0"
+					sizeX=		"42"
+					sizeY=		"56"
+					/>
+		</Interior>
+
+		<Image imageID="&rsAquila;" imageWidth="210" imageHeight="210"/>
+
+		<Effects>
+			<Effect type="thrustMain"		posAngle="168"	posRadius="94"	posZ="-20"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="-168"	posRadius="94"	posZ="-20"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="180"	posRadius="94"	posZ="-5"	rotation="180"	effect="&efMainThrusterLarge;"/>
+		</Effects>
 
 		<Items>
 			<Item count="4d20" item="&itM2Missile;"/>
 		</Items>
 
 		<AISettings
-			fireRateAdj=		"20"
+			fireRateAdj=		"30"
 			fireAccuracy=		"95"
 			perception=			"4"
 
@@ -4177,7 +4423,7 @@ useScreen=			"Main"
 						(lambda Nil
 							(block (stationList)
 								; Look for a major Ares station in the system
-								(setq stationList (sysFindObject gSource "T:aresMajor;A"))
+								(setq stationList (SysFindObject gSource "T:aresMajor;A"))
 
 								; If we found at least one, then pick a random one
 								(setq gTarget (random stationList))
@@ -4250,7 +4496,7 @@ useScreen=			"Main"
 							(block Nil
 								; Look for a major commonwealth station in the system that is at least
 								; 300 light-seconds from here.
-								(setq stationList (sysFindObject gSource "T:fleetDelivery; A R:300;"))
+								(setq stationList (SysFindObject gSource "T:fleetDelivery; A R:300;"))
 
 								; If we found at least one, then pick a random one
 								(setq gTarget (random stationList))
@@ -4501,13 +4747,13 @@ useScreen=			"Main"
 						(lambda Nil
 							(block (gate stationList)
 								; Get the list of all Ares bases
-								(setq stationList (sysFindObject gSource "T:ares;A"))
+								(setq stationList (SysFindObject gSource "T:ares;A"))
 								(setq gEnd Nil)
 
 								; For each stargate, see if we can travel to an Ares base
 								; stop looking when we find a destination
 								(enumwhile
-									(sysFindObject gSource "G -uncharted;")
+									(SysFindObject gSource "G -uncharted;")
 									(not gEnd)
 									gate
 
@@ -4595,7 +4841,7 @@ useScreen=			"Main"
 						(lambda Nil
 							(block (gateList)
 								; Find a stargate more than 300 light-seconds away
-								(setq gateList (sysFindObject gSource "GR:300; -uncharted;"))
+								(setq gateList (SysFindObject gSource "GR:300; -uncharted;"))
 
 								; See if we meet all requirements
 								(switch
@@ -4747,7 +4993,7 @@ useScreen=			"Main"
 						(lambda Nil
 							(block Nil
 								; Find a random stargate more than 400 light-seconds from us
-								(setq gStart (random (sysFindObject gSource "G R:400; -uncharted;")))
+								(setq gStart (random (SysFindObject gSource "G R:400; -uncharted;")))
 
 								; Describe the mission
 								(if gStart
@@ -4805,7 +5051,7 @@ useScreen=			"Main"
 								(setq gStart Nil)
 
 								; Get the list of gates in the system
-								(setq gateList (sysFindObject gSource "G -uncharted;"))
+								(setq gateList (SysFindObject gSource "G -uncharted;"))
 
 								; Make sure there are at least 2 gates
 								(if (geq (count gateList) 2)
@@ -4891,7 +5137,7 @@ useScreen=			"Main"
 						(lambda Nil
 							(block Nil
 								; Pick a random Ares station in the system
-								(setq gTarget (random (sysFindObject gSource "T:aresMajor;A")))
+								(setq gTarget (random (SysFindObject gSource "T:aresMajor;A")))
 
 								; Compose description
 								(if gTarget
@@ -4952,7 +5198,7 @@ useScreen=			"Main"
 								(setq gStart Nil)
 
 								; Get the list of gates in the system
-								(setq gateList (sysFindObject gSource "G -uncharted;"))
+								(setq gateList (SysFindObject gSource "G -uncharted;"))
 
 								; Make sure there are at least 2 gates
 								(if (geq (count gateList) 2)
@@ -6477,7 +6723,7 @@ useScreen=			"Main"
 			<OnCreate>
 				(block (dest)
 					; Look for the Outbound stargate (since we want to get back to St. K's)
-					(setq dest (item (sysFindObject gSource "G:Inbound;") 0))
+					(setq dest (item (SysFindObject gSource "G:Inbound;") 0))
 					(objSetObjRefData gSource "dest" dest)
 
 					; Are we in a good spot? If not, then we give orders to move
@@ -6774,7 +7020,7 @@ useScreen=			"Main"
 
 									; Send a battlefleet to attack the Antarctica
 
-									(setq start (sysFindObject gSource "GN -uncharted;"))
+									(setq start (SysFindObject gSource "GN -uncharted;"))
 									(objSetData gSource "attackersLeft" 6)
 									(for i 1 6
 										(block (attacker)
@@ -7498,7 +7744,7 @@ useScreen=			"Main"
 								(setq lastVisit (subtract (unvGetTick) (objGetData gSource "MissionTime")))
 								(switch
 									; If the antactica is in the system, then we might have a clue
-									(sysFindObject gSource "sA +cscAntarctica;")
+									(SysFindObject gSource "sA +cscAntarctica;")
 										(scrSetDesc gScreen
 											"Admiral Decker talks with his XO at his center console. "
 											"They see you enter, and the admiral comes up to you quietly:\n\n"
@@ -7915,7 +8161,7 @@ useScreen=			"Main"
 							(switch
 								; If we don't have anyone attacking us, then there is
 								; nothing to do.
-								(not (setq attackerList (sysFindObject gSource "sAEPX")))
+								(not (setq attackerList (SysFindObject gSource "sAEPX")))
 									Nil
 									
 								; If we're not supposed to attack, then don't
@@ -8090,21 +8336,21 @@ useScreen=			"Main"
 		</Events>
 	</ShipClass>
 	
-	<!-- Rogue Mine Layer -->
+		<!-- Rogue Mine Layer -->
 
 	<ShipClass UNID="&scRogueMineLayer;"
 			manufacturer=		"Pacific Defense Corporation"
 			class=				"Aurochs"
 			type=				"mine layer"
-			score=				"975"
+			defaultSovereign=	"&svRogueFleet;"
 
-			mass=				"8000"
+			size=				"65"
+			mass=				"2000"
 			cargoSpace=			"5600"
-			thrust=				"3000"
-			maneuver=			"9"
+			thrustRatio=		"0.8"
 			maxSpeed=			"15"
 
-			explosionType=		"&vtBlastExplosion2;"
+			explosionType=		"&vtBlastExplosion3;"
 			leavesWreck=		"80"
 
 			attributes=			""
@@ -8130,7 +8376,18 @@ useScreen=			"Main"
 			<Device deviceID="&itR5Deflector;"/>
 		</Devices>
 
-		<Image imageID="&rsMediumShips3;" imageX="768" imageY="0" imageWidth="96" imageHeight="96" imageFrameCount="0" imageTicksPerFrame="0"/>
+		<Maneuver
+			maxRotationRate=	"4.0"
+			rotationAccel=		"0.5"
+			/>
+
+		<Image imageID="&rsAurochs;" imageWidth="96" imageHeight="96"/>
+
+		<Effects>
+			<Effect type="thrustMain"		posAngle="157"	posRadius="43"	posZ="0"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="180"	posRadius="42"	posZ="5"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="-157"	posRadius="43"	posZ="0"	rotation="180"	effect="&efMainThrusterLarge;"/>
+		</Effects>
 
 		<Items>
 			<Item count="3d12" item="&itStaticMine;"/>
@@ -8186,6 +8443,7 @@ useScreen=			"Main"
 			fireRateAdj=		"20"
 			fireAccuracy=		"90"
 			perception=			"4"
+			
 			combatStyle=		"standOff"
 			/>
 
@@ -8332,6 +8590,78 @@ useScreen=			"Main"
 		</Events>
 	</ShipClass>
 	
+	<!-- Ares Cannon 
+
+	<ShipClass UNID="&scAresCannon;"
+			manufacturer=		"Ares Orthodoxy"
+			class=				"Ares sentry"
+			type=				""
+			defaultSovereign=	"&svAres;"
+
+			attributes=			"ares, genericClass"
+			   
+			mass=				"400"
+			thrustRatio=		"0"
+			maxSpeed=			"0"
+			cargoSpace=			"0"
+			>
+
+		;Configuration 
+		
+		<Armor
+			armorID=			"&itTharsisPlate;"
+			count=				"2"
+			/>
+		
+		<Devices>
+			<Device deviceID="&itAresArchcannon;" minFireArc="350" maxFireArc="10" />
+			<Device deviceID="&itMicronukeCannon;" secondary="true" />
+			<Device deviceID="&itCydonianShields;" />
+		</Devices>
+
+		<Items>
+			<Item count="12d10-20"	item="&itMicronuke;"/>
+		</Items>
+		
+		<Maneuver
+			maxRotationRate=	"18.0"
+			rotationAccel=		"3.0"
+			/>
+
+		;Image and Effects 
+
+		<Image imageID="&rsMediumShips1;" imageX="576" imageY="0" imageWidth="48" imageHeight="48" rotationOffset="-15"/>
+
+		; AI and Behavior
+
+		<AISettings
+			fireRateAdj=		"40"
+			fireAccuracy=		"90"
+			perception=			"4"
+
+			noFriendlyFire=		"true"
+			/>
+				<Events>
+			<OnCreate>
+				;hook onto closest Ares station
+				(block (Base)
+					(setq Base (SysFindObject gSource "NT:Ares;"))
+					(ObjSetData gSource "Home" Base)
+					(ObjSetData gSource "HomeID" (ObjGetID Base))
+					(ObjSetData gSource "Angle" (RPCFindAngle Base gSource))
+					(ObjSetData gSource "Dist" (ObjGetDistance Base gSource))
+					(sysAddObjRecurringTimerEvent 5 gSource "Hook")
+					)
+			</OnCreate>
+			<Hook>
+				(block Nil
+					(objSetPos gSource (sysVectorPolarOffset (ObjGetPos (ObjGetObjByID(ObjGetData gSource "HomeID"))) (modulo(add (ObjGetData gSource "Angle") 90) 360) (ObjGetData gSource "Dist")))
+					;(plymessage gPlayer "Hi!")
+					)
+			</Hook>
+		</Events>
+	</ShipClass>-->
+	
 	<!-- Deimos Destroyer -->
 
 	<ShipClass UNID="&scDeimos;"
@@ -8388,9 +8718,11 @@ useScreen=			"Main"
 			<Item count="12d10-20"	item="&itMicronuke;"/>
 		</Items>
 
-		<!-- Image and Effects -->
-		
+		<!-- Image and Effects 
 		<Image imageID="&rsMediumShips4;" imageX="1024" imageY="0" imageWidth="128" imageHeight="128"/>
+		-->
+		
+		<Image imageID="&rsDeimos;" imageWidth="170" imageHeight="170" rotationOffset="-30"/>
 
 		<!-- AI and Behavior -->
 
@@ -8438,6 +8770,13 @@ useScreen=			"Main"
 			<Device deviceID="&itAresMicroTurret;" secondaryWeapon="true" posAngle="180" posRadius="80"/>
 			<Device deviceID="&itKaidunShields;"/>
 		</Devices>
+		
+		<Maneuver
+			maxRotationRate=	"3.6"
+			rotationAccel=		"0.6"
+			/>
+
+		
 		<Interior>
 			<Compartment name="interior"
 					hitPoints=	"600"
@@ -8462,6 +8801,15 @@ useScreen=			"Main"
 		<!-- Image and Effects -->
 		
 		<Image imageID="&rsLargeShips2;" imageX="256" imageY="0" imageWidth="256" imageHeight="256"/>
+		
+		<Effects>
+			<Effect type="thrustMain"		posAngle="180"	posRadius="118"	posZ="-30"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="170"	posRadius="118"	posZ="-15"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="-170"	posRadius="118"	posZ="-15"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="170"	posRadius="118"	posZ="15"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="-170"	posRadius="118"	posZ="15"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="180"	posRadius="118"	posZ="30"	rotation="180"	effect="&efMainThrusterLarge;"/>
+		</Effects>
 
 		<!-- AI and Behavior -->
 
@@ -8550,19 +8898,19 @@ useScreen=			"Main"
 			manufacturer=		"Xenophobe"
 			class=				""
 			type=				"defender"
+			defaultSovereign=	"&svXenophobes;"
 
 			attributes=			"benninXenophobes, capitalShip, genericClass"
-			   
-			mass=				"4500"
+
+			size=				"165"
+			mass=				"15000"
 			cargoSpace=			"500"
 			thrustRatio=		"1"
-			maneuver=			"10"
 			maxSpeed=			"12"
 
 			cyberDefenseLevel=	"5"
 
-			explosionType=		"&vtBlastExplosion2;"
-			leavesWreck=		"100"
+			explosionType=		"&vtBlastExplosion4;"
 
 			>
 
@@ -8574,10 +8922,16 @@ useScreen=			"Main"
 			/>
 		
 		<Devices>
-			<Device deviceID="&itMarkIIIHowitzer;" omnidirectional="true" posAngle="0" posRadius="0" posZ="3"/>
-			<Device deviceID="&itLancerCannon;" secondaryWeapon="true" minFireArc="340" maxFireArc="180" posAngle="130" posRadius="26" posZ="3"/>
-			<Device deviceID="&itLancerCannon;" secondaryWeapon="true" minFireArc="180" maxFireArc="20" posAngle="230" posRadius="26" posZ="3"/>
+			<Device deviceID="&itMarkIIIHowitzer;" omnidirectional="true" posAngle="180" posRadius="6" posZ="7"/>
+			<Device deviceID="&itLancerCannon;" secondaryWeapon="true" minFireArc="340" maxFireArc="180" posAngle="130" posRadius="36" posZ="7"/>
+			<Device deviceID="&itLancerCannon;" secondaryWeapon="true" minFireArc="180" maxFireArc="20" posAngle="230" posRadius="36" posZ="7"/>
+			<Device deviceID="&itPatchSpider;"/>
 		</Devices>
+
+		<Maneuver
+			maxRotationRate=	"4"
+			rotationAccel=		"0.5"
+			/>
 
 		<Interior>
 			<Compartment name="interior"
@@ -8606,8 +8960,14 @@ useScreen=			"Main"
 
 		<!-- Image and Effects -->
 		
-		<Image imageID="&rsMediumShips4;" imageX="512" imageY="0" imageWidth="128" imageHeight="128" imageFrameCount="0" imageTicksPerFrame="0"/>
+		<Image imageID="&rsXenophobeDefender;" imageWidth="180" imageHeight="180"/>
 
+		<Effects>
+			<Effect type="thrustMain"		posAngle="168"	posRadius="75"	posZ="0"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="180"	posRadius="74"	posZ="0"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="-168"	posRadius="75"	posZ="0"	rotation="180"	effect="&efMainThrusterLarge;"/>
+		</Effects>
+		
 		<!-- AI and Behavior -->
 
 		<AISettings
@@ -8615,45 +8975,44 @@ useScreen=			"Main"
 			fireRateAdj=		"40"
 			fireAccuracy=		"90"
 			perception=			"4"
-			noFriendlyFire=		"true"
 			/>
 
 	</ShipClass>
-	
+
 	<!-- Xenophobe Worldship -->
 
 	<ShipClass UNID="&scXenophobeWorldship;"
 			manufacturer=		"Xenophobe"
 			class=				""
 			type=				"worldship"
+			defaultSovereign=	"&svXenophobes;"
 
 			attributes=			"benninXenophobes, capitalShip, genericClass, majorShip"
 			   
-			mass=				"50000"
+			size=				"300"
+			mass=				"70000"
 			cargoSpace=			"25000"
 			thrustRatio=		"0.5"
-			maneuver=			"16"
 			maxSpeed=			"6"
 
 			cyberDefenseLevel=	"8"
 
-			explosionType=		"&vtThermoExplosion2;"
-			leavesWreck=		"100"
+			explosionType=		"&vtThermoExplosion3;"
 			>
 
 		<!-- Configuration -->
 		
 		<Armor
 			armorID=			"&itWorldshipArmorPlate;"
-			count=				"18"
+			count=				"16"
 			/>
 		
 		<Devices>
 			<Device deviceID="&itMarkVHowitzer;" omnidirectional="true" posAngle="0" posRadius="24" posZ="0"/>
-			
+
 			<Device deviceID="&itMarkVHowitzer;" secondaryWeapon="true" minFireArc="340" maxFireArc="200" posAngle="90" posRadius="40"/>
 			<Device deviceID="&itMarkVHowitzer;" secondaryWeapon="true" minFireArc="160" maxFireArc="20" posAngle="270" posRadius="40"/>
-
+			
 			<Device deviceID="&itXenophobeLancer;" secondaryWeapon="true" minFireArc="345" maxFireArc="165" posAngle="30" posRadius="75" posZ="0"/>
 			<Device deviceID="&itXenophobeLancer;" secondaryWeapon="true" minFireArc="345" maxFireArc="135" posAngle="15" posRadius="84" posZ="0"/>
 			<Device deviceID="&itXenophobeLancer;" secondaryWeapon="true" minFireArc="225" maxFireArc="15"  posAngle="345" posRadius="84" posZ="0"/>
@@ -8664,6 +9023,11 @@ useScreen=			"Main"
 			<Device deviceID="&itMissileDefense;" omnidirectional="true" />
 			<Device deviceID="&it500MWReactor;"/>
 		</Devices>
+
+		<Maneuver
+			maxRotationRate=	"2"
+			rotationAccel=		"0.25"
+			/>
 
 		<Interior>
 			<Compartment name="interior"
@@ -8694,6 +9058,15 @@ useScreen=			"Main"
 
 		<Image imageID="&rsXenophobeWorldship;" imageX="0" imageY="0" imageWidth="250" imageHeight="250"/>
 
+		<Effects>
+			<Effect type="thrustMain"		posAngle="175"	posRadius="99"	posZ="-10"	rotation="180"	effect="&efMainThrusterLarge;"	sendToBack="*"/>
+			<Effect type="thrustMain"		posAngle="-175"	posRadius="99"	posZ="-10"	rotation="180"	effect="&efMainThrusterLarge;"	sendToBack="*"/>
+			<Effect type="thrustMain"		posAngle="168"	posRadius="93"	posZ="0"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="-168"	posRadius="93"	posZ="0"	rotation="180"	effect="&efMainThrusterLarge;"/>
+			<Effect type="thrustMain"		posAngle="175"	posRadius="99"	posZ="10"	rotation="180"	effect="&efMainThrusterLarge;"	bringToFront="*"/>
+			<Effect type="thrustMain"		posAngle="-175"	posRadius="99"	posZ="10"	rotation="180"	effect="&efMainThrusterLarge;"	bringToFront="*"/>
+		</Effects>
+		
 		<!-- AI and Behavior -->
 
 		<AISettings
@@ -8702,22 +9075,8 @@ useScreen=			"Main"
 			fireAccuracy=		"90"
 			perception=			"6"
 			combatStyle=		"standOff"
-			noFriendlyFire=		"true"
 			/>
-		<!--
-			<OnDestroy>
-			(block (Xeno)
-				;remember the attacker
-				;(ObjSetData gSource "Attacker" (objGetID aDestroyer))
-				;gate in a Xeno ship
-				(setq Xeno (sysCreateShip &scXenophobeWorldship; (sysVectorPolarOffset (sysFindObject nil "GN") (random 0 360) (random 16 20)) &svDestructiveChaos;))
-				;tell Xeno ship to attack the destroyer then wander
-				;(shpOrder Xeno 'Attack (objGetObjByID number))
-				;just make the new Xeno ship wander, otherwise it becomes apparent that they Xenos are endless....
-				(shpOrder Xeno 'wander)
-				)
-			</OnDestroy>
-			-->
+
 	</ShipClass>
 
 
@@ -8726,7 +9085,7 @@ useScreen=			"Main"
 
 
 
-	<!-- PK25 Morning Star Cannon -->
+	<!-- PK25 Morning Star Cannon 
 
 	<ItemType UNID="&itMorningStarCannon;"
 			name=				"PK25 Morning Star cannon"
@@ -8762,8 +9121,8 @@ useScreen=			"Main"
 		</Weapon>
 
 	</ItemType>
-
-	<!-- Solar Armor -->
+	-->
+	<!-- Solar Armor 
 
 	<ItemType UNID="&itSolarArmor;"
 			name=				"[segment(s) of ]solar armor"
@@ -8796,15 +9155,15 @@ useScreen=			"Main"
 				(block Nil
 					;if we're less than 100ls from star, refuel every 100 ticks
 					(if
-						(ls (objGetDistance gSource (sysFindObject gSource "NT:star;")) 80)
+						(ls (objGetDistance gSource (SysFindObject gSource "NT:star;")) 80)
 							(shpConsumeFuel gSource -1)
 						)
 					)
 			</OnUpdate>
 		</Events>
 	</ItemType>
-
-	<!-- Solar Panel Array -->
+	-->
+	<!-- Solar Panel Array 
 
 	<ItemType UNID="&itSolarPanelArray;"
 			name=				"solar panel array"
@@ -8824,7 +9183,7 @@ useScreen=			"Main"
 				/>
 
 	</ItemType>
-	
+	-->
 		<!-- Tinker Gathering -->
 
 	<StationType UNID="&stTinkerGathering;"
@@ -9146,6 +9505,101 @@ useScreen=			"Main"
 
 	</ItemType>
 -->
+		<!-- PK25 Morning Star Cannon -->
+
+	<ItemType UNID="&itMorningStarCannon;"
+			name=				"PK25 Morning Star cannon"
+			attributes=			"commonwealth, majorItem, NAMI"
+			  
+			level=				"4"
+			frequency=			"uncommon"
+
+			value=				"5200"
+			mass=				"4000"
+			  
+			description=		"NAMI's Morning Star cannon shoots a high-velocity cloud of dense particles that can severely damage light to medium armor."
+			>
+
+		<Image imageID="&rsItemsNAMI3;" imageX="96" imageY="0" imageWidth="96" imageHeight="96"/>
+
+		<Weapon
+				type=				"particles"
+
+				damage=				"kinetic:25; WMD:1"
+				fireRate=			"16"
+				missileSpeed=		"40"
+				lifetime=			"60"
+				powerUse=			"150"
+
+				particleCount=		"1d11+44"
+				particleSpreadAngle="15"
+				sound=				"&snRecoillessCannon;"
+				>
+
+			<Effect>
+				<Particle
+						style=			"line"
+						primaryColor=	"#ccf7ff"
+						secondaryColor=	"#2e3233"
+						/>
+			</Effect>
+		</Weapon>
+
+	</ItemType>
+	
+	<!-- Solar Armor -->
+
+	<ItemType UNID="&itSolarArmor;"
+			name=				"[segment(s) of ]solar armor"
+			attributes=			"commonwealth, minorItem, solon"
+			  
+			level=				"4"
+			frequency=			"rare"
+			numberAppearing=	"1d4"
+
+			value=				"700"
+			mass=				"3000"
+			  
+			description=		"This armor combines honeycombed solar panels with a plasteel armor substrate. The armor will recharge the ship's reactor when near a sun."
+			>
+
+		<Image imageID="&rsItems4;" imageX="0" imageY="0" imageWidth="96" imageHeight="96"/>
+
+		<Armor
+				hitPoints=	"75"
+				hpBonus=	"+100, -50, +25, -25, +25"
+
+				repairTech=	"5"
+				repairCostAdj=	"200"
+				installCostAdj=	"200"
+
+				photoRecharge="true"
+				/>
+
+	</ItemType>
+	<!-- Solar Panel Array -->
+
+	<ItemType UNID="&itSolarPanelArray;"
+			name=				"solar panel array"
+			attributes=			"commonwealth, majorItem"
+			  
+			level=				"3"
+			frequency=			"rare"
+
+			value=				"650"
+			mass=				"1000"
+			  
+			description=		"A solar panel array converts sunlight into energy usable by a ship's reactor."
+			>
+
+		<Image imageID="&rsItems1;" imageX="0" imageY="192" imageWidth="96" imageHeight="96"/>
+
+		<SolarDevice
+				refuel=			"60"
+				/>
+
+	</ItemType>
+	
 	<!-- Commonwealth Turret -->
 
 	<StationType UNID="&stCommonwealthTurret;"
@@ -9156,7 +9610,6 @@ useScreen=			"Main"
 			noMapLabel=			"true"
 			noFriendlyFire=		"true"
 			canAttack=			"true"
-			repairRate=			"1"
 
 			mass=				"2000"
 			armorID=			"&itP120HexphaseArmor;"
@@ -9176,9 +9629,10 @@ useScreen=			"Main"
 		<Devices>
 			<Device deviceID="&itTeV9Blaster;"	omnidirectional="true"/>
 			<Device deviceID="&itNM900MissilePod;"	omnidirectional="true"/>
+			<Device deviceID="&itMammoth25Deflector;"	/>
 		</Devices>
 
-				<DockScreens>
+		<DockScreens>
 			<Main>
 
 				<Panes>
@@ -9202,7 +9656,7 @@ useScreen=			"Main"
 				portRadius=		"24"
 				maxDist=		"3"
 				/>
-		
+
 	</StationType>
 	
 	<!-- CorporateCruiser -->
@@ -9211,27 +9665,26 @@ useScreen=			"Main"
 			manufacturer=		"Rasiermesser"
 			class=				"Corporate cruiser"
 			type=				""
+			defaultSovereign=	"&svCorporate;"
 
 			attributes=			"capitalShip, corporate, genericClass, majorShip"
 			   
 			size=				"275"
-			mass=				"8000"
+			mass=				"25000"
 			thrustRatio=		"2"
-			maneuver=			"12"
 			maxSpeed=			"20"
 			cargoSpace=			"1000"
 
 			cyberDefenseLevel=	"8"
 
-			explosionType=		"&vtThermoExplosion2;"
-			leavesWreck=		"100"
+			explosionType=		"&vtThermoExplosion3;"
 			>
 
 		<!-- Configuration -->
 		
 		<Armor
 			armorID=			"&itHexaCarbideArmor;"
-			count=				"18"
+			count=				"16"
 			/>
 		
 		<Devices>
@@ -9241,6 +9694,11 @@ useScreen=			"Main"
 			<Device deviceID="&itRasiermesserLauncher;" omnidirectional="true" posAngle="0" posRadius="0" posZ="0"/>
 			<Device deviceID="&itPlasmaShieldGenerator;"/>
 		</Devices>
+
+		<Maneuver
+			maxRotationRate=	"3.0"
+			rotationAccel=		"0.5"
+			/>
 
 		<Interior>
 			<Compartment name="interior"
@@ -9265,8 +9723,12 @@ useScreen=			"Main"
 
 		<!-- Image and Effects -->
 
-		<Image imageID="&rsCorporateCruiser;" imageX="0" imageY="0" imageWidth="230" imageHeight="230"/>
+		<Image imageID="&rsCorporateCruiser;" imageWidth="230" imageHeight="230"/>
 
+		<Effects>
+			<Effect type="thrustMain"		posAngle="180"	posRadius="0"	posZ="-10"	rotation="180"	sendToBack="*"/>
+		</Effects>
+		
 		<!-- AI and Behavior -->
 		
 		<AISettings
@@ -9276,6 +9738,7 @@ useScreen=			"Main"
 			/>
 
 	</ShipClass>
+
 <!-- Corporate Cruiser 
 ;I didn't like how the Corp Cruiser kept dying when the Ranx killed a Taikon.
 ;So I upped its damage too.
@@ -9370,10 +9833,18 @@ useScreen=			"Main"
 			
 			description=		"Decievingly pathetic-looking as it is, it gets the job done."
 			>
-		<Image imageID="&rsItems1;" imageX="96" imageY="0" imageWidth="96" imageHeight="96"/>		
-		<Weapon
+		<Image imageID="&rsItems1;" imageX="96" imageY="0" imageWidth="96" imageHeight="96"/>	
+		<!--
 				type=				"beam"
-
+				
+				beamType=			"laser"
+				primaryColor=	"0x80, 0xff, 0xff"
+				secondaryColor=	"0x00, 0xff, 0xff"
+		-->		
+		<Weapon
+				type=			"missile"
+				hitPoints=		"20"
+				
 				omnidirectional=	"true"
 				configuration=		"dual"
 				damage=				"ion:20d1+3"
@@ -9381,11 +9852,39 @@ useScreen=			"Main"
 				lifetime=			"200"
 				powerUse=			"1200"
 
-				beamType=			"laser"
-				primaryColor=	"0x80, 0xff, 0xff"
-				secondaryColor=	"0x00, 0xff, 0xff"
 				sound=				"&snLaserCannon;"
 				>
+			<Effect>
+				<ParticleJet
+					emitRate=			"20"
+					emitSpeed=			"2-10"
+					particleLifetime=	"5-15"
+					spreadAngle=		"45"
+					>
+				<Events>
+					<GetParameters>
+						(block (damageHP lifetimeAdj)
+							(setq damageHP (@ gData 'damageHP))
+							(setq lifetimeAdj (mathScale damageHP 10 140 1 5 50))
+
+							{
+								particleLifetime: (cat lifetimeAdj "-" (multiply lifetimeAdj 3))
+								}
+							)
+					</GetParameters>
+				</Events>
+				
+				<ParticleEffect>
+					<Particle
+							style=			"plain"
+							minWidth=		"1"
+							maxWidth=		"2"
+							primaryColor=	"0x80, 0xff, 0xff"
+							secondaryColor=	"0x00, 0xff, 0xff"
+							/>
+				</ParticleEffect>
+			</ParticleJet>
+			</Effect>
 		</Weapon>
 </ItemType>	
 </TranscendenceExtension>

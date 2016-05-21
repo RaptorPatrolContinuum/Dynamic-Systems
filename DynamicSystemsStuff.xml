@@ -21,11 +21,14 @@
 	<!ENTITY scCWEarthzone							"0xE1282A03">
 	<!ENTITY scPirateEarthzone						"0xE1282A04">
 	<!ENTITY stAquilaEncounter						"0xE1282A05">
-	<!--Ranx-->	
+	<!--Ranx
 		;From Dynamic Systems V4 Vanilla Override
 	<!ENTITY svRanxEmpire							"0xE1281B00">
-		
+		-->	
 	<!ENTITY stRanxHQ								"0xE1282B00">
+		<!ENTITY scRanxBomber				"0xE1281B02">
+		<!ENTITY scRanxFrigate				"0xE1281B03">
+		<!ENTITY scRanxTurret				"0xE1281B04">
 	
 	<!--Retaliation-->	
 	<!ENTITY stRetaliationControllerSpawner			"0xE1282C00">
@@ -65,6 +68,8 @@
 	<!ENTITY evMiningStation						"0xE1282E02">
 	
 	<!ENTITY dsSovereignRelation					"0xE1282E03">
+
+	<!ENTITY evScuttler								"0xE1282E04">
 	
 	<!--Resources-->
 	<!ENTITY rsCentauriBaseShip						"0xE1282F00">
@@ -84,12 +89,26 @@
 	<!ENTITY scDySysFreighter						"0xE1282F14">
 	<!ENTITY scDySysSapphire						"0xE1282F15">
 	<!ENTITY scDySysWolfen							"0xE1282F16">
+	<!ENTITY efSunHitEff							"0xE1282F17">
 	
 ]>
-<TranscendenceExtension UNID="&unidDynamicSystems;" version="1.0" name="Dynamic Systems Stuff" credits="RPC, Hatsya-Centauri Base Ship, Patupi-Reconstruction Station">
-<Image UNID="&rsCentauriBaseShip;" 	bitmap="DySys Resources\CentauriBaseShipFull.jpg" backColor="0x00000000"/>
+<!--
+
+	version=		"1.0" 
+	
+-->
+<TranscendenceExtension 
+	UNID=			"&unidDynamicSystems;"
+	apiVersion=     "29"
+	name=			"Dynamic Systems Stuff" 
+	credits=		"RPC, Hatsya-Centauri Base Ship, Patupi-Reconstruction Station, Ranx Ships by Shivan Hunter"
+	>
+
+<Library unid="&unidHumanSpaceLibrary;"/>	
+	
+<Image UNID="&rsCentauriBaseShip;" 	bitmap="DySys Resources\CentauriBaseShipFull.jpg" MaskbackColor="0x00000000"/>
 <!--Credits to Hatsya for the Centauri Base Ship design and graphic. Thanks!-->
-<Image UNID="&rsCentauriBaseShip2;" bitmap="DySys Resources\Centauri Base Ship Test.jpg" backColor="0x00000000"/>
+<Image UNID="&rsCentauriBaseShip2;" bitmap="DySys Resources\Centauri Base Ship Test.jpg" bitmask="DySys Resources\Centauri Base Ship Mask.bmp" backColor="0x00000000"/>
 
 <Sound UNID="&snDrill;"		filename="DySys Resources\Drill.wav"/>
 <Sound UNID="&snBoink;"		filename="DySys Resources\Boink.wav"/>
@@ -343,18 +362,24 @@
 										)
 								(and (geq level 14) (leq level 20))
 									(block Nil
-										(setq Retaliationshiptype &scChasm;)
+										(setq Retaliationshiptype &scCometfall;)
+										(setq escorttype &scChasm;)
 										(setq cnt (random 6 10))
+										(setq metacnt 2)
 										)
 								(and (geq level 21) (leq level 25))
 									(block Nil
-										(setq Retaliationshiptype &scDeimos;)
-										(setq cnt 3)
+										(setq Retaliationshiptype &scCometfall;)
+										(setq escorttype &scDeimos;)
+										(setq cnt 1)
+										(setq metacnt 3)
 										)
 								;If none of the above apply,
 									(block Nil
-										(setq Retaliationshiptype &scPhobos;)
-										(setq cnt 2)
+										(setq Retaliationshiptype &scCometfall;)
+										(setq escorttype &scPhobos;)
+										(setq cnt (random 1 2))
+										(setq metacnt 3)
 										)
 								)
 							(setq escorttype Retaliationshiptype)
@@ -1300,6 +1325,90 @@
 						(eq &svPirates; sovTest)
 							(objFireEvent gSource "CharonRetaliate")
 -->
+	<EffectType UNID="&efSunHitEff;"
+			>
+		<Effect>
+			<Orb	style=			"smooth"
+					animate=		"fade"
+					intensity=		"30"
+					
+					blendMode=		"screen"
+					primaryColor=	"#feff00"
+					secondaryColor=	"#ff7f00"
+					>
+				<Events>
+					<GetParameters>
+						(block (
+							(damageHP (@ gData 'damageHP))
+							)
+							{
+								radius: (if (= damageHP 0) 10 (mathScale damageHP 20 300 50 100 50))
+								lifetime: (if (= damageHP 0) 4 (mathScale damageHP 20 300 24 60 50))
+								}
+							)
+					</GetParameters>
+				</Events>
+			</Orb>
+			
+			<ParticleSystem
+					style=				"radiate"
+					emitLifetime=		"1"
+					emitSpeed=			"10-20"
+					>
+				<ParticleEffect>
+					<Orb
+							instance=			"owner"
+						
+							style=				"smooth"
+							animate=			"fade"
+							radius=				"10"
+							intensity=			"20"
+						
+							blendMode=			"screen"
+							primaryColor=		"#feff00"
+							secondaryColor=		"#ff7f00"
+							>
+						<Events>
+							<GetParameters>
+								(block (
+									(damageHP (@ gData 'damageHP))
+									)
+									{
+										lifetime: (mathScale damageHP 20 300 12 30 50)
+										}
+									)
+							</GetParameters>
+						</Events>
+					</Orb>
+				</ParticleEffect>
+				
+				<Events>
+					<GetParameters>
+						(block (
+							(damageHP (@ gData 'damageHP))
+							)
+							{
+								emitRate: (mathScale damageHP 20 300 30 100 50)
+								particleLifetime: (mathScale damageHP 20 300 12 30 50)
+								}
+							)
+					</GetParameters>
+				</Events>
+			</ParticleSystem>
+		</Effect>
+		
+		<Events>
+			<GetParameters>
+				(block (
+					(damageHP (@ gData 'damageHP))
+					)
+					{
+						noSound: (= damageHP 0)
+						}
+					)
+			</GetParameters>
+		</Events>
+	</EffectType>
 
 <!-- Ares HQ -->
 
@@ -4210,8 +4319,7 @@
 			</Items>
 
 			<Ships>
-				<Ship			count="1d6"	class="&scRanxGunship;"	orders="patrol" patrolDist="5"/>
-				<Ship			count="1d6"	class="&scRanxGunship;"	orders="guard" />
+				<Ship			count="1d6"	class="&scRanxBomber;"	orders="patrol" patrolDist="25"/>
 				<Ship					count="1d3"	class="&scRanxDreadnought;"	orders="guard" >
 					<Escorts>
 						<Ship			count="1d5"	class="&scRanxGunship;"	orders="escort"/>
@@ -4222,7 +4330,7 @@
 						<Ship			count="1d4"	class="&scRanxGunship;"	orders="escort"/>
 					</Escorts>
 				</Ship>
-				<Ship			count="1d6"	class="&scRanxGunship;"	orders="patrol" patrolDist="50"/>
+				<Ship			count="1d6"	class="&scRanxFrigate;"	orders="patrol" patrolDist="50"/>
 			</Ships>
 
 			<Reinforcements minShips="25">
@@ -4231,6 +4339,10 @@
 					<Ship chance="75"  count="1"	class="&scRanxDreadnought;"	orders="patrol" patrolDist="25">
 						<Escorts>
 							<Ship			count="1d4"	class="&scRanxGunship;"	orders="escort"/>
+							<Table>
+								<Ship chance="75"	count="1"	class="&scRanxBomber;"	 orders="escort" />
+								<Ship chance="25"	count="1"	class="&scRanxFrigate;"	 orders="escort" />
+							</Table>
 						</Escorts>
 					</Ship>
 				</Table>
@@ -4243,13 +4355,20 @@
 				</Table>
 			</Construction>
 		
+			<Satellites>
+				<Orbitals count="3d4" distance="40" angle="equidistant">
+					<Ship class="&scRanxTurret;" count="1" sovereign="&svRanxEmpire;" orders="hold"/>
+				</Orbitals>
+			</Satellites>
+
 			<Encounters frequency="common">
 				<Lookup table="&tbRanxEncounters;"/>
 			</Encounters>
+
 			<Events>
 				<OnCreate>
-					(for RPC 0 1
-						<!--thanks Drako!-->
+					<!--(for RPC 0 1
+						;thanks Drako!
 						(block (buildLocation)
 							(setq buildLocation (sysFindObject gSource "nt:asteroid"))
 							(if (geq (count (sysFindObject buildLocation "t:asteroid; N:50")) 50)
@@ -4265,7 +4384,7 @@
 									)
 								)
 							)
-						)
+						)-->
 				</OnCreate>
 			</Events>
 		</StationType>
@@ -4395,7 +4514,8 @@
 		</Events>
 	</ShipClass>
 	
-<!--Mining Station Handler-->
+	<!--Mining Station Handler-->
+
 	<ShipClass UNID="&evMiningStation;"
 			class=				"(wingman base class)"
 			virtual=			"true"
@@ -4592,17 +4712,24 @@
 									"Relationship: " 
 									(sovGetDisposition &svCommonwealth; (ObjGetSovereign gPlayership))
 									"\n\n"
+									;"You are a pirate."
+									;nuisance
+									;bandit
+									;desperado
+									;pirate
+									;extermination
+										;" You are a target for extermination. Entire fleets will come after you. They will not stop until the genocide of their stations and livelihood has ended."
 									(switch
 										(leq (TypGetData &stRetaliationController; (cat &svCommonwealth; "Retaliate")) 5)
-											" You are a nuisance. Only small gunships will be sent to deal with you."
+											" This faction feels calm about you. When provoked, only small gunships will be sent to deal with you."
 										(leq (TypGetData &stRetaliationController; (cat &svCommonwealth; "Retaliate")) 10)
-											" You are a bandit. Small gunships will come after you but in larger fleets."
+											" This faction feels nervous about you. When provoked, small gunships will come after you but in larger fleets."
 										(leq (TypGetData &stRetaliationController; (cat &svCommonwealth; "Retaliate")) 15)
-											" You are a desperado. Heavy gunships will start coming after you."
+											" This faction feels anxious about you. When provoked, heavy gunships will start coming after you."
 										(leq (TypGetData &stRetaliationController; (cat &svCommonwealth; "Retaliate")) 20)
-											" You are a pirate. Frigates and larger will come after you."
+											" This faction feels threatened by you. When provoked, frigates and larger will come after you."
 										(leq (TypGetData &stRetaliationController; (cat &svCommonwealth; "Retaliate")) 25)
-											" You are a target for extermination. Entire fleets will come after you. They will not stop until the genocide of their stations and livelihood has ended."
+											" This faction feels existentially threatened by you. When provoked, entire fleets will come after you. "
 										)
 									)
 								&svCommonwealth; 
@@ -4697,6 +4824,19 @@
 														(sovGetDisposition sovtoadd (ObjGetSovereign gPlayership))
 														"\n\n"
 														(switch
+															(leq (TypGetData &stRetaliationController; (cat &svCommonwealth; "Retaliate")) 5)
+																" This faction feels calm about you. When provoked, only small gunships will be sent to deal with you."
+															(leq (TypGetData &stRetaliationController; (cat &svCommonwealth; "Retaliate")) 10)
+																" This faction feels nervous about you. When provoked, small gunships will come after you but in larger fleets."
+															(leq (TypGetData &stRetaliationController; (cat &svCommonwealth; "Retaliate")) 15)
+																" This faction feels anxious about you. When provoked, heavy gunships will start coming after you."
+															(leq (TypGetData &stRetaliationController; (cat &svCommonwealth; "Retaliate")) 20)
+																" This faction feels threatened by you. When provoked, frigates and larger will come after you."
+															(leq (TypGetData &stRetaliationController; (cat &svCommonwealth; "Retaliate")) 25)
+																" This faction feels existentially threatened by you. When provoked, entire fleets will come after you. "
+															)
+														<!--
+														(switch
 															(leq (TypGetData &stRetaliationController; (cat sovtoadd "Retaliate")) 5)
 																"You are a nuisance. Only small gunships will be sent to deal with you."
 															(leq (TypGetData &stRetaliationController; (cat sovtoadd "Retaliate")) 10)
@@ -4707,7 +4847,7 @@
 																"You are a pirate. Frigates and larger will come after you."
 															(leq (TypGetData &stRetaliationController; (cat sovtoadd "Retaliate")) 25)
 																"You are a target for extermination. Entire fleets will come after you. They will not stop until the genocide of their stations and livelihood has ended."
-															)
+															)-->
 														)
 													sovtoadd 
 													)
@@ -4860,7 +5000,8 @@
 		</Panes>
 	</DockScreen>
 
-<!--Escape Earthzone Event Handler-->
+	<!--Escape Earthzone Event Handler-->
+
 	<ShipClass UNID="&evEscapeEarthzone;"
 			class=				"(wingman base class)"
 			virtual=			"true"
@@ -4902,7 +5043,7 @@
 		</Events>
 	</ShipClass>
 	
-<!--Retaliation Event Handler-->
+	<!--Retaliation Event Handler-->
 
 	<ShipClass UNID="&evRetaliationEventHandler;"
 			class=				"(Retaliation Event Handler)"
@@ -5140,7 +5281,7 @@
 		</Events>
 	</ShipClass>
 
-<!--The Respawn station-->	
+	<!--The Respawn station-->	
 		
 	<StationType UNID="&stRespawnstation;"
 			name=				"Construction station"
@@ -5388,19 +5529,19 @@
 					; Chance of passing through the shield is based on level
 					(setq probTable
 						'(100
-							100		; Level I
-							100		; Level II
-							100		; Level III
-							100		; Level IV
-							100		; Level V
-							100		; Level VI
-							100		; Level VII
-							100		; Level VIII
-							95		; Level IX
-							85		; Level X
-							65		; Level XI
-							30		; Level XII
-							5		; Level XIII
+							90		; Level I
+							85		; Level II
+							80		; Level III
+							75		; Level IV
+							70		; Level V
+							65		; Level VI
+							60		; Level VII
+							55		; Level VIII
+							50		; Level IX
+							45		; Level X
+							40		; Level XI
+							35		; Level XII
+							30		; Level XIII
 							0		; Level XIV and higher
 							)
 						)
@@ -5668,6 +5809,48 @@
 			
 		</Events>
 	</OverlayType>
+	
+	<!--Scuttler Event Handler -->
+	<ShipClass UNID="&evScuttler;"
+			class=				"Scuttler Event Handler"
+			virtual=			"true"
+			
+			attributes=			"baseClass"
+			>
+			
+		<Events>
+			<OnObjDocked>
+				(block Nil
+					(Plymessage gPlayer "it docked!")
+					;on the wreck, get all items
+					(if (eq (ObjGetData gSource "Wreck") aDockTarget)
+						(block Nil
+							(enum (objGetItems aDockTarget "*U -ID") ItemStruct (block Nil
+								;place copy on the ship
+								(objAddItem gSource ItemStruct ) 
+								;remove item on the target
+								(objRemoveItem gSource ItemStruct )
+								))
+							;go back to base
+							(shpCancelOrders gSource)
+							(shpOrder gSource 'dock (ObjGetData gSource "Home"))
+							))
+					(if (eq (ObjGetData gSource "Home") aDockTarget)
+						(block Nil
+							;enum all items on ship and put in station
+							(enum (objGetItems gSource "*U -ID") ItemStruct (block Nil
+								;place copy on the home station
+								(objAddItem gSource ItemStruct ) 
+								;remove item on ship
+								(objRemoveItem gSource ItemStruct )
+								))
+							;disappear
+							(ObjDestroy aObjdocked)
+							))
+					)
+			</OnObjDocked>
+		</Events>
+	</ShipClass>
 	
 	<!-- Collision-->
 	<ItemType UNID="&itCollision;"
@@ -6147,7 +6330,7 @@
 		name=				"Xenophobe Jump Location"
 		scale=				"star"
 		sovereign=			"&svIndependent;"
-		backgroundPlane = 	"100"
+		backgroundPlane = 	"101"
 		
 		>
 	<Image imageID="&rsXenoJump;" imageX="0" imageY="0" imageWidth="512" imageHeight="512" imageFrameCount="0" imageTicksPerFrame="0"/>
@@ -6160,17 +6343,18 @@
 				;make it last 2-5 minutes
 					;30 ticks-1sec
 					;60 sec-1min
-				;(sysAddObjTimerEvent (random 9000 18000) gSource "GateEnd")
-				(sysAddObjTimerEvent 500 gSource "GateEnd")
+				(sysAddObjTimerEvent (random 9000 18000) gSource "GateEnd")
+				;(sysAddObjTimerEvent 500 gSource "GateEnd")
 				)
 		</OnCreate>
 		<Sun>
 			(block Nil
-			;(sysCreateWeaponFire weaponID          Nil posVector             dir speed objTarget [detonateNow])
-			(sysCreateWeaponFire &itXenoJumpEffectsmall; Nil (objGetPos gSource) (random 0 359)(typGetDataField &itXenoJumpEffectsmall; 'speed) gSource)
-			(sysCreateWeaponFire &itXenoJumpEffectmedium; Nil (objGetPos gSource) (random 0 359)(typGetDataField &itXenoJumpEffectmedium; 'speed) gSource)			
-			(sysCreateWeaponFire &itXenoJumpEffectLarge; Nil (objGetPos gSource) (random 0 359)(typGetDataField &itXenoJumpEffectLarge; 'speed) gSource)			
-			)
+				;(sysCreateWeaponFire weaponID          Nil posVector             dir speed objTarget [detonateNow])
+				;(sysCreateWeaponFire weaponID 			objSource posVector 			dir 					speed objTarget [detonateNow] [weaponBonus])
+				(sysCreateWeaponFire &itXenoJumpEffectsmall; Nil (SysVectorPolarOffset (objGetPos gSource) (random 0 359) (random 0 10)) (random 0 359)(typGetDataField &itXenoJumpEffectsmall; 'speed) gSource)
+				(sysCreateWeaponFire &itXenoJumpEffectmedium; Nil (SysVectorPolarOffset (objGetPos gSource) (random 0 359) (random 0 10)) (random 0 359)(typGetDataField &itXenoJumpEffectmedium; 'speed) gSource)
+				(sysCreateWeaponFire &itXenoJumpEffectLarge; Nil (SysVectorPolarOffset (objGetPos gSource) (random 0 359) (random 0 10)) (random 0 359)(typGetDataField &itXenoJumpEffectLarge; 'speed) gSource)
+				)
 		</Sun>
 		<ElysiumShock>
 			(block Nil
@@ -6219,10 +6403,10 @@
 						maxMissileSpeed="60"
 						maneuverability="6"
 						lifetime=		"360"
-						
+						hitEffect=		"&efSunHitEff;"
 						noFriendlyFire=	"true"
 
-						sound=			"&snRecoillessCannon;"
+						
 						>
 
 					<Effect>
@@ -6279,10 +6463,10 @@
 						maxMissileSpeed="60"
 						maneuverability="6"
 						lifetime=		"360"
-						
+						hitEffect=		"&efSunHitEff;"
 						noFriendlyFire=	"true"
 
-						sound=			"&snRecoillessCannon;"
+						
 						>
 
 					<Effect>
@@ -6338,10 +6522,10 @@
 						maxMissileSpeed="60"
 						maneuverability="6"
 						lifetime=		"360"
-						
+						hitEffect=		"&efSunHitEff;"
 						noFriendlyFire=	"true"
 
-						sound=			"&snRecoillessCannon;"
+						
 						>
 
 					<Effect>
@@ -7929,8 +8113,8 @@ PlotData=
     <Events>
         <OnGlobalSystemCreated>
 		(block Nil
-            (sysCreateStation &stRetaliationController; nil)
             (sysCreateStation &stPiracySupportController; nil)
+            (sysCreateStation &stRetaliationController; nil)
 			)
         </OnGlobalSystemCreated>
     </Events>
@@ -8049,6 +8233,7 @@ PlotData=
 		</HERPDERP>
         <OnCreate>
 			(block (XenoSpawnChance baseshipChance SovList)
+				;(Printto 'log (cat "Ignored special nodes like Eridani,........"))
 				(sysAddObjRecurringTimerEvent 90 gSource "SovereignEncounters")
 				(if
 					(or
@@ -8197,8 +8382,122 @@ PlotData=
 							;(sysAddObjRecurringTimerEvent 500 gSource "BaddiesEvents")
 							)
 					)
+				;stations get rid of extra loot?
+				
+				;civilian ships get autons
+				(sysAddObjRecurringTimerEvent (random 1500 2000) gSource "CivilianAut")
+				;make a check every ~2 min
+				(sysAddObjRecurringTimerEvent (random 1500 2000) gSource "JunkCleanup")
+				;(sysAddObjRecurringTimerEvent 30 gSource "JunkCleanup")
 				)
         </OnCreate>
+		<JunkCleanup>
+			(block (stationSource)
+				;chose a random station
+				(setq stationSource (random (SysFindObject Nil "AtM")))
+				;station then looks for wrecks in ~50 ls
+				(enum (SysFindObject stationSource "Mt N:50;") wreckCandidate (block Nil
+					(if 
+						(and
+							(ObjIsAbandoned wreckCandidate)
+							(not (eq &stNavBeacon; (objGetType wreckCandidate) ))
+							(not (eq &stNavSign; (objGetType wreckCandidate) ))
+							(not (eq &stStargate; (objGetType wreckCandidate) ))
+							(not (eq &stMRADSensor; (objGetType wreckCandidate) ))
+							(not (eq &stLogBuoy; (objGetType wreckCandidate) ))
+							(not (eq &stMajellenStargate; (objGetType wreckCandidate) ))
+							
+							(Not (eq wreckCandidate &stNavBeacon;))
+							(Not (eq wreckCandidate &stNavSign;))
+							(Not (eq wreckCandidate &stStargate;))
+							(Not (eq wreckCandidate &stMRADSensor;))
+							(Not (eq wreckCandidate &stLogBuoy;))
+							(Not (eq wreckCandidate &stMajellenStargate;))
+							;there are no docked items:
+							(eq (count (staGetDockedShips wreckCandidate)) 0)
+							)
+							(block Nil
+								(PrintTo 'log "wtf docked ships")
+								(PrintTo 'log (eq (count (staGetDockedShips wreckCandidate)) 0))
+								(PrintTo 'log (count (staGetDockedShips wreckCandidate)))
+								(PrintTo 'log (staGetDockedShips wreckCandidate))
+								(PrintTo 'log wreckCandidate)
+								;send an earthzone to recover wreckage
+								(setq Scuttleship (SysCreateShip &scEarthzone; (ObjGetPos stationSource) (ObjGetSovereign stationSource)))
+								;add event handler that has onObjDocked events
+								;(objSetEventHandler Scuttleship &evScuttler;)
+								;register the ship
+								(objRegisterForEvents gSource Scuttleship)
+								;tell scuttler about home base
+								(ObjSetData Scuttleship "Home" (objGetID stationSource))
+								;tell scuttler about wreckObj
+								(ObjSetData Scuttleship "Wreck" (objGetID wreckCandidate))
+								;order it to dock
+								(shpOrder Scuttleship 'dock wreckCandidate)
+								;hoping that the event handler drops the items at home base
+								)
+						)
+					))
+				)
+		</JunkCleanup>
+		<OnObjDocked>
+			(block Nil
+				;(PrintTo 'log "it docked!")
+				;(PrintTo 'log (ObjGetData aObjdocked "Wreck"))
+				;(PrintTo 'log aDockTarget)
+				;(PrintTo 'log (objGetObjByID (ObjGetData aObjdocked "Wreck")))
+				;(PrintTo 'log (eq (objGetObjByID (ObjGetData aObjdocked "Wreck")) aDockTarget))
+				;on the wreck, get all items
+				(if 
+					(eq (objGetObjByID (ObjGetData aObjdocked "Wreck")) aDockTarget)
+						(block Nil
+							(enum (objGetItems aDockTarget "*U -ID") ItemStruct (block Nil
+								;(PrintTo 'log "itemnames")
+								;(PrintTo 'log (ItmGetProperty ItemStruct 'name))
+								
+								;place copy on the ship
+								(objAddItem aObjdocked ItemStruct )
+								;remove item on the target
+								(objRemoveItem aDockTarget ItemStruct )
+								))
+							;go back to base
+							(shpCancelOrders aObjdocked)
+							(shpOrder aObjdocked 'dock (ObjGetObjByID (ObjGetData aObjdocked "Home")))
+							;destroy wreck
+							(ObjDestroy aDockTarget)
+							)
+					)
+				(if 
+					(eq (objGetObjByID (ObjGetData aObjdocked "Home")) aDockTarget)
+						(block Nil
+							;enum all items on ship and put in station
+							(enum (objGetItems aObjdocked "*U -ID") ItemStruct (block Nil
+								;place copy on the home station
+								(objAddItem aDockTarget ItemStruct ) 
+								;remove item on ship
+								(objRemoveItem aObjdocked ItemStruct )
+								))
+							;disappear
+							(ObjDestroy aObjdocked)
+							)
+					)
+				)
+		</OnObjDocked>
+		<CivilianAut>
+			(block Nil
+				(enum (sysFindObject Nil "sJ:&svCommonwealth;") ship (block Nil
+					;have a very rare chance to get an auton
+					(if 
+						(ls (random 0 100) 5)
+						(block (auton)
+							;spawn random auton with the 'escort option
+							(setq auton (sysCreateShip (random (list &scMuleAuton; &sc300DDefenderAuton; &sc1MBattleAuton; &sc1MiBattleAuton; &sc310AAegisAuton;)) (ObjGetPos ship) &svIndependent; ))
+							(shpOrder auton 'escort ship)
+							)
+						)
+					))
+				)
+		</CivilianAut>
 		<SovereignEncounters>
             (block nil
                 ;; loop over every active station in the system
@@ -8704,7 +9003,6 @@ PlotData=
 		</Deregistration>
         <Registration>
             (block nil
-				;(plyMessage gplayer "Registration.")
                 ;; loop over every active station in the system
                 (enum (sysFindObject nil "tMA") station 
                     (if 
@@ -8719,6 +9017,9 @@ PlotData=
                             (objRegisterForEvents gSource station)
                             ;; mark that we've registered this station
                             (objSetData station "Registered" True)
+							
+							(PrintTo 'log (cat "Registered " (typGetDataField (ObjGetType station) 'name)))
+							
 								;if the station is also a mining station:
 									;start the mining thing:
 								(if 
@@ -9093,9 +9394,9 @@ PlotData=
 					;setq escorttype Retaliationshiptype
 					;escorttype- the ship that would follow the retaliationship [like a dwarg raider following a dwarg master]
 				-->
-				
 			; all right, here goes....
 			(block (Retaliationshiptype escorttype pos sov theLeader cnt name level sovTest test ship Retaliationname metacnt)
+				;
 				;added a switch here for the CWDefense event
 				(switch 
 					(eq (ObjGetData aObjDestroyed "DySysCWDefender") true)
@@ -10506,4 +10807,5 @@ PlotData=
 		</Invoke>
 	</ItemType>
 -->
+
 </TranscendenceExtension>

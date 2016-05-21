@@ -91,6 +91,8 @@
 	<!ENTITY itNerefirSolarReactor		"0xE1289C01">
 	<!ENTITY itSolarParticleField		"0xE1289C02">
 		<!ENTITY itExhaust					"0xE1289C05">
+		<!ENTITY efExhaust					"0xE1289C06">
+		<!ENTITY efNil						"0xE1289C07">
 	<!ENTITY itParticles				"0xE1289C03">
 	<!ENTITY itSolarReactorFlywheel		"0xE1289C04">
 	
@@ -109,7 +111,9 @@
 	<!ENTITY dsNerefirCargoHold			"0xE1289F02">
 	<!ENTITY dsNerefirManualRefuel		"0xE1289F03">
 	
-	<!ENTITY svRanxEmpire				"0xE1281B00">	
+	<!--
+	<!ENTITY svRanxEmpire				"0xE1281B00">
+	-->	
 	<!--other mods-->
 		<!ENTITY scMayflyLvl1			"0xE1280003">
 	
@@ -122,7 +126,7 @@ FourFire: Nerefir LRS description
 <image UNID="&rsTrail;"			bitmap="DySys Resources\Trail.jpg"				bitmask="DySys Resources\Trailmask.bmp"						loadOnUse="true"/>
 <image UNID="&rsParticles;"		bitmap="DySys Resources\Particles.jpg"			bitmask="DySys Resources\Particlemask.bmp"					loadOnUse="true"/>
 <image UNID="&rsFlywheel;"		bitmap="DySys Resources\solar reactor try.jpg"																loadOnUse="true"/>
-<Image UNID="&rsNerefir;" 		bitmap="DySys Resources\RanxCruiserCut.jpg" 																				/>
+<Image UNID="&rsNerefir;" 		bitmap="DySys Resources\RanxCruiserCut.jpg" 	bitmask="DySys Resources\RanxCruiserCutMask.bmp"							/>
 <image UNID="&rsEmptyTrail;"	bitmap="DySys Resources\ParticlesReverse.jpg"	bitmask="DySys Resources\ParticleEmptyTrail Mask.jpg"		loadOnUse="true"/>
 <Image UNID="&rsExiamapNerf;" 	bitmap="DySys Resources\Exiamask.jpg" 																		backColor="0x00000000"/>
 <!-- TODO -->
@@ -909,13 +913,13 @@ COMMS:
 							(eq (objGetData gPlayership "particlefield") 1)
 								;TRUE= don't do anything
 								(block Nil
-									(plyMessage gPlayer "Particle Field is Installed.")
+									(scrSetDesc gScreen "Particle Field is Installed.")
 									)
 								;FALSE= create a particle field and install
 								(block Nil
 									(objAddItem gSource (itmCreate &itSolarParticleField; 1))
 									(shpInstallDevice gSource (itmCreate &itSolarParticleField; 1))
-									(plyMessage gPlayer "Particle Field not found. Installing now.")
+									(scrSetDesc gScreen "Particle Field not found. Installing now.")
 									)
 							)
 						(if 
@@ -923,13 +927,13 @@ COMMS:
 							(eq (objGetData gPlayership "flywheel") 1)
 								;TRUE= don't do anything
 								(block Nil
-									(plyMessage gPlayer "Solar Reactor Flywheel is Installed.")
+									(scrSetDesc gScreen "Solar Reactor Flywheel is Installed.")
 									)
 								;FALSE= create a flywheel and install
 								(block Nil
 									(objAddItem gSource (itmCreate &itSolarReactorFlywheel; 1))
 									(shpInstallDevice gSource (itmCreate &itSolarReactorFlywheel; 1))
-									(plyMessage gPlayer "Flywheel not found. Installing now.")
+									(scrSetDesc gScreen "Flywheel not found. Installing now.")
 									)
 							)
 						)
@@ -1686,6 +1690,7 @@ COMMS:
 				deviceSlots=		"0"
 				noFriendlyFire=		"true"
 				linkedFire=			"always"
+				fireEffect=			"&efNil;"
 				>				
 			<Configuration aimTolerance="5">
 				<Shot posAngle="180" posRadius="20" angle="0-180"/>	
@@ -2828,6 +2833,7 @@ COMMS:
 				deviceSlots=		"0"
 				noFriendlyFire=		"true"
 				recoil=				"120"
+				fireEffect=			"&efNil;"
 				>				
 			<Configuration aimTolerance="15">
 				<Shot posAngle="90" posRadius="30" angle="175-185"/>
@@ -2841,12 +2847,58 @@ COMMS:
 				<Shot posAngle="90" posRadius="-30" angle="160-200"/>
 			</Configuration>
 			
+			<!--
+			<Image imageID="&rsEmptyTrail;" imageX="0" imageY="0" imageWidth="16" imageHeight="16" imageFrameCount="4" imageTicksPerFrame="3" randomStartFrame="true" />
+			-->
 			<Effect>
-				<Image imageID="&rsEmptyTrail;" imageX="0" imageY="0" imageWidth="16" imageHeight="16" imageFrameCount="4" imageTicksPerFrame="3" randomStartFrame="true" />
+				<Image imageID="&rsParticles;" imageX="0" imageY="0" imageWidth="16" imageHeight="16" imageFrameCount="12" imageTicksPerFrame="2" randomStartFrame="true"/>
 			</Effect>
 		</Weapon>
 	</Itemtype>
 	
+	<EffectType UNID="&efExhaust;"
+		instance=			"creator"
+		>
+		<Effect>
+			<ParticleJet
+					emitRate=			"5-15"
+					emitSpeed=			"17-30"
+					particleLifetime=	"8-24"
+					spreadAngle=		"15-30"
+					>
+				<ParticleEffect>
+					<Image imageID="&rsParticles;" imageX="0" imageY="0" imageWidth="16" imageHeight="16" imageFrameCount="12" imageTicksPerFrame="2" randomStartFrame="true"/>
+				</ParticleEffect>
+			</ParticleJet>
+			
+			<Ray>
+				<Events>
+					<GetParameters>
+						(block (thrusterPower maxSpeed primaryTable)
+							(setq thrusterPower (@ gData 'thrusterPower))
+							(setq maxSpeed (@ gData 'maxSpeed))
+							(setq primaryTable (list "#FF7F38" "#FF8F46" "#FFA054" "#FFB065" "#FFBF75" "#FFCF86" "#FFDF97" "#FFEEA7" "#FFFEB8" "#FFFEB8" "#FAFDC0" "#F5FDC8" "#EFFCD0" "#EAFBD8" "#E5FBDF" "#E0FAE7" "#DAF9EF" "#D5F9F7" "#D0F8FF" "#D0F8FF"))
+
+							{
+								style: "smooth"
+								shape: "tapered"
+								length: (mathScale maxSpeed 12 20 40 80 50)
+								width: (mathScale thrusterPower 1000 5000 24 64 50)
+								intensity: (mathScale maxSpeed 12 20 40 60 50)
+								primaryColor: (@ primaryTable (subtract (max 16 (min maxSpeed 35)) 16))
+								secondaryColor: "#812617"
+								}
+							)
+					</GetParameters>
+				</Events>
+			</Ray>
+		</Effect>
+	</EffectType>
+
+	<EffectType UNID="&efNil;"
+			instance=			"creator"
+			>
+	</EffectType>
 	<!--The Mayfly -->
 	<ShipClass UNID="&scMayfly;"
 		manufacturer=		"Celestial Being"
@@ -3108,7 +3160,23 @@ COMMS:
 			<Device deviceID="&itExhaust;"/>
 			<Device deviceID="&itvtLRS;"/>
 		</Devices>
+		
+		<Effects>
+			<Effect type="thrustMain" posAngle="90" posRadius="35" posZ="-20" rotation="180" effect="&efExhaust;" sendToBack="*"/>
+			<Effect type="thrustMain" posAngle="90" posRadius="-35" posZ="-20" rotation="180" effect="&efExhaust;" sendToBack="*"/>
+		</Effects>
+		
 		<!-- It used to work when I had the Ranx DN image
+		
+		<Shot posAngle="90" posRadius="30" angle="175-185"/>
+				
+				
+		<Shot posAngle="90" posRadius="30" angle="160-200"/>
+		
+		<Shot posAngle="90" posRadius="-30" angle="175-185"/>
+		
+		
+		<Shot posAngle="90" posRadius="-30" angle="160-200"/>
 		<DriveImages>
 			<NozzleImage imageID="&rsDriveExhaust;" imageX="48" imageY="0" imageWidth="48" imageHeight="48" imageFrameCount="0" imageTicksPerFrame="0"/>
 			<NozzlePos x="-28" y="-4"/>
@@ -3122,8 +3190,9 @@ COMMS:
 			<Item				count="1"		item="&itRanxGunshipSummon;"/>
 			<Item				count="1"		item="&itShieldBit;"/>
 		</Items>
-
-		<Image imageID="&rsNerefir;" imageX="0" imageY="0" imageWidth="160" imageHeight="240" imageFrameCount="0" imageTicksPerFrame="0"/>
+		
+		;imageFrameCount="0" imageTicksPerFrame="0" 240,160 align="center" valign="center"
+		<Image imageID="&rsNerefir;" imageX="0" imageY="0" imageWidth="240" imageHeight="240" rotationCount="40"/>
 		;combatStyle=		"standOff"
 		<AISettings
 			aggressor=			"true"
