@@ -90,6 +90,13 @@
 	<!ENTITY scDySysSapphire						"0xE1282F15">
 	<!ENTITY scDySysWolfen							"0xE1282F16">
 	<!ENTITY efSunHitEff							"0xE1282F17">
+	<!ENTITY scAutoSentinelNPC						"0xE1281A23">
+	<!ENTITY sc200ADefenderAutonNPC					"0xE1281A24">
+	<!ENTITY sc300DDefenderAutonNPC					"0xE1281A25">
+	<!ENTITY sc310AAegisAutonNPC					"0xE1281A26">
+	<!ENTITY scMuleAutonNPC							"0xE1281A27">
+	<!ENTITY sc1MBattleAutonNPC						"0xE1281A28">
+	<!ENTITY sc1MiBattleAutonNPC					"0xE1281A29">
 	
 ]>
 <!--
@@ -8385,7 +8392,7 @@ PlotData=
 				;stations get rid of extra loot?
 				
 				;civilian ships get autons
-				(sysAddObjRecurringTimerEvent (random 1500 2000) gSource "CivilianAut")
+				(sysAddObjRecurringTimerEvent (random 15000 20000) gSource "CivilianAut")
 				;make a check every ~2 min
 				(sysAddObjRecurringTimerEvent (random 1500 2000) gSource "JunkCleanup")
 				;(sysAddObjRecurringTimerEvent 30 gSource "JunkCleanup")
@@ -8491,7 +8498,7 @@ PlotData=
 						(ls (random 0 100) 5)
 						(block (auton)
 							;spawn random auton with the 'escort option
-							(setq auton (sysCreateShip (random (list &scMuleAuton; &sc300DDefenderAuton; &sc1MBattleAuton; &sc1MiBattleAuton; &sc310AAegisAuton;)) (ObjGetPos ship) &svIndependent; ))
+							(setq auton (sysCreateShip (random (list &scAutoSentinelNPC; &sc200ADefenderAutonNPC; &sc300DDefenderAutonNPC; &sc310AAegisAutonNPC; &scMuleAutonNPC; &sc1MBattleAutonNPC; &sc1MiBattleAutonNPC;)) (ObjGetPos ship) &svIndependent; ))
 							(shpOrder auton 'escort ship)
 							)
 						)

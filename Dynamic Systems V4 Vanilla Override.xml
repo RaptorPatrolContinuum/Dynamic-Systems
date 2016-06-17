@@ -86,6 +86,13 @@
 		<!ENTITY itSunDamageWhiteSmall			"0xE1281A20">
 		<!ENTITY itSunDamageWhiteMedium			"0xE1281A21">
 		<!ENTITY itSunDamageWhiteLarge			"0xE1281A22">
+		<!ENTITY scAutoSentinelNPC				"0xE1281A23">
+		<!ENTITY sc200ADefenderAutonNPC			"0xE1281A24">
+		<!ENTITY sc300DDefenderAutonNPC			"0xE1281A25">
+		<!ENTITY sc310AAegisAutonNPC			"0xE1281A26">
+		<!ENTITY scMuleAutonNPC					"0xE1281A27">
+		<!ENTITY sc1MBattleAutonNPC				"0xE1281A28">
+		<!ENTITY sc1MiBattleAutonNPC			"0xE1281A29">
 	
 	<!ENTITY itUrakMassDriverAdvanced	"0x0803014A">
 	<!ENTITY itUrakHowitzer				"0x08030149">
@@ -9890,4 +9897,516 @@ useScreen=			"Main"
 			</Effect>
 		</Weapon>
 </ItemType>	
+
+<!-- Auton, AutoSentinel -->
+
+	<ShipClass UNID="&scAutoSentinelNPC;"
+			manufacturer=		"OmniDefense Systems"
+			class=				"AutoSentinel&#xae;"
+			type=				""
+			defaultSovereign=	"&svCommonwealth;"
+
+			attributes=			"auton, genericClass"
+			
+			   
+			mass=				"1"
+			thrustRatio=		"5"
+			maxSpeed=			"25"
+			cargoSpace=			"0"
+
+			reactorPower=		"30"
+			maxArmor=			"2500"
+			maxDevices=			"1"
+			>
+
+		<!-- Configuration -->
+		
+		<Armor
+			armorID=			"&itHeavyCeramicPlate;"
+			count=				"1"
+			/>
+		
+		<Devices>
+			<Device deviceID="&itLaserCannon;"/>
+		</Devices>
+
+		<Maneuver
+			maxRotationRate=	"18.0"
+			rotationAccel=		"6.0"
+			/>
+
+		<!-- Image and Effects -->
+		
+		<Image imageID="&rsSmallShips1;" imageX="256" imageY="0" imageWidth="32" imageHeight="32"/>
+
+		<!-- AI and Behavior -->
+
+		<AISettings
+			fireRateAdj=		"15"
+			fireAccuracy=		"70"
+			perception=			"4"
+			noAttackOnThreat=	"true"
+			
+			ignoreShieldsDown=	"true"
+			/>
+		
+		<Language>
+			<Text id="DeployAck">"\"AutoSentinel&#xae; v2.01 online\""</Text>
+		</Language>
+	</ShipClass>
+
+	<!-- Auton, 200A Defender Auton -->
+
+	<ShipClass UNID="&sc200ADefenderAutonNPC;"
+			manufacturer=		"OmniDefense Systems"
+			class=				"200A defender auton"
+			type=				""
+			defaultSovereign=	"&svCommonwealth;"
+
+			attributes=			"auton, genericClass"
+			
+			   
+			mass=				"2"
+			thrustRatio=		"8"
+			maxSpeed=			"25"
+			cargoSpace=			"0"
+
+			reactorPower=		"250"
+			maxArmor=			"3000"
+			maxDevices=			"2"
+			maxWeapons=			"1"
+			>
+
+		<!-- Configuration -->
+		
+		<Armor
+			armorID=			"&itLightPlasteelPlate;"
+			count=				"1"
+			/>
+		
+		<Devices>
+			<Device deviceID="&itTurbolaserCannon;"/>
+			<Device deviceID="&itHullPlateIonizer;"/>
+		</Devices>
+
+		<Maneuver
+			maxRotationRate=	"18.0"
+			rotationAccel=		"6.0"
+			/>
+
+		<!-- Image and Effects -->
+
+		<Image imageID="&rsSmallShips1;" imageX="288" imageY="0" imageWidth="32" imageHeight="32"/>
+
+		<!-- AI and Behavior -->
+
+		<AISettings
+			fireRateAdj=		"20"
+			fireAccuracy=		"80"
+			perception=			"4"
+			noAttackOnThreat=	"true"
+			
+			ignoreShieldsDown=	"true"
+			/>
+			
+		<Events>
+			<CreateFromItem>
+				(block (auton)
+					;	First ask the base class to create the auton
+					
+					(setq auton (typFireEvent &baStdAutonBase; 'CreateFromItem gData))
+					
+					; Malfunction causes auton to attack player
+					
+					(shpSetController auton Nil)
+					(objSetSovereign auton &svDefectiveAuton;)
+					(shpCancelOrders auton)
+					(shpOrder auton 'attack (@ gData 'sourceObj))
+					
+					;	Clear wingman flag so we cannot be controlled by the player
+					
+					(objSetProperty auton 'playerWingman Nil)
+					
+					;	Return the auton
+					
+					auton
+					)
+			</CreateFromItem>
+		</Events>
+		
+		<Language>
+			<Text id="DeployAck">"\"200A: AI.error.safety_module_failure\""</Text>
+		</Language>
+	</ShipClass>
+
+	<!-- Auton, 300D Defender Auton -->
+
+	<ShipClass UNID="&sc300DDefenderAutonNPC;"
+			manufacturer=		"OmniDefense Systems"
+			class=				"300D defender auton"
+			type=				""
+			defaultSovereign=	"&svCommonwealth;"
+
+			attributes=			"auton, genericClass"
+			
+			   
+			mass=				"2"
+			thrustRatio=		"8"
+			maxSpeed=			"25"
+			cargoSpace=			"0"
+
+			reactorPower=		"250"
+			maxArmor=			"3000"
+			maxDevices=			"2"
+			maxWeapons=			"1"
+			>
+
+		<!-- Configuration -->
+		
+		<Armor
+			armorID=			"&itPlasteelPlate;"
+			count=				"1"
+			/>
+		
+		<Devices>
+			<Device deviceID="&itTurbolaserCannon;"/>
+			<Device deviceID="&itHullPlateIonizer;"/>
+		</Devices>
+
+		<Maneuver
+			maxRotationRate=	"18.0"
+			rotationAccel=		"6.0"
+			/>
+
+		<!-- Image and Effects -->
+
+		<Image imageID="&rsSmallShips1;" imageX="288" imageY="0" imageWidth="32" imageHeight="32"/>
+
+		<!-- AI and Behavior -->
+
+		<AISettings
+			fireRateAdj=		"20"
+			fireAccuracy=		"80"
+			perception=			"4"
+			noAttackOnThreat=	"true"
+			
+			ignoreShieldsDown=	"true"
+			/>
+			
+		<Events>
+			<OrderAttackSelf>
+				(block Nil
+					; Malfunction causes auton to attack player
+					
+					(shpSetController gSource Nil)
+					(objSetSovereign gSource &svDefectiveAuton;)
+					(shpCancelOrders gSource)
+					(shpOrder gSource 'attack gSender)
+					
+					(objSendMessage gSender gSource "300D: AI.error.safety_module_failure")
+					)
+			</OrderAttackSelf>
+		</Events>
+		
+		<Language>
+			<Text id="DeployAck">"\"300D Defender online [v2.1d]\""</Text>
+		</Language>
+	</ShipClass>
+
+	<!-- Auton, 310A Aegis Auton -->
+
+	<ShipClass UNID="&sc310AAegisAutonNPC;"
+			manufacturer=		"OmniDefense Systems"
+			class=				"310A aegis auton"
+			type=				""
+			defaultSovereign=	"&svCommonwealth;"
+
+			attributes=			"auton, genericClass"
+			
+			   
+			mass=				"2"
+			thrustRatio=		"8"
+			maxSpeed=			"25"
+			cargoSpace=			"0"
+
+			reactorPower=		"250"
+			maxArmor=			"3000"
+			maxDevices=			"3"
+			maxWeapons=			"1"
+			>
+
+		<!-- Configuration -->
+		
+		<Armor
+			armorID=			"&itPlasteelPlate;"
+			count=				"1"
+			/>
+		
+		<Devices>
+			<Device deviceID="&itLaserCannon;"/>
+			<Device deviceID="&itLongreachIAutocannon;"/>
+			<Device deviceID="&itHullPlateIonizer;"/>
+		</Devices>
+
+		<Maneuver
+			maxRotationRate=	"18.0"
+			rotationAccel=		"6.0"
+			/>
+
+		<!-- Image and Effects -->
+
+		<Image imageID="&rsSmallShips1;" imageX="288" imageY="0" imageWidth="32" imageHeight="32"/>
+
+		<!-- AI and Behavior -->
+
+		<AISettings
+			fireRateAdj=		"20"
+			fireAccuracy=		"80"
+			perception=			"4"
+			noAttackOnThreat=	"true"
+			
+			ignoreShieldsDown=	"true"
+			/>
+
+		<Language>
+			<Text id="DeployAck">"\"310A Aegis online [v1.0f]\""</Text>
+		</Language>
+	</ShipClass>
+
+	<!-- Auton, Mule Auton -->
+
+	<ShipClass UNID="&scMuleAutonNPC;"
+			manufacturer=		"OmniDefense Systems"
+			class=				"330M mule auton"
+			type=				""
+			defaultSovereign=	"&svCommonwealth;"
+
+			attributes=			"auton, genericClass"
+			
+			   
+			mass=				"2"
+			thrustRatio=		"6"
+			maxSpeed=			"20"
+			cargoSpace=			"75"
+
+			reactorPower=		"150"
+			maxArmor=			"3500"
+			maxDevices=			"2"
+			maxWeapons=			"1"
+			   
+			dockScreen=			"Main"
+			>
+
+		<!-- Configuration -->
+		
+		<Armor
+			armorID=			"&itPlasteelPlate;"
+			count=				"2"
+			/>
+		
+		<Devices>
+			<Device deviceID="&itHullPlateIonizer;"/>
+		</Devices>
+
+		<Maneuver
+			maxRotationRate=	"3.0"
+			rotationAccel=		"1.0"
+			/>
+
+		<!-- Image and Effects -->
+
+		<Image imageID="&rsMediumShips1;" imageX="672" imageY="0" imageWidth="48" imageHeight="48"/>
+
+		<!-- AI and Behavior -->
+
+		<AISettings
+			fireRateAdj=		"20"
+			fireAccuracy=		"80"
+			perception=			"4"
+			nonCombatant=		"true"
+			noAttackOnThreat=	"true"
+			
+			/>
+
+		<Language>
+			<Text id="DeployAck">"\"330M Mule online [v2.2a]\""</Text>
+		</Language>
+		
+		<!-- Docking -->
+		
+		<DockScreens>
+			<Main
+				name=			"330M mule auton"
+				>
+
+				<Panes>
+					<Default
+							desc="You are docked with a 330M mule auton.">
+
+						<Actions>
+							<Action name="Loot" key="L" default="1" >
+								(scrShowScreen gScreen &dsRPGLoot;)
+							</Action>
+
+							<Action name="Jettison" key="J">
+								(scrShowScreen gScreen &dsRPGJettison;)
+							</Action>
+
+							<Action name="Undock" cancel="1" key="U">
+								<Exit/>
+							</Action>
+						</Actions>
+					</Default>
+				</Panes>
+
+			</Main>
+		</DockScreens>
+
+	</ShipClass>
+
+	<!-- Auton, 1M battle auton -->
+
+	<ShipClass UNID="&sc1MBattleAutonNPC;"
+			manufacturer=		"OmniDefense Systems"
+			class=				"1M battle auton"
+			type=				""
+			defaultSovereign=	"&svCommonwealth;"
+
+			attributes=			"auton, genericClass"
+			
+			   
+			mass=				"4"
+			thrustRatio=		"8"
+			maxSpeed=			"25"
+			cargoSpace=			"0"
+
+			reactorPower=		"450"
+			maxArmor=			"4000"
+			maxDevices=			"2"
+			maxWeapons=			"1"
+			>
+
+		<!-- Configuration -->
+		
+		<Armor
+			armorID=			"&itLightBlastPlate;"
+			count=				"1"
+			/>
+		
+		<Devices>
+			<Device deviceID="&itParticleBeamWeapon;"/>
+			<Device deviceID="&itMonopoleDeflector;"/>
+		</Devices>
+
+		<Maneuver
+			maxRotationRate=	"9.0"
+			rotationAccel=		"4.5"
+			/>
+
+		<!-- Image and Effects -->
+
+		<Image imageID="&rsSmallShips1;" imageX="320" imageY="0" imageWidth="32" imageHeight="32"/>
+
+		<!-- AI and Behavior -->
+
+		<AISettings
+			fireRateAdj=		"20"
+			fireAccuracy=		"90"
+			perception=			"4"
+			noAttackOnThreat=	"true"
+			
+			ignoreShieldsDown=	"true"
+			/>
+
+		<Events>
+			<OrderAttackSelf>
+				(block Nil
+					(objCommunicate gSource gSender 14)
+					(objSendMessage gSender gSource "1M self-destruct activated")
+					(sysAddObjTimerEvent 90 gSource "OrderSelfDestruct")
+					)
+			</OrderAttackSelf>
+			
+			<OrderSelfDestruct>
+				(block Nil
+					(sysCreateWeaponFire 
+						&vtBlastExplosion4; 
+						(list Nil 'explosion Nil "self-destructing 1M battle auton" 0x00)
+						(objGetPos gSource) 
+						0
+						0
+						Nil
+						'detonateNow
+						)
+
+					(objDestroy gSource)
+					)
+			</OrderSelfDestruct>
+		</Events>
+		
+		<Language>
+			<Text id="DeployAck">"\"Auton series 1M online\""</Text>
+		</Language>
+	</ShipClass>
+
+	<!-- Auton, 1M/i battle auton -->
+
+	<ShipClass UNID="&sc1MiBattleAutonNPC;"
+			manufacturer=		"OmniDefense Systems"
+			class=				"1M/i battle auton"
+			type=				""
+			defaultSovereign=	"&svCommonwealth;"
+
+			attributes=			"auton, genericClass"
+			
+			   
+			mass=				"4"
+			thrustRatio=		"8"
+			maxSpeed=			"25"
+			cargoSpace=			"0"
+
+			reactorPower=		"450"
+			maxArmor=			"4000"
+			maxDevices=			"2"
+			maxWeapons=			"1"
+			>
+
+		<!-- Configuration -->
+		
+		<Armor
+			armorID=			"&itLightBlastPlate;"
+			count=				"1"
+			/>
+		
+		<Devices>
+			<Device deviceID="&itIonCannon;"/>
+			<Device deviceID="&itMonopoleDeflector;"/>
+		</Devices>
+
+		<Maneuver
+			maxRotationRate=	"9.0"
+			rotationAccel=		"4.5"
+			/>
+
+		<!-- Image and Effects -->
+
+		<Image imageID="&rsSmallShips1;" imageX="320" imageY="0" imageWidth="32" imageHeight="32"/>
+
+		<!-- AI and Behavior -->
+
+		<AISettings
+			fireRateAdj=		"20"
+			fireAccuracy=		"90"
+			perception=			"4"
+			noAttackOnThreat=	"true"
+			
+			ignoreShieldsDown=	"true"
+			/>
+
+		<Language>
+			<Text id="DeployAck">"\"Auton series 1M/i online\""</Text>
+		</Language>
+	</ShipClass>
+	
+
 </TranscendenceExtension>
